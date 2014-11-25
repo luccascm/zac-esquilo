@@ -7,13 +7,21 @@ ZacEsquilo.PreMenu.prototype = {
   },
 
   create: function(){
-    var switchOn = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'oneSwitchOn');
-    var switchOff = this.game.add.sprite(this.game.world.centerX , this.game.world.centerY, 'oneSwitchOff');
-
-    // this.switchOn.animations.add('over');
-    // this.switchOn.animations.play('over', 20, true);
+    ZacEsquilo.switchOn = this.game.add.button(this.game.world.centerX - 250, this.game.world.centerY, 'oneSwitchOn', this.actionOnClick, this, 1, 0);
+    ZacEsquilo.switchOff = this.game.add.button(this.game.world.centerX + 150 , this.game.world.centerY, 'oneSwitchOff', this.actionOnClick, this, 1, 0);
 
     this.createText();
+    
+    ZacEsquilo.switchOn.onInputOver.add(this.over,this);
+    ZacEsquilo.switchOn.onInputOut.add(this.out,this);
+
+    ZacEsquilo.switchOff.onInputOver.add(this.over,this);
+    ZacEsquilo.switchOff.onInputOut.add(this.out,this);
+    
+    
+    this.game.time.events.add(500, function(){
+      ZacEsquilo.switchOn;
+    }, this)
   },
 
   createText: function() {
@@ -26,5 +34,18 @@ ZacEsquilo.PreMenu.prototype = {
 
     ZacEsquilo.switchText = this.game.add.text(this.game.world.centerX, this.game.world.centerY/2, switchQuestion, this.fontStyle);
     ZacEsquilo.switchText.anchor.setTo(0.5);
+  },
+
+  over: function() {
+    console.log('button over');
+  },
+
+  out: function() {
+    console.log('button out');
+  },
+
+  actionOnClick: function() {
+    this.state.start('MainMenu');
+    console.log('button click');
   }
 };
