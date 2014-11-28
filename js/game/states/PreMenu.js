@@ -15,13 +15,24 @@ ZacEsquilo.PreMenu.prototype = {
     ZacEsquilo.switchOn.onInputOver.add(this.over,this);
     ZacEsquilo.switchOn.onInputOut.add(this.out,this);
 
+    this.game.time.events.add(1000, function() { ZacEsquilo.switchOn.frame = 1; }, this);
+    
+
     ZacEsquilo.switchOff.onInputOver.add(this.over,this);
     ZacEsquilo.switchOff.onInputOut.add(this.out,this);
     
     
     this.game.time.events.add(500, function(){
       ZacEsquilo.switchOn;
-    }, this)
+    }, this);
+
+
+    // instanciar um oneswitchmanager
+    // var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
+    //   ZacEsquilo.switchOn,
+    //   ZacEsquilo.switchOff
+    // ], 2000);
+    // oneswitchmanager.start();
   },
 
   createText: function() {

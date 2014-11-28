@@ -24,7 +24,8 @@ ZacEsquilo.Preload.prototype = {
 
     // Loading assets needed for the game
     // this.load.image('ground', 'assets/images/ground.png');
-    // this.load.image('background', 'assets/images/background.png');
+    this.load.image('forestBackground', 'assets/images/forest-bg.png');
+
     // this.load.image('foreground', 'assets/images/foreground.png');
     //
     // this.load.spritesheet('coins', 'assets/images/coins-ps.png', 51, 51, 7);
@@ -39,22 +40,22 @@ ZacEsquilo.Preload.prototype = {
 
     this.createText();
 
-    this.load.onLoadComplete.add(this.onLoadComplete, this);
-  },
-
-  create: function() {
     ZacEsquilo.creditsText.alpha = 0;
     this.splash.alpha = 0;
     ZacEsquilo.gameName.alpha = 0;
     this.zacStart.alpha = 0;
+    // this.load.onLoadComplete.add(this.onLoadComplete, this);
+  },
+
+  create: function() {
     this.preloadBar.cropEnabled = false;
 
     // Time animations (fade in/out)
     // Credits text and logo fade in
-    this.game.time.events.add(200, function() {
+    this.game.time.events.add(100, function() {
       this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
       this.game.add.tween(ZacEsquilo.creditsText).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.preloadBar).to( { alpha: 0 }, 200, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(this.preloadBar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
     }, this);
 
     // Credits text and logo fade out
@@ -75,16 +76,16 @@ ZacEsquilo.Preload.prototype = {
       this.game.add.tween(ZacEsquilo.gameName).to( { alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
     }, this);
 
-    this.game.time.events.add(8600, function() { this.onLoadComplete(); }, this);
+    this.game.time.events.add(8600, function() { this.state.start('PreMenu'); }, this);
   },
 
   update: function() {
     // if(this.cache.isSoundDecoded('gameMusic') && this.ready === true) {
     //   this.state.start('MainMenu');
     // }
-    if (this.ready == true){
-      this.state.start('PreMenu');
-    }
+    // if (this.ready === true){
+      // this.state.start('PreMenu');
+    // }
   },
 
   createText: function() {
@@ -96,13 +97,16 @@ ZacEsquilo.Preload.prototype = {
     
     ZacEsquilo.creditsText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 55, "Lucas Cardoso Medeiros \n\n apresenta", this.fontStyle);
     ZacEsquilo.creditsText.anchor.setTo(0.5);
+
+    // ZacEsquilo.creditsText.font = 'Revalia';
+    // ZacEsquilo.creditsText.fontSize = 40;
     
     ZacEsquilo.gameName = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 105, "Zac - O esquilo", this.fontStyle);
     ZacEsquilo.gameName.anchor.setTo(0.5);
 
   },
 
-  onLoadComplete: function() {
-    this.ready = true;
-  }
+  // onLoadComplete: function() {
+  //   this.ready = true;
+  // }
 };

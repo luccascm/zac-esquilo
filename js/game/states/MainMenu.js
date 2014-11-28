@@ -1,10 +1,16 @@
 ZacEsquilo.MainMenu = function(game){
   ZacEsquilo.menuTitleText = null;
+  ZacEsquilo.forestBg = null ;
 };
 
 ZacEsquilo.MainMenu.prototype = {
   preload: function(){
-    this.game.stage.backgroundColor = "#FFB631";
+    // this.game.stage.backgroundColor = "#FFB631";
+    ZacEsquilo.forestBg = this.game.add.tileSprite(0, 0, this.game.width, this.game.world.height, 'forestBackground');
+    this.background = ZacEsquilo.forestBg;
+
+    // this.background.height = this.game.height;
+    this.background.autoScroll(-100, 0);
     this.preloadChar = this.add.sprite(30, 30, 'zacStart');
   },
 
