@@ -2,8 +2,8 @@ ZacEsquilo.PreMenu = function() {};
 
 ZacEsquilo.PreMenu.prototype = {
   preload: function(){
-    this.load.spritesheet('oneSwitchOn', 'assets/images/accessible-mode-on.png', 188, 59, 2);
-    this.load.spritesheet('oneSwitchOff', 'assets/images/accessible-mode-off.png', 188, 59, 2);
+    this.load.spritesheet('oneSwitchOn', 'assets/images/accessibleOn.png', 189, 58, 2);
+    this.load.spritesheet('oneSwitchOff', 'assets/images/accessibleOff.png', 189, 58, 2);
   },
 
   create: function(){
@@ -15,7 +15,7 @@ ZacEsquilo.PreMenu.prototype = {
     ZacEsquilo.switchOn.onInputOver.add(this.over,this);
     ZacEsquilo.switchOn.onInputOut.add(this.out,this);
 
-    this.game.time.events.add(1000, function() { ZacEsquilo.switchOn.frame = 1; }, this);
+    // this.game.time.events.add(1000, function() { ZacEsquilo.switchOn.frame = 1; }, this);
     
 
     ZacEsquilo.switchOff.onInputOver.add(this.over,this);
@@ -26,13 +26,14 @@ ZacEsquilo.PreMenu.prototype = {
       ZacEsquilo.switchOn;
     }, this);
 
+    ZacEsquilo.switchOn.frame = 1;
 
     // instanciar um oneswitchmanager
-    // var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
-    //   ZacEsquilo.switchOn,
-    //   ZacEsquilo.switchOff
-    // ], 2000);
-    // oneswitchmanager.start();
+    var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
+      ZacEsquilo.switchOn,
+      ZacEsquilo.switchOff
+    ], 2, this.game);
+    oneswitchmanager.start();
   },
 
   createText: function() {

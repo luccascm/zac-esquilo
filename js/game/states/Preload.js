@@ -20,23 +20,14 @@ ZacEsquilo.Preload.prototype = {
     this.zacStart = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'zacStart');
     this.zacStart.anchor.setTo(0.5);
 
-    // TODO: Create text and tween opacity (time animation)
-
     // Loading assets needed for the game
-    // this.load.image('ground', 'assets/images/ground.png');
-    this.load.image('forestBackground', 'assets/images/forest-bg.png');
+    this.load.image('forestBackground', 'assets/images/forest-bg-small.jpg');
 
-    // this.load.image('foreground', 'assets/images/foreground.png');
-    //
     // this.load.spritesheet('coins', 'assets/images/coins-ps.png', 51, 51, 7);
-    // this.load.spritesheet('player', 'assets/images/jetpack-ps.png', 229, 296, 4);
-    // this.load.spritesheet('missile', 'assets/images/missiles-ps.png', 361, 218, 4);
-    //
+
     // this.load.audio('gameMusic', ['assets/audio/Pamgaea.mp3', 'assets/audio/Pamgaea.ogg']);
     // this.load.audio('rocket', 'assets/audio/rocket.wav');
-    // this.load.audio('bounce', 'assets/audio/bounce.wav');
-    // this.load.audio('coin', 'assets/audio/coin.wav');
-    // this.load.audio('death', 'assets/audio/death.wav');
+
 
     this.createText();
 
@@ -92,10 +83,10 @@ ZacEsquilo.Preload.prototype = {
     ZacEsquilo.creditsText = null;
     ZacEsquilo.gameName = null;
     
-    this.fontStyle = { font: "40px Sigmar One", fill: "#330033", align: "center"};
-    this.fontStyle2 = { font: "40px Wellfleet", fill: "#330033", align: "center"};
+    this.fontStyle = { font: "40px Bubblegum Sans", fill: "#330033", align: "center"};
+    this.fontStyle2 = { font: "40px Sigmar One", fill: "#330033", align: "center"};
     
-    ZacEsquilo.creditsText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 55, "Lucas Cardoso Medeiros \n\n apresenta", this.fontStyle);
+    ZacEsquilo.creditsText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 55, "Lucas Cardoso Medeiros \n\n apresenta", this.fontStyle2);
     ZacEsquilo.creditsText.anchor.setTo(0.5);
 
     // ZacEsquilo.creditsText.font = 'Revalia';
