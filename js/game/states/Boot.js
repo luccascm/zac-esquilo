@@ -1,5 +1,10 @@
 var ZacEsquilo = function() {};
 
+ZacEsquilo.config = {
+  oneSwitchKey: "SPACEBAR",
+  oneSwitchActive: true
+};
+
 ZacEsquilo.Boot = function() {};
 
 ZacEsquilo.Boot.prototype = {
