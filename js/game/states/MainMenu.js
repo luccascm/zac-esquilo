@@ -27,9 +27,9 @@ ZacEsquilo.MainMenu.prototype = {
     this.preloadChar.scale.y = 0.5;
     this.createText();
 
-    ZacEsquilo.playBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY - 150, 'playBtn', this.actionOnClick, this, 1, 0);
-    ZacEsquilo.optionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.actionOnClick, this, 1, 0);
-    ZacEsquilo.instructionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 150, 'instructionsBtn', this.actionOnClick, this, 1, 0);
+    ZacEsquilo.playBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY - 150, 'playBtn', this.startGame, this, 1, 0);
+    ZacEsquilo.optionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.configOptions, this, 1, 0);
+    ZacEsquilo.instructionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 150, 'instructionsBtn', this.instructions, this, 1, 0);
 
     ZacEsquilo.playBtn.frame = 1;
     
@@ -71,8 +71,15 @@ ZacEsquilo.MainMenu.prototype = {
     console.log('button out');
   },
 
-  actionOnClick: function() {
-    // this.state.start('MainMenu');
-    console.log('button click');
+  startGame: function() {
+    this.state.start('PlayGame');
+  },
+
+  configOptions: function() {
+    this.state.start('ConfigOptions');
+  },
+  
+  instructions: function() {
+    this.state.start('Instructions');
   }
 };
