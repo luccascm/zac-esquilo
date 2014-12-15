@@ -1,10 +1,10 @@
-{
-  "street": 4,
-  "wateer": 3,
-  "start": 1,
-  "neutral": 1,
-  "endzone": 1
-}
+// {
+//   "street": 4,
+//   "wateer": 3,
+//   "start": 1,
+//   "neutral": 1,
+//   "endzone": 1
+// }
 
 
 {
@@ -14,6 +14,10 @@
       "lanes": [
         {
           "type": "neutral"
+        },
+        {
+          "type": "street",
+          "chaos": 10
         },
         {
           "type": "street",

@@ -12,6 +12,7 @@ ZacEsquilo.Boot.prototype = {
     this.load.image('logo', 'assets/images/logo-lcm.png');
     this.load.image('zacStart', 'assets/images/zacStart.gif');
     this.load.image('preloadBar', 'assets/images/preloader-bar.png');
+    
 
     game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
   },

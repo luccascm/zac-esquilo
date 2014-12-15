@@ -23,6 +23,9 @@ ZacEsquilo.Preload.prototype = {
     // Loading assets needed for the game
     this.load.image('forestBackground', 'assets/images/forest-bg-small.jpg');
 
+    // Loading the char
+    this.zac = this.add.sprite(this.game.world.centerX, 5, 'char');
+    this.preloadBar.anchor.setTo(0.5);
     // this.load.spritesheet('coins', 'assets/images/coins-ps.png', 51, 51, 7);
 
     // this.load.audio('gameMusic', ['assets/audio/Pamgaea.mp3', 'assets/audio/Pamgaea.ogg']);
