@@ -7,8 +7,8 @@ ZacEsquilo.PreMenu.prototype = {
   },
 
   create: function(){
-    ZacEsquilo.switchOn = this.game.add.button(this.game.world.centerX - 250, this.game.world.centerY, 'oneSwitchOn', this.actionOnClick, this, 1, 0);
-    ZacEsquilo.switchOff = this.game.add.button(this.game.world.centerX + 150 , this.game.world.centerY, 'oneSwitchOff', this.actionOnClick, this, 1, 0);
+    ZacEsquilo.switchOn = this.game.add.button(this.game.world.centerX - 250, this.game.world.centerY, 'oneSwitchOn', this.playAccessible, this, 1, 0);
+    ZacEsquilo.switchOff = this.game.add.button(this.game.world.centerX + 150 , this.game.world.centerY, 'oneSwitchOff', this.playNormal, this, 1, 0);
 
     this.createText();
     
@@ -49,15 +49,17 @@ ZacEsquilo.PreMenu.prototype = {
   },
 
   over: function() {
-    console.log('button over');
   },
 
   out: function() {
-    console.log('button out');
   },
 
-  actionOnClick: function() {
+  playAccessible: function() {
     this.state.start('MainMenu');
-    console.log('button click');
+  },
+
+  playNormal: function() {
+    ZacEsquilo.config.oneSwitchActive = false;
+    this.state.start('MainMenu');
   }
 };

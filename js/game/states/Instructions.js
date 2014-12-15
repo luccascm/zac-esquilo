@@ -22,11 +22,11 @@ ZacEsquilo.Instructions.prototype = {
     ZacEsquilo.speedText = this.game.add.text(50, 160, gameObjective, this.fontStyleOptions);
 
     var accessibleModeInstructions = "Utilize o botão configurado (o padrão é a barra de espaço) para movimentar Zac.";
-    accessibleInstructions += "\n Pressionar o botão configurado movimenta Zac para uma das 4 direções.";
-    accessibleInstructions += "\n A escolha da direção é feita automaticamente, de forma a efetivar o alcance do objetivo e evitar a morte do personagem.";
-    accessibleInstructions += "\n Pressione o botão duas vezes, rapidamente, para pausar o jogo.";
+    accessibleModeInstructions += "\n Pressionar o botão configurado movimenta Zac para uma das 4 direções.";
+    accessibleModeInstructions += "\n A escolha da direção é feita automaticamente, de forma a efetivar o alcance do objetivo e evitar a morte do personagem.";
+    accessibleModeInstructions += "\n Pressione o botão duas vezes, rapidamente, para pausar o jogo.";
 
-    var normalModeInstructions = "Utilize as teclas configuradas (setas direcionais, por padrão) para movimentar Zac nas 4 direções."
-    var normalModeInstructions = "Utilize as teclas de pausar (tecla p, por padrão) para pausar o jogo."
+    var normalModeInstructions = "Utilize as teclas configuradas (setas direcionais, por padrão) para movimentar Zac nas 4 direções.";
+    normalModeInstructions = "Utilize as teclas de pausar (tecla p, por padrão) para pausar o jogo.";
   }
 }
