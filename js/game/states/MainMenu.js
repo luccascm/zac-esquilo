@@ -31,8 +31,8 @@ ZacEsquilo.MainMenu.prototype = {
     ZacEsquilo.optionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.configOptions, this, 1, 0);
     ZacEsquilo.instructionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 150, 'instructionsBtn', this.instructions, this, 1, 0);
 
-    ZacEsquilo.playBtn.frame = 1;
-    
+    // ZacEsquilo.playBtn.frame = 1;
+
     var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
       ZacEsquilo.playBtn,
       ZacEsquilo.optionsBtn,
@@ -50,7 +50,7 @@ ZacEsquilo.MainMenu.prototype = {
 
     //  x0, y0 - x1, y1
     grd = ZacEsquilo.menuTitleText.context.createLinearGradient(0, 0, 0, ZacEsquilo.menuTitleText.canvas.height);
-    grd.addColorStop(0, '#8ED6FF');   
+    grd.addColorStop(0, '#8ED6FF');
     grd.addColorStop(1, '#004CB3');
     ZacEsquilo.menuTitleText.fill = grd;
 
@@ -61,6 +61,8 @@ ZacEsquilo.MainMenu.prototype = {
 
     ZacEsquilo.menuTitleText.inputEnabled = true;
     ZacEsquilo.menuTitleText.input.enableDrag();
+    ZacEsquilo.switchText.wordWrap = true;
+    ZacEsquilo.switchText.wordWrapWidth = window.innerWidth - 20;
   },
 
   over: function() {
@@ -78,7 +80,7 @@ ZacEsquilo.MainMenu.prototype = {
   configOptions: function() {
     this.state.start('ConfigOptions');
   },
-  
+
   instructions: function() {
     this.state.start('Instructions');
   }

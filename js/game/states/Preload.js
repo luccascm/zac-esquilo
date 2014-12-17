@@ -25,7 +25,14 @@ ZacEsquilo.Preload.prototype = {
 
     // Loading the char
     this.load.image('char', 'assets/images/zac.png');
-    
+
+    // Loadin enemies
+    // #TODO: Transformar imagem em spritesheet
+    // Params: width, height, num of frames
+    this.load.spritesheet('car1', 'assets/images/inimigo3.png', 200, 200, 3);
+
+    this.load.image('car2', 'assets/images/inimigo2.png');
+
     // this.load.spritesheet('coins', 'assets/images/coins-ps.png', 51, 51, 7);
 
     // this.load.audio('gameMusic', ['assets/audio/Pamgaea.mp3', 'assets/audio/Pamgaea.ogg']);
@@ -85,16 +92,16 @@ ZacEsquilo.Preload.prototype = {
   createText: function() {
     ZacEsquilo.creditsText = null;
     ZacEsquilo.gameName = null;
-    
+
     this.fontStyle = { font: "40px Bubblegum Sans", fill: "#330033", align: "center"};
     this.fontStyle2 = { font: "40px Sigmar One", fill: "#330033", align: "center"};
-    
+
     ZacEsquilo.creditsText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 55, "Lucas Cardoso Medeiros \n\n apresenta", this.fontStyle2);
     ZacEsquilo.creditsText.anchor.setTo(0.5);
 
     // ZacEsquilo.creditsText.font = 'Revalia';
     // ZacEsquilo.creditsText.fontSize = 40;
-    
+
     ZacEsquilo.gameName = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 105, "Zac - O esquilo", this.fontStyle);
     ZacEsquilo.gameName.anchor.setTo(0.5);
 

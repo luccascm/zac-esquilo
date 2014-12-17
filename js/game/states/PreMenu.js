@@ -11,22 +11,22 @@ ZacEsquilo.PreMenu.prototype = {
     ZacEsquilo.switchOff = this.game.add.button(this.game.world.centerX + 150 , this.game.world.centerY, 'oneSwitchOff', this.playNormal, this, 1, 0);
 
     this.createText();
-    
+
     ZacEsquilo.switchOn.onInputOver.add(this.over,this);
     ZacEsquilo.switchOn.onInputOut.add(this.out,this);
 
     // this.game.time.events.add(1000, function() { ZacEsquilo.switchOn.frame = 1; }, this);
-    
+
 
     ZacEsquilo.switchOff.onInputOver.add(this.over,this);
     ZacEsquilo.switchOff.onInputOut.add(this.out,this);
-    
-    
+
+
     this.game.time.events.add(500, function(){
       ZacEsquilo.switchOn;
     }, this);
 
-    ZacEsquilo.switchOn.frame = 1;
+    // ZacEsquilo.switchOn.frame = 1;
 
     // instanciar um oneswitchmanager
     var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
@@ -46,6 +46,8 @@ ZacEsquilo.PreMenu.prototype = {
 
     ZacEsquilo.switchText = this.game.add.text(this.game.world.centerX, this.game.world.centerY/2, switchQuestion, this.fontStyle);
     ZacEsquilo.switchText.anchor.setTo(0.5);
+    ZacEsquilo.switchText.wordWrap = true;
+    ZacEsquilo.switchText.wordWrapWidth = window.innerWidth - 20;
   },
 
   over: function() {

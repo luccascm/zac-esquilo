@@ -8,20 +8,23 @@ ZacEsquilo.OneSwitchManager = function(options, interval, game){
 };
 
 ZacEsquilo.OneSwitchManager.prototype = {
-  // selected: 0, 
+  // selected: 0,
   start: function(){
+    // Seta o frame do primeiro item para 1
+    this.options[0].frame = 1;
     this.timer1.timer.start();
 
-    // associar o this.oneSwitchPressed a um evento de teclado 
+    // associar o this.oneSwitchPressed a um evento de teclado
     var key = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
     key.onDown.add(this.oneSwitchPressed, this);
   },
-  
+
   stop: function(){
     // this.time.stop();
   },
-  
+
   changeState: function(){
+
     // armazenar o item atualmente selecionado: var previouslySelctd = this.selected;
     var previouslySelected = this.selected;
 
@@ -29,13 +32,13 @@ ZacEsquilo.OneSwitchManager.prototype = {
 
     // recuperar o item da lista options com o indice this.selected
     var curr_item = this.options[this.selected];
-    
+
     // definir o frame desse item para o frame selecionado
     curr_item.frame = (curr_item. frame + 1) % 2;
-    
+
     // recuperar o item da lista options com indice previouslySelected
     var prev_item = this.options[previouslySelected];
-    
+
     // definir o frame desse item para o frame que nao esta selecionado
     prev_item.frame = ((prev_item.frame + 1) % 2);
   },

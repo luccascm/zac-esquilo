@@ -14,6 +14,8 @@ ZacEsquilo.Boot.prototype = {
     this.load.image('preloadBar', 'assets/images/preloader-bar.png');
 
     game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
+    this.load.spritesheet('back', 'assets/images/voltar.png', 189, 58, 2);
   },
 
   create: function(){
@@ -37,7 +39,7 @@ ZacEsquilo.Boot.prototype = {
       // this.scale.pageAlignHorizontally = true;
       this.scale.setScreenSize(true);
     }
-
+    game.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
     //  By this point the preloader assets have loaded to the cache, we've set the game settings
     //  So now let's start the real preloader going
     this.state.start('Preloader');
