@@ -19,14 +19,38 @@ ZacEsquilo.Entity.prototype = {
     // Checar se pode movimentar nessa direcao (pode estar no final do cenario)
     // Se puder mover
     this.ismoving = true;
-    // Calcular de acordo com a direction (case)
-    // up
     switch(direction){
       case 'up':
         this.desiredTileX = this.tileX;
         this.desiredTileY = this.tileY - 1;
         this.desiredX = this.sprite.x;
         this.desiredY = this.sprite.y - 30;
+        break;
+
+      case 'down':
+        this.desiredTileX = this.tileX;
+        this.desiredTileY = this.tileY + 1;
+        this.desiredX = this.sprite.x;
+        this.desiredY = this.sprite.y + 30;
+        break;
+
+      case 'left':
+        this.desiredTileX = this.tileX - 1;
+        this.desiredTileY = this.tileY;
+        this.desiredX = this.sprite.x - 30;
+        this.desiredY = this.sprite.y;
+        break;
+
+      case 'right':
+        this.desiredTileX = this.tileX + 1;
+        this.desiredTileY = this.tileY;
+        this.desiredX = this.sprite.x + 30;
+        this.desiredY = this.sprite.y;
+        break;
+
+      default:
+        alert('Use as teclas das setas direcionais para movimentar o personagem');
+        break;
     }
 
   },
