@@ -14,13 +14,14 @@ ZacEsquilo.PlayGame.prototype = {
   create: function(){
     // this.game.stage.backgroundColor = '#808080';
     // Jogador
-    this.zac = new ZacEsquilo.Player(this.game.world.centerX / 30, 1, 1, 0.2, 'char', this.game);
+    this.zac = new ZacEsquilo.Player(this.game.world.centerX / 30, this.game.world.height/30, 5, 0.15, 'char', this.game);
 
     //Inimigos
     this.enemies = [
-      new ZacEsquilo.Enemy(this.game.world.width/30, this.game.height/30 + 30, 2, 0.15, 'car1', this.game, 'left'),
-      new ZacEsquilo.Enemy((this.game.world.width/30) + 6, this.game.height/30 + 60 , 2, 0.15, 'car1', this.game, 'left'),
-      new ZacEsquilo.Enemy(1, this.game.height/30 + 30, 2, 0.15, 'car2', this.game, 'right')
+      new ZacEsquilo.Enemy(20, this.game.world.height/30 - 1, 3, 0.15, 'car1', this.game, 'left'),
+      new ZacEsquilo.Enemy(15, this.game.world.height/30 - 1 , 3, 0.15, 'car1', this.game, 'left'),
+      new ZacEsquilo.Enemy(2, this.game.world.height/30 - 2, 5, 0.15, 'car2', this.game, 'right'),
+      new ZacEsquilo.Enemy(10, this.game.world.height/30 - 2, 5, 0.15, 'car2', this.game, 'right')
       ];
 
     // Tilemap

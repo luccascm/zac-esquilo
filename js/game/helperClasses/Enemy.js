@@ -2,7 +2,6 @@ ZacEsquilo.Enemy = function(tileX, tileY, speed, scale, spriteKey, game, directi
   this.init(tileX, tileY, speed, scale, spriteKey, game);
   // outros params
   this.direction = direction;
-  this.speed = speed;
   this.sprite.animations.add('mover')
   this.sprite.animations.play('mover', 5, true);
 }
