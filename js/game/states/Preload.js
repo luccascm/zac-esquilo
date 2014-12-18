@@ -77,7 +77,8 @@ ZacEsquilo.Preload.prototype = {
       this.game.add.tween(ZacEsquilo.gameName).to( { alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
     }, this);
 
-    this.game.time.events.add(8600, function() { this.state.start('PreMenu'); }, this);
+    this.game.time.events.add(8600, function() { this.state.start('PlayGame'); }, this);
+    // this.game.time.events.add(8600, function() { this.state.start('PreMenu'); }, this);
   },
 
   update: function() {
