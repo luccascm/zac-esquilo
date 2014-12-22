@@ -14,7 +14,7 @@ ZacEsquilo.PlayGame.prototype = {
   create: function(){
     // this.game.stage.backgroundColor = '#808080';
     // Jogador
-    this.zac = new ZacEsquilo.Player(this.game.world.centerX / 30, this.game.world.height/30, 5, 0.15, 'char', this.game);
+    this.zac = new ZacEsquilo.Player(this.game.world.centerX/30, this.game.world.height/30, 5, 0.15, 'char', this.game);
 
     //Inimigos
     this.enemies = [

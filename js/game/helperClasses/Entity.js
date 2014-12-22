@@ -8,11 +8,12 @@ ZacEsquilo.Entity.prototype = {
     this.tileY = tileY;
     this.speed = speed;
     this.scale = scale;
-    this.sprite = game.add.sprite(tileX * 30, tileY * 30, spriteKey); // 30 = tileSize
+    this.sprite = game.add.sprite((tileX * 30) - 15, (tileY * 30) - 15, spriteKey); // 30 = tileSize
     this.sprite.scale.x = this.sprite.scale.y = scale;
     this.sprite.anchor.setTo(0.5);
     this.ismoving = false;
     this.game = game;
+    game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
   },
 
   move: function(direction){
@@ -73,5 +74,10 @@ ZacEsquilo.Entity.prototype = {
         }
       }
     }
+    game.physics.arcade.collide(this.sprite, this.sprite, this.playerDead());
+  },
+
+  playerDead: function(){
+    console.log('collide');
   }
 }

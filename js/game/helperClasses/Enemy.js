@@ -12,11 +12,11 @@ ZacEsquilo.Enemy.prototype.update = function(){
   if(!this.ismoving){
     this.move(this.direction); //direction
   }
-  if (this.x >= this.game.world.width){
-    this.x = this.tileX;
+  if (this.sprite.x >= this.game.world.width){
+    this.sprite.x = this.tileX;
   }
-  if (this.x < 0){
-    this.x = this.game.world.width + this.tileX;
+  if (this.sprite.x < 0){
+    this.sprite.x = this.game.world.width + this.tileX;
   }
 
   ZacEsquilo.Entity.prototype.update.call(this);
