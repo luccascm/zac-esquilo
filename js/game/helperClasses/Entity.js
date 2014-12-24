@@ -8,12 +8,15 @@ ZacEsquilo.Entity.prototype = {
     this.tileY = tileY;
     this.speed = speed;
     this.scale = scale;
-    this.sprite = game.add.sprite((tileX * 30) - 15, (tileY * 30) - 15, spriteKey); // 30 = tileSize
-    this.sprite.scale.x = this.sprite.scale.y = scale;
+    this.game = game;
+    frame = 0;
+    // Phaser.Sprite.call(this, game, (tileX * ZacEsquilo.config.tileSize) - ZacEsquilo.config.tileSize / 2, (tileY * ZacEsquilo.config.tileSize) - ZacEsquilo.config.tileSize / 2, spriteKey, frame);
+    this.sprite = game.add.sprite((tileX * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2), (tileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2), spriteKey);
+    this.sprite.scale.setTo(scale);
     this.sprite.anchor.setTo(0.5);
     this.ismoving = false;
-    this.game = game;
-    game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+    this.game.physics.arcade.enableBody(this.sprite);
+    this.sprite.body.allowGravity = false;
   },
 
   move: function(direction){
@@ -25,27 +28,27 @@ ZacEsquilo.Entity.prototype = {
         this.desiredTileX = this.tileX;
         this.desiredTileY = this.tileY - 1;
         this.desiredX = this.sprite.x;
-        this.desiredY = this.sprite.y - 30;
+        this.desiredY = this.sprite.y - ZacEsquilo.config.tileSize;
         break;
 
       case 'down':
         this.desiredTileX = this.tileX;
         this.desiredTileY = this.tileY + 1;
         this.desiredX = this.sprite.x;
-        this.desiredY = this.sprite.y + 30;
+        this.desiredY = this.sprite.y + ZacEsquilo.config.tileSize;
         break;
 
       case 'left':
         this.desiredTileX = this.tileX - 1;
         this.desiredTileY = this.tileY;
-        this.desiredX = this.sprite.x - 30;
+        this.desiredX = this.sprite.x - ZacEsquilo.config.tileSize;
         this.desiredY = this.sprite.y;
         break;
 
       case 'right':
         this.desiredTileX = this.tileX + 1;
         this.desiredTileY = this.tileY;
-        this.desiredX = this.sprite.x + 30;
+        this.desiredX = this.sprite.x + ZacEsquilo.config.tileSize;
         this.desiredY = this.sprite.y;
         break;
 
@@ -74,10 +77,5 @@ ZacEsquilo.Entity.prototype = {
         }
       }
     }
-    game.physics.arcade.collide(this.sprite, this.sprite, this.playerDead());
-  },
-
-  playerDead: function(){
-    console.log('collide');
   }
 }

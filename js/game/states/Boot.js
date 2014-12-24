@@ -2,7 +2,8 @@ var ZacEsquilo = function() {};
 
 ZacEsquilo.config = {
   oneSwitchKey: "SPACEBAR",
-  oneSwitchActive: true
+  oneSwitchActive: true,
+  tileSize: 30
 };
 
 ZacEsquilo.Boot = function() {};
