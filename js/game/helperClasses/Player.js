@@ -1,6 +1,7 @@
-ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game){
+ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemiesGroup){
   this.init(tileX, tileY, speed, scale, spriteKey, game);
   // outros params
+  this.enemiesGroup = enemiesGroup;
   this.cursors = this.game.input.keyboard.createCursorKeys();
   // CollideWorldBounds está fazendo o player travar quando vai pro limite do cenario. Porque?!?!?
   // this.sprite.body.collideWorldBounds = true;
@@ -25,8 +26,7 @@ ZacEsquilo.Player.prototype.update = function(){
       this.move('left');
     }
   }
-  this.game.physics.arcade.overlap(this, ZacEsquilo.Entity.prototype, this.playerHit, null, this);
-  ZacEsquilo.Entity.prototype.update.call(this);
+  this.game.physics.arcade.collide(this.sprite, this.enemiesGroup, ZacEsquilo.Player.prototype.playerHit, null, this);
 },
 
 ZacEsquilo.Player.prototype.playerHit = function(){
