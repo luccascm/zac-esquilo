@@ -19,7 +19,7 @@ ZacEsquilo.PlayGame.prototype = {
     this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize, 5, 0.15, 'char', this.game);
 
     //Inimigos
-    //this.enemiesGroup = this.game.add.group(); // Add multiplas instancias da mesma sprite
+    this.enemiesGroup = this.game.add.group(); // Add multiplas instancias da mesma sprite
     //this.enemiesGroup.add(this.enemy)
     // this.game.rnd.integerInRange(min, max) // random position
     this.enemies = [
@@ -28,6 +28,10 @@ ZacEsquilo.PlayGame.prototype = {
       new ZacEsquilo.Enemy(2, this.game.world.height/ZacEsquilo.config.tileSize - 2, 5, 0.15, 'car2', this.game, 'right'),
       new ZacEsquilo.Enemy(10, this.game.world.height/ZacEsquilo.config.tileSize - 2, 5, 0.15, 'car2', this.game, 'right')
       ];
+    for (var i = 0; i < this.enemies.length; i++){
+      this.enemiesGroup.add(this.enemies[i]);
+    }
+    // this.enemiesGroup.addMultiple(this.enemies);
 
     // Tilemap
     // this.map = this.add.tilemap('map'); // Preloaded tilemap
@@ -42,7 +46,9 @@ ZacEsquilo.PlayGame.prototype = {
     this.zac.update();
     for (var i = 0; i < this.enemies.length; i++){
       this.enemies[i].update();
+      //this.enemiesGroup.getAt(i).update();
     }
+    // this.enemiesGroup.forEach(update(), this)
     this.game.physics.arcade.collide(this.zac, this.enemies[0]);
   }
 };
