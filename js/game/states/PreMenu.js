@@ -2,8 +2,8 @@ ZacEsquilo.PreMenu = function() {};
 
 ZacEsquilo.PreMenu.prototype = {
   preload: function(){
-    this.load.spritesheet('oneSwitchOn', 'assets/images/accessibleOn.png', 189, 58, 2);
-    this.load.spritesheet('oneSwitchOff', 'assets/images/accessibleOff.png', 189, 58, 2);
+    this.load.spritesheet('oneSwitchOn', 'assets/images/buttons/accessibleOn.png', 189, 58, 2);
+    this.load.spritesheet('oneSwitchOff', 'assets/images/buttons/accessibleOff.png', 189, 58, 2);
   },
 
   create: function(){

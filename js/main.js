@@ -1,4 +1,4 @@
-var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '');
+var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '', true);
 
 game.state.add('Boot', ZacEsquilo.Boot);
 game.state.add('Preloader', ZacEsquilo.Preload);

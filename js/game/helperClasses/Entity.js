@@ -15,6 +15,8 @@ ZacEsquilo.Entity.prototype = {
     this.sprite.scale.setTo(scale);
     this.sprite.anchor.setTo(0.5);
     this.ismoving = false;
+    // this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+    this.game.physics.arcade.enable(this.sprite); // Enabling arcade physics on player sprite
     this.game.physics.arcade.enableBody(this.sprite);
     this.sprite.body.allowGravity = false;
   },

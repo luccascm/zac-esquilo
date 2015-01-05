@@ -21,17 +21,22 @@ ZacEsquilo.Preload.prototype = {
     this.zacStart.anchor.setTo(0.5);
 
     // Loading assets needed for the game
-    this.load.image('forestBackground', 'assets/images/forest-bg-small.jpg');
+    this.load.image('forestBackground', 'assets/images/credits/forest-bg-small.png');
 
     // Loading the char
-    this.load.image('char', 'assets/images/zac.png');
+    this.load.image('char', 'assets/images/player/zac.png');
 
-    // Loadin enemies
+    // Loading enemies
     // #TODO: Transformar imagem em spritesheet
     // Params: width, height, num of frames
-    this.load.spritesheet('car1', 'assets/images/inimigo3.png', 200, 200, 3);
+    this.load.spritesheet('car1', 'assets/images/enemies/inimigo3.png', 200, 200, 3);
+    this.load.image('car2', 'assets/images/enemies/inimigo2.png');
+    
+    // Loading friends (wood & nuts)
+    this.load.image('wood', 'assets/images/friends/wood.png');
 
-    this.load.image('car2', 'assets/images/inimigo2.png');
+    this.load.tilemap('map-1', 'assets/levels/level_1.json', null, Phaser.Tilemap.TILED_JSON); // loading the tilemap file
+    this.load.image('tileset', 'assets/images/levels/tileset.png'); // loading the tileset image
 
     // this.load.spritesheet('coins', 'assets/images/coins-ps.png', 51, 51, 7);
 

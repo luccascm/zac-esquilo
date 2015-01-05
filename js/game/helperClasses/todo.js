@@ -3,7 +3,7 @@
 2 - Movimentar player e inimigos nas outras direcoes - ok
 3 - Definir tamanho dos tiles
 4 - Mover camera a medida que o player se movimenta
-5 - Calcular colisao (entity)
+5 - Calcular colisao (entity) - ok
 6 - Implementar animations para frames nas classes enemy e player - ok
 7 - Limpar classe PlayGame - ok
 8 - Enemy: criar Warp - ok
