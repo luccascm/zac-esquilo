@@ -3,7 +3,8 @@ var ZacEsquilo = function() {};
 ZacEsquilo.config = {
   oneSwitchKey: "SPACEBAR",
   oneSwitchActive: true,
-  tileSize: 50
+  tileSize: 50,
+  playerLives: 3
 };
 
 ZacEsquilo.Boot = function() {};
@@ -14,7 +15,7 @@ ZacEsquilo.Boot.prototype = {
     this.load.image('zacStart', 'assets/images/player/zacStart.gif');
     this.load.image('preloadBar', 'assets/images/credits/preloader-bar.png');
 
-    game.load.script('webfont', 'http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    this.game.load.script('webfont', 'http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
     this.load.spritesheet('back', 'assets/images/buttons/voltar.png', 189, 58, 2);
   },

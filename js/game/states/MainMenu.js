@@ -8,11 +8,8 @@ ZacEsquilo.MainMenu.prototype = {
     // this.game.stage.backgroundColor = "#FFB631";
     ZacEsquilo.forestBg = this.game.add.tileSprite(0, this.game.world.height - 602, this.game.width, this.game.world.height, 'forestBackground');
 
-    // ZacEsquilo.forestBg.anchor.setTo(0.5);
-    // ZacEsquilo.forestBg.y = this.game.world.height;
     this.background = ZacEsquilo.forestBg;
 
-    // this.background.height = this.game.height;
     this.background.autoScroll(-100, 0);
     this.preloadChar = this.add.sprite(30, this.game.world.height - 190, 'zacStart');
 
@@ -30,8 +27,6 @@ ZacEsquilo.MainMenu.prototype = {
     ZacEsquilo.playBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY - 150, 'playBtn', this.startGame, this, 1, 0);
     ZacEsquilo.optionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.configOptions, this, 1, 0);
     ZacEsquilo.instructionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 150, 'instructionsBtn', this.instructions, this, 1, 0);
-
-    // ZacEsquilo.playBtn.frame = 1;
 
     var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
       ZacEsquilo.playBtn,
