@@ -8,6 +8,8 @@ ZacEsquilo.Entity.prototype = {
     this.tileY = tileY;
     this.speed = speed;
     this.scale = scale;
+    this.initialtileX = tileX;
+    this.initialtileY = tileY;
     this.game = game;
     frame = 0;
     // Phaser.Sprite.call(this, game, (tileX * ZacEsquilo.config.tileSize) - ZacEsquilo.config.tileSize / 2, (tileY * ZacEsquilo.config.tileSize) - ZacEsquilo.config.tileSize / 2, spriteKey, frame);
@@ -65,7 +67,7 @@ ZacEsquilo.Entity.prototype = {
     if (this.ismoving){
       // Checar em qual direçao - comparar desiredTile com tile
       if (this.desiredTileY - this.tileY != 0){
-        this.sprite.y += this.speed * (this.desiredTileY - this.tileY);
+        this.sprie.y += this.speed * (this.desiredTileY - this.tileY);
         if (this.sprite.y == this.desiredY){
           this.ismoving = false;
           this.tileY = this.desiredTileY;

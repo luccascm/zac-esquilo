@@ -13,9 +13,9 @@ ZacEsquilo.MainMenu.prototype = {
     this.background.autoScroll(-100, 0);
     this.preloadChar = this.add.sprite(30, this.game.world.height - 190, 'zacStart');
 
-    this.load.spritesheet('playBtn', 'assets/images/play.png', 189, 58, 2);
-    this.load.spritesheet('optionsBtn', 'assets/images/options.png', 189, 58, 2);
-    this.load.spritesheet('instructionsBtn', 'assets/images/instructions.png', 189, 58, 2);
+    this.load.spritesheet('playBtn', 'assets/images/buttons/play_new.png', 189, 58, 2);
+    this.load.spritesheet('optionsBtn', 'assets/images/buttons/options_new.png', 189, 58, 2);
+    this.load.spritesheet('instructionsBtn', 'assets/images/buttons/instructions_new.png', 189, 58, 2);
   },
 
   create: function(){
@@ -28,12 +28,14 @@ ZacEsquilo.MainMenu.prototype = {
     ZacEsquilo.optionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.configOptions, this, 1, 0);
     ZacEsquilo.instructionsBtn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 150, 'instructionsBtn', this.instructions, this, 1, 0);
 
-    var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
-      ZacEsquilo.playBtn,
-      ZacEsquilo.optionsBtn,
-      ZacEsquilo.instructionsBtn
-    ], 2, this.game);
-    oneswitchmanager.start();
+    if(ZacEsquilo.config.oneSwitchActive === true){
+      var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
+        ZacEsquilo.playBtn,
+        ZacEsquilo.optionsBtn,
+        ZacEsquilo.instructionsBtn
+      ], 2, this.game);
+      oneswitchmanager.start();
+    }
   },
 
   createText: function(){

@@ -3,6 +3,7 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   
   // outros params
   this.enemiesGroup = enemiesGroup;
+  this.friendsGroup = friendsGroup;
   // this.physics.arcade.enable(player); // Enabling arcade physics on player sprite
   
   // Cria cursor para teclas direcionais automaticamente
@@ -11,6 +12,8 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   // Camera will follow the player
   this.game.camera.follow(this.sprite);
 
+  // this.game.physics.arcade.overlap(this.sprite, this.enemiesGroup, this.playerHit, null, this);
+  // this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, null, this);
   // CollideWorldBounds está fazendo o player travar quando vai pro limite do cenario. Porque?!?!?
   // this.sprite.body.collideWorldBounds = true;
 }
@@ -35,20 +38,23 @@ ZacEsquilo.Player.prototype.update = function(){
     }
   }
   ZacEsquilo.Entity.prototype.update.call(this);
-  // this.game.physics.arcade.collide(this.sprite, this.enemiesGroup, this.playerHit, null, this);
   this.game.physics.arcade.overlap(this.sprite, this.enemiesGroup, this.playerHit, null, this);
-  this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, null, this);
+  this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, this.process, null, this);
+  // this.game.physics.arcade.collide(this.sprite, this.enemiesGroup, this.playerHit, null, this);
+  
 },
 
-ZacEsquilo.Player.prototype.playerHit = function(){
+ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   // todo: reset de vidas nao está certo
   console.log('player hit');
   this.sprite.kill();
   // -1 vida
   ZacEsquilo.config.playerLives = ZacEsquilo.config.playerLives - 1;
   // todo: Player nao 'renasce' na posicao original
+  //this.sprite.reset(this.game.world.centerX, this.game.world.centerY);
+  this.sprite.reset((this.initialtileX * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2), (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2))
   // this.sprite.reset(this.game.math.snapToFloor(this.game.world.centerX, ZacEsquilo.config.tileSize) / ZacEsquilo.config.tileSize, 10 );
-  this.sprite.revive();
+  //this.sprite.revive();
   
   if (ZacEsquilo.config.playerLives <= 0) {
     this.game.state.start("Scoreboard");
@@ -56,7 +62,24 @@ ZacEsquilo.Player.prototype.playerHit = function(){
   }
 },
 
-ZacEsquilo.Player.prototype.playerCarried = function(){
+ZacEsquilo.Player.prototype.playerCarried = function(player, friend){
+  console.log('a');
+  player.x -= friend.x;  
+  player.y -= friend.y;
+  friend.addChild(player);
+  player.tileX = friend.tileX;
+  // se o friend tem o child nao chama mais. usar process 
   // todo: Como saber com qual elemento do grupo teve o overlap - Ideia: Funcao foreach da classe tilemap
   // this.sprite.x = this.friendsGroup.get 
+},
+
+ZacEsquilo.Player.prototype.process = function(player, friend){
+  return player.parent != friend;
 }
+
+
+// if player.parent == friend
+// if friend.childs.lengh > 0
+//  return false;
+// else
+//   true

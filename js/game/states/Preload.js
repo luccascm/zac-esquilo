@@ -31,7 +31,7 @@ ZacEsquilo.Preload.prototype = {
     // Params: width, height, num of frames
     this.load.spritesheet('car1', 'assets/images/enemies/inimigo3.png', 200, 200, 3);
     this.load.image('car2', 'assets/images/enemies/inimigo2.png');
-    
+
     // Loading friends (wood & nuts)
     this.load.image('wood', 'assets/images/friends/wood.png');
 
@@ -57,32 +57,32 @@ ZacEsquilo.Preload.prototype = {
     this.preloadBar.cropEnabled = false;
 
     // Time animations (fade in/out)
-    //Credits text and logo fade in
-    // this.game.time.events.add(100, function() {
-    //   this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(ZacEsquilo.creditsText).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(this.preloadBar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
-    // }, this);
-    //
-    // // Credits text and logo fade out
-    // this.game.time.events.add(2200, function() {
-    //   this.game.add.tween(this.splash).to( { alpha: 0 }, 1200, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(ZacEsquilo.creditsText).to( { alpha: 0 }, 1200, Phaser.Easing.Linear.None, true);
-    // }, this);
-    //
-    // // Char and game name fade in
-    // this.game.time.events.add(4400, function() {
-    //   this.game.add.tween(this.zacStart).to( { alpha: 1 }, 1200, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(ZacEsquilo.gameName).to( { alpha: 1 }, 1200, Phaser.Easing.Linear.None, true);
-    // }, this);
-    //
-    // // Char and game name fade out
-    // this.game.time.events.add(7000, function() {
-    //   this.game.add.tween(this.zacStart).to( { alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(ZacEsquilo.gameName).to( { alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
-    // }, this);
+    // Credits text and logo fade in
+    this.game.time.events.add(100, function() {
+      this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(ZacEsquilo.creditsText).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(this.preloadBar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+    }, this);
 
-    this.game.time.events.add(100, function() { this.state.start('PlayGame'); }, this);
+    // Credits text and logo fade out
+    this.game.time.events.add(2200, function() {
+      this.game.add.tween(this.splash).to( { alpha: 0 }, 1200, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(ZacEsquilo.creditsText).to( { alpha: 0 }, 1200, Phaser.Easing.Linear.None, true);
+    }, this);
+
+    // Char and game name fade in
+    this.game.time.events.add(4400, function() {
+      this.game.add.tween(this.zacStart).to( { alpha: 1 }, 1200, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(ZacEsquilo.gameName).to( { alpha: 1 }, 1200, Phaser.Easing.Linear.None, true);
+    }, this);
+
+    // Char and game name fade out
+    this.game.time.events.add(7000, function() {
+      this.game.add.tween(this.zacStart).to( { alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(ZacEsquilo.gameName).to( { alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
+    }, this);
+
+    this.game.time.events.add(8000, function() { this.state.start('PreMenu'); }, this);
     // this.game.time.events.add(8600, function() { this.state.start('PreMenu'); }, this);
 
   },

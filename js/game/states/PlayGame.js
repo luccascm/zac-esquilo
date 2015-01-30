@@ -64,6 +64,8 @@ ZacEsquilo.PlayGame.prototype = {
 
     // Jogador
     this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize, 5, 0.20, 'char', this.game, this.enemiesGroup, this.friendsGroup);
+    
+    
   },
 
   update: function(){
