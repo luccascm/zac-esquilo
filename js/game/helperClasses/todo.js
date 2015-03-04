@@ -1,18 +1,18 @@
 /*
-1 - Setar teclas de movimento na classe player - ok
-2 - Movimentar player e inimigos nas outras direcoes - ok
-3 - Definir tamanho dos tiles
-4 - Mover camera a medida que o player se movimenta
-5 - Calcular colisao (entity) - ok
-6 - Implementar animations para frames nas classes enemy e player - ok
-7 - Limpar classe PlayGame - ok
-8 - Enemy: criar Warp - ok
-9 - Enemy: receber parametro direction (left ou right) - ok
+A idéia agora é focar no desenvolvimento novamente sim. Sugiro esta ordem:
 
-10 - Criar tiles
-11 - reset game
-12 - pegar params do json para levels
-13 - vitoria, score e vidas
-14 -
+Implementar a lógica de vidas (não me lembro, acho que ainda faltava alguma coisinha)
+Implementar lógica de vitória (chegar lá em cima)/derrota perder X vidas e voltar ao menu)
+Fazer o jogador perder vida ao cair na água
+Implementar o algoritmo one-switch para a cena de jogo
+Desenhar os gráficos finais
+Trocar os gráficos provisórios pelos finais
+Fazer a tela de opções, modo normal e modo one-switch
+Centralizar/redimensionar a tela de jogo
+Colocar música/efeitos sonoros
+Externalizar a configuração do mapa
+Possibilitar que haja mais de uma fase, em sequência
+
+Me dê notícias do seu progresso. Se você precisar encontrar um dia, podemos marcar.
 
 */

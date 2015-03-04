@@ -67,7 +67,7 @@ ZacEsquilo.Entity.prototype = {
     if (this.ismoving){
       // Checar em qual direçao - comparar desiredTile com tile
       if (this.desiredTileY - this.tileY != 0){
-        this.sprie.y += this.speed * (this.desiredTileY - this.tileY);
+        this.sprite.y += this.speed * (this.desiredTileY - this.tileY);
         if (this.sprite.y == this.desiredY){
           this.ismoving = false;
           this.tileY = this.desiredTileY;
