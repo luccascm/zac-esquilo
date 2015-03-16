@@ -5,24 +5,56 @@ ZacEsquilo.PlayGame = function(){
 ZacEsquilo.PlayGame.prototype = {
   preload: function(){
     ZacEsquilo.config.playerLives = 3;
+
+    // Carregando tilemap
+    this.game.load.tilemap('map-1', 'assets/tilemaps/maps/tilemap1-50-incomplete.json', null, Phaser.Tilemap.TILED_JSON);
+
+    // Carregando tiles para objects
+    this.game.load.image('land', 'assets/tilemaps/tiles/land.png');
+    this.game.load.image('water', 'assets/tilemaps/tiles/water.png');
+    this.game.load.image('grass', 'assets/tilemaps/tiles/grass.png');
+    this.game.load.image('tileset_sprites', 'assets/tilemaps/tiles/tileset_sprites50.png');
+
+
   },
 
   create: function(){
     this.game.stage.backgroundColor = '#808080';
 
-    //tilemap
+    //Criando tilemap
     this.map = this.game.add.tilemap('map-1');
+    this.map.addTilesetImage('tileset_sprites');
+    this.map.addTilesetImage('land');
+    this.map.addTilesetImage('water');
+    this.map.addTilesetImage('grass');
+
+    // Criando layers
+    this.bg_layer = this.map.createLayer('backgroundLayer');
+    this.bg_layer.resizeWorld();
+
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    // WinnerTiles group
+    this.winnerTilesGroup = this.game.add.group();
+    this.winnerTilesGroup.enableBody = true;
+
+    //  And now we convert all of the Tiled objects with an ID of 34 into sprites within the coins group
+    this.map.createFromObjects('objectsLayer', 5, 'grass', 0, true, false, this.winnerTilesGroup);
+
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
-    this.map.addTilesetImage('tileset', 'tileset');
+    // this.map.addTilesetImage('tileset_sprites50', 'tileset');
 
     // todo: pegar esses valores do json (tamanho e nome)
-    this.map.width = 15;
-    this.map.height = 10;
-    this.backgroundLayer = this.map.createLayer('Level_1');
+    // this.map.width = 15;
+    // this.map.height = 10;
 
-    this.backgroundLayer.resizeWorld();
+    // Criando layer background
+    // this.backgroundLayer = this.map.createLayer('backgroundLayer');
+    // this.backgroundLayer.resizeWorld();
+
+    // Criando layer objects
+
     // todo: getIndex de tile especifico
-
 
     //Enemies
     this.enemiesGroup = this.game.add.group();
@@ -64,7 +96,7 @@ ZacEsquilo.PlayGame.prototype = {
     }
 
     // Jogador
-    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize, 5, 0.20, 'char', this.game, this.enemiesGroup, this.friendsGroup);
+    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize, 5, 0.20, 'char', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup);
 
 
   },

@@ -1,9 +1,10 @@
-ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemiesGroup, friendsGroup){
+ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemiesGroup, friendsGroup, winnerTilesGroup){
   this.init(tileX, tileY, speed, scale, spriteKey, game);
 
   // outros params
   this.enemiesGroup = enemiesGroup;
   this.friendsGroup = friendsGroup;
+  this.winnerTilesGroup = winnerTilesGroup;
   // this.physics.arcade.enable(player); // Enabling arcade physics on player sprite
 
   // Cria cursor para teclas direcionais automaticamente
@@ -40,7 +41,7 @@ ZacEsquilo.Player.prototype.update = function(){
   ZacEsquilo.Entity.prototype.update.call(this);
   this.game.physics.arcade.overlap(this.sprite, this.enemiesGroup, this.playerHit, null, this);
   this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, this.process, null, this);
-  // this.game.physics.arcade.collide(this.sprite, this.enemiesGroup, this.playerHit, null, this);
+  this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, this.winLevel, null, this);
 
 },
 
@@ -79,6 +80,9 @@ ZacEsquilo.Player.prototype.process = function(player, friend){
   return player.parent != friend;
 }
 
+ZacEsquilo.Player.prototype.winLevel = function(player, winnerTile){
+  console.log('reach winnerTile');
+}
 
 // if player.parent == friend
 // if friend.childs.lengh > 0

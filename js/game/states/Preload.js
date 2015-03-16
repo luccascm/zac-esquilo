@@ -35,8 +35,8 @@ ZacEsquilo.Preload.prototype = {
     // Loading friends (wood & nuts)
     this.load.image('wood', 'assets/images/friends/wood.png');
 
-    this.load.tilemap('map-1', 'assets/levels/level_1.json', null, Phaser.Tilemap.TILED_JSON); // loading the tilemap file
-    this.load.image('tileset', 'assets/images/levels/tileset.png'); // loading the tileset image
+    // this.load.tilemap('map-1', 'assets/tilemaps/maps/tilemap1-50-incomplete.json', null, Phaser.Tilemap.TILED_JSON); // loading the tilemap file
+    // this.load.image('tileset', 'assets/tilemaps/tiles/tileset_sprites50.png'); // loading the tileset image
 
     // this.load.spritesheet('coins', 'assets/images/coins-ps.png', 51, 51, 7);
 

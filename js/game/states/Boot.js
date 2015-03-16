@@ -44,7 +44,7 @@ ZacEsquilo.Boot.prototype = {
     }
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    
+
     // this.game.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
     //  By this point the preloader assets have loaded to the cache, we've set the game settings
     //  So now let's start the real preloader going

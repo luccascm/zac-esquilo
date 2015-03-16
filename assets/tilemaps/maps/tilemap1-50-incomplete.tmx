@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="tileset_sprites50" tilewidth="50" tileheight="50">
+  <image source="../../../../../../home/desenvolvimento02/CefetProjects/TCC/zac-esquilo/assets/images/levels/tileset_sprites50.png" width="250" height="50"/>
+ </tileset>
+ <layer name="backgroundLayer" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjZWBgYCUTjzTASAEeioCQf/DJAwC7nABp
+  </data>
+ </layer>
+ <objectgroup name="objectsLayer" width="15" height="10">
+  <object name="winnerTile" gid="5" x="0" y="100">
+   <properties>
+    <property name="sprite" value="grass"/>
+    <property name="type" value="grass"/>
+    <property name="winnerTile" value=""/>
+   </properties>
+  </object>
+  <object name="winnerTile" gid="5" x="200" y="100">
+   <properties>
+    <property name="sprite" value="grass"/>
+    <property name="type" value="grass"/>
+    <property name="winnerTile" value=""/>
+   </properties>
+  </object>
+  <object name="winnerTile" gid="5" x="350" y="100">
+   <properties>
+    <property name="sprite" value="grass"/>
+    <property name="type" value="grass"/>
+    <property name="winnerTile" value=""/>
+   </properties>
+  </object>
+  <object name="winnerTile" gid="5" x="500" y="100">
+   <properties>
+    <property name="sprite" value="grass"/>
+    <property name="type" value="grass"/>
+    <property name="winnerTile" value=""/>
+   </properties>
+  </object>
+  <object name="winnerTile" gid="5" x="700" y="100">
+   <properties>
+    <property name="sprite" value="grass"/>
+    <property name="type" value="grass"/>
+    <property name="winnerTile" value=""/>
+   </properties>
+  </object>
+  <object name="startTile" gid="1" x="350" y="500">
+   <properties>
+    <property name="sprite" value="land"/>
+    <property name="startTile" value=""/>
+    <property name="type" value="land"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
