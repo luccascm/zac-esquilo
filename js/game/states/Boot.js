@@ -11,11 +11,13 @@ ZacEsquilo.Boot = function() {};
 
 ZacEsquilo.Boot.prototype = {
   preload: function() {
-    this.load.image('logo', 'assets/images/credits/logo-lcm.png');
-    this.load.image('zacStart', 'assets/images/player/zacStart.gif');
-    this.load.image('preloadBar', 'assets/images/credits/preloader-bar.png');
-
     this.game.load.script('webfont', 'http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    
+    this.load.image('logo', 'assets/images/credits/logo-lcm-small.png');
+    this.load.image('preloadBar', 'assets/images/credits/preloader-bar.png');
+    this.load.image('gameName', 'assets/images/credits/Zac-IntroText.png');
+    
+    this.load.image('zacStart', 'assets/images/sprites/player/zacStart.gif');
 
     this.load.spritesheet('back', 'assets/images/buttons/voltar.png', 189, 58, 2);
   },
@@ -34,8 +36,8 @@ ZacEsquilo.Boot.prototype = {
       //  Same goes for mobile settings.
       //  In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
       this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-      this.scale.minWidth = 568;
-      this.scale.minHeight = 600;
+      this.scale.minWidth = 750;
+      this.scale.minHeight = 500;
       this.scale.maxWidth = 2048;
       this.scale.maxHeight = 1536;
       // this.scale.forceLandscape = true;

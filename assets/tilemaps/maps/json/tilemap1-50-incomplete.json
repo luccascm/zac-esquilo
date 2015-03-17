@@ -127,7 +127,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/..\/home\/desenvolvimento02\/CefetProjects\/TCC\/zac-esquilo\/assets\/images\/levels\/tileset_sprites50.png",
+         "image":"\/zac-esquilo\/assets\/tiles\/tileset_sprites50.png",
          "imageheight":50,
          "imagewidth":250,
          "margin":0,

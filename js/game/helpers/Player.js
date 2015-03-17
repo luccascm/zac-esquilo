@@ -1,10 +1,11 @@
-ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemiesGroup, friendsGroup, winnerTilesGroup){
+ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemiesGroup, friendsGroup, winnerTilesGroup, waterGroup){
   this.init(tileX, tileY, speed, scale, spriteKey, game);
 
   // outros params
   this.enemiesGroup = enemiesGroup;
   this.friendsGroup = friendsGroup;
   this.winnerTilesGroup = winnerTilesGroup;
+  this.waterGroup = waterGroup;
   // this.physics.arcade.enable(player); // Enabling arcade physics on player sprite
 
   // Cria cursor para teclas direcionais automaticamente
@@ -40,8 +41,9 @@ ZacEsquilo.Player.prototype.update = function(){
   }
   ZacEsquilo.Entity.prototype.update.call(this);
   this.game.physics.arcade.overlap(this.sprite, this.enemiesGroup, this.playerHit, null, this);
-  this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, this.process, null, this);
+  this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, null, this);
   this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, this.winLevel, null, this);
+  this.game.physics.arcade.overlap(this.sprite, this.waterGroup, this.playerHit, null, this);
 
 },
 
@@ -53,7 +55,7 @@ ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   ZacEsquilo.config.playerLives = ZacEsquilo.config.playerLives - 1;
   console.log(ZacEsquilo.config.playerLives);
   if(ZacEsquilo.config.playerLives > 0)
-    this.sprite.reset((this.initialtileX * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2), (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2))
+    this.sprite.reset((this.initialtileX * ZacEsquilo.config.tileSize), (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2))
   else{
     this.sprite.kill();
     this.game.state.start('MainMenu');
@@ -83,6 +85,12 @@ ZacEsquilo.Player.prototype.process = function(player, friend){
 ZacEsquilo.Player.prototype.winLevel = function(player, winnerTile){
   console.log('reach winnerTile');
 }
+
+// ZacEsquilo.Player.prototype.drown = function(player, waterTile){
+//   console.log('afogou');
+//   this.sprite.kill();
+//   this.sprite.reset((this.initialtileX * ZacEsquilo.config.tileSize), (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2))
+// }
 
 // if player.parent == friend
 // if friend.childs.lengh > 0
