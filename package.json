@@ -1,0 +1,24 @@
+{
+  "name": "zac-esquilo",
+  "version": "1.0.0",
+  "description": "zac-esquilo\r ===========",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luccascm/zac-esquilo.git"
+  },
+  "author": "Lucas Medeiros",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luccascm/zac-esquilo/issues"
+  },
+  "homepage": "https://github.com/luccascm/zac-esquilo",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-connect": "^2.2.0",
+    "opn": "^1.0.1"
+  }
+}
