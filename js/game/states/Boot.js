@@ -4,7 +4,8 @@ ZacEsquilo.config = {
   oneSwitchKey: "SPACEBAR",
   oneSwitchActive: true,
   tileSize: 50,
-  playerLives: 3
+  playerLives: 3,
+  playerSpeed: 5
 };
 
 ZacEsquilo.Boot = function() {};

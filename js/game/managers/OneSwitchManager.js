@@ -15,6 +15,7 @@ ZacEsquilo.OneSwitchManager.prototype = {
     this.timer1.timer.start();
 
     // associar o this.oneSwitchPressed a um evento de teclado
+    this.game.input.keyboard.addKeyCapture(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
     var key = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
     key.onDown.add(this.oneSwitchPressed, this);
   },

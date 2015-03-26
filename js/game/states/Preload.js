@@ -33,16 +33,17 @@ ZacEsquilo.Preload.prototype = {
 
     // Imagem (sprite) do personagem
     // #TODO: Alterar imagem para spritesheet
-    this.load.image('char', 'assets/images/sprites/player/zac.png');
+    this.load.image('char', 'assets/images/sprites/player/esquilo.png');
 
     // Enemies (cars)
     // #TODO: Transformar imagem em spritesheet
     // Params: key, path, width, height, num of frames
-    this.load.spritesheet('car1', 'assets/images/sprites/enemies/car3.png', 50, 50, 3);
-    this.load.image('car2', 'assets/images/sprites/enemies/car2.png');
+    this.load.image('blue_car', 'assets/images/sprites/enemies/blue_car.png');
+    this.load.image('black_viper', 'assets/images/sprites/enemies/black_viper.png');
+    this.load.image('mini_truck', 'assets/images/sprites/enemies/mini_truck.png');
 
     // Friends ( wood & nuts )
-    this.load.image('wood', 'assets/images/sprites/friends/wood.png');
+    this.load.image('log', 'assets/images/sprites/friends/log100.png');
 
     // Cria textos e define parametros iniciais da animação de carregamento
     this.createText();
@@ -82,7 +83,7 @@ ZacEsquilo.Preload.prototype = {
     }, this);
 
     // Inicia estado 'PreMenu'
-    this.game.time.events.add(4025, function() { this.state.start('PreMenu'); }, this);
+    this.game.time.events.add(1025, function() { this.state.start('PlayGame'); }, this);
 
   },
 
