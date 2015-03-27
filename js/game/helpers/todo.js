@@ -15,8 +15,12 @@ Possibilitar que haja mais de uma fase, em sequência
 
 Me dê notícias do seu progresso. Se você precisar encontrar um dia, podemos marcar.
 
-ideias:
-teclado virtual, emmiter (particles)
-phaser.keyboard
+Preparando tentativa de refatoracao
+- velocity
+- collide
+- physics
+- emmiter
+- keyboard
+
 
 */
