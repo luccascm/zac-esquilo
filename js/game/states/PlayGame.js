@@ -4,6 +4,7 @@ ZacEsquilo.PlayGame = function(){
 
 ZacEsquilo.PlayGame.prototype = {
   preload: function(){
+    this.game.stage.backgroundColor = '#fff';
     ZacEsquilo.config.playerLives = 3;
 
     // Carregando tilemap
@@ -17,6 +18,7 @@ ZacEsquilo.PlayGame.prototype = {
     this.game.load.image('street_clear', 'assets/tilemaps/tiles/street_clear.png');
     this.game.load.image('tileset_sprites50', 'assets/tilemaps/tiles/tileset_sprites50.png');
 
+    ZacEsquilo.soundtrack.stop();
 
   },
 
@@ -86,12 +88,12 @@ ZacEsquilo.PlayGame.prototype = {
 
 
     this.friends = [
-      new ZacEsquilo.Friend(2, this.game.world.height/ZacEsquilo.config.tileSize - 5, 1, 1, 'log', this.game, 'right'),
-      new ZacEsquilo.Friend(8, this.game.world.height/ZacEsquilo.config.tileSize - 5 , 1, 1, 'log', this.game, 'right'),
-      new ZacEsquilo.Friend(5, this.game.world.height/ZacEsquilo.config.tileSize - 6, 2, 1, 'log', this.game, 'left'),
-      new ZacEsquilo.Friend(10, this.game.world.height/ZacEsquilo.config.tileSize - 6, 2, 1, 'log', this.game, 'left'),
-      new ZacEsquilo.Friend(4, this.game.world.height/ZacEsquilo.config.tileSize - 7, 3, 1, 'log', this.game, 'right'),
-      new ZacEsquilo.Friend(9, this.game.world.height/ZacEsquilo.config.tileSize - 7, 3, 1, 'log', this.game, 'right')
+      new ZacEsquilo.Friend(2, this.game.world.height/ZacEsquilo.config.tileSize - 6, 1, 1, 'log', this.game, 'right'),
+      new ZacEsquilo.Friend(8, this.game.world.height/ZacEsquilo.config.tileSize - 6 , 1, 1, 'log', this.game, 'right'),
+      new ZacEsquilo.Friend(5, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'log', this.game, 'left'),
+      new ZacEsquilo.Friend(10, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'log', this.game, 'left'),
+      new ZacEsquilo.Friend(4, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'log', this.game, 'right'),
+      new ZacEsquilo.Friend(9, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'log', this.game, 'right')
       ];
 
     for (var i = 0; i < this.friends.length; i++){
@@ -99,7 +101,7 @@ ZacEsquilo.PlayGame.prototype = {
     }
 
     // Jogador
-    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize, 5, 0.9, 'char', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
+    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize - 1, 5, 0.9, 'char', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
 
 
   },

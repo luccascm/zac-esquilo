@@ -16,7 +16,7 @@ ZacEsquilo.Enemy.prototype.update = function(){
     this.sprite.x = this.tileX;
   }
   if (this.sprite.x < 0){
-    this.sprite.x = this.game.world.width + this.tileX;
+    this.sprite.x = this.game.world.width;
   }
 
   ZacEsquilo.Entity.prototype.update.call(this);
