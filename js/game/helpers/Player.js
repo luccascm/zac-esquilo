@@ -52,7 +52,7 @@ ZacEsquilo.Player.prototype.update = function(){
 
 ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   if(this.ismoving){ return; }
-  else if ( !this.game.physics.arcade.overlap(this.sprite, this.friendsGroup) && !this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup)  ){
+  else if ( !this.game.physics.arcade.overlap(this.sprite, this.friendsGroup) ){
     console.log('morreu');
     player.kill();
     // Animação de morte suavizada

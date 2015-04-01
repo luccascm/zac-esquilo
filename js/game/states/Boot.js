@@ -21,6 +21,10 @@ ZacEsquilo.Boot.prototype = {
     this.load.image('zacStart', 'assets/images/sprites/player/zacStart.gif');
 
     this.load.spritesheet('back', 'assets/images/buttons/voltar.png', 189, 58, 2);
+    this.load.spritesheet('control_keys', 'assets/images/buttons/teclas_controle.png', 189, 58, 2);
+
+    // carregando audio
+    this.game.load.audio('main_theme', 'assets/audio/Frogger_main_theme.mp3', true);
   },
 
   create: function(){

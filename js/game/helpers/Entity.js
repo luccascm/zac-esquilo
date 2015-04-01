@@ -78,18 +78,40 @@ ZacEsquilo.Entity.prototype = {
   },
 
   update: function(){
+    var incrementX,
+        incrementY,
+        exceededRight,
+        exceededLeft;
+
     if (this.ismoving){
       // Checar em qual direçao - comparar desiredTile com tile
       if (this.desiredTileY - this.tileY != 0){
-        this.sprite.y += this.speed * (this.desiredTileY - this.tileY);
+        incrementY = this.speed * (this.desiredTileY - this.tileY);
+        this.sprite.y += incrementY;
         if (this.sprite.y == this.desiredY){
           this.ismoving = false;
           this.tileY = this.desiredTileY;
         }
       }
       if (this.desiredTileX - this.tileX != 0){
-        this.sprite.x += this.speed * (this.desiredTileX - this.tileX);
-        if (this.sprite.x == this.desiredX){
+        // quantas unidades andar para a direita (se positivo) ou para esquerda
+        // (se negativo)
+        incrementX = this.speed * (this.desiredTileX - this.tileX);
+
+        // se a entity está à direita de onde deseja ir
+        exceededRight = this.sprite.x >= this.desiredX;
+
+        // se a entity está à esquerda de onde deseja ir
+        exceededLeft = this.sprite.x <= this.desiredX;
+
+        // movimenta para a direita ou esquerda
+        this.sprite.x += incrementX;
+
+        // se está indo para direita E já passou da hora de parar
+        //  OU está indo para esquerda E já passou da hora de parar
+        if ((incrementX > 0 && exceededRight) ||
+            (incrementX < 0 && exceededLeft)) {
+          // interrompe o movimento
           this.ismoving = false;
           this.tileX = this.desiredTileX;
         }

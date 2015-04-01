@@ -65,13 +65,13 @@ ZacEsquilo.PlayGame.prototype = {
     this.enemiesGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
     this.enemies = [
-      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 1, 1, 0.85, 'blue_car', this.game, 'left'),
-      new ZacEsquilo.Enemy(10, this.game.world.height/ZacEsquilo.config.tileSize - 1 , 1, 0.85, 'blue_car', this.game, 'left'),
-      new ZacEsquilo.Enemy(2, this.game.world.height/ZacEsquilo.config.tileSize - 2, 1, 0.85, 'black_viper', this.game, 'right'),
-      new ZacEsquilo.Enemy(9, this.game.world.height/ZacEsquilo.config.tileSize - 2, 1, 0.85, 'black_viper', this.game, 'right'),
-      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'mini_truck', this.game, 'left'),
-      new ZacEsquilo.Enemy(7, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'mini_truck', this.game, 'left'),
-      new ZacEsquilo.Enemy(12, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'mini_truck', this.game, 'left')
+      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 2, 1, 0.85, 'blue_car', this.game, 'left'),
+      new ZacEsquilo.Enemy(10, this.game.world.height/ZacEsquilo.config.tileSize - 2 , 1, 0.85, 'blue_car', this.game, 'left'),
+      new ZacEsquilo.Enemy(2, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'black_viper', this.game, 'right'),
+      new ZacEsquilo.Enemy(9, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'black_viper', this.game, 'right'),
+      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_truck', this.game, 'left'),
+      new ZacEsquilo.Enemy(7, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_truck', this.game, 'left'),
+      new ZacEsquilo.Enemy(12, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_truck', this.game, 'left')
       ];
 
     for (var i = 0; i < this.enemies.length; i++){

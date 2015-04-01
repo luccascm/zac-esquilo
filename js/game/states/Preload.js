@@ -55,35 +55,36 @@ ZacEsquilo.Preload.prototype = {
 
   create: function() {
     this.preload_bar.cropEnabled = false;
+    
 
     // Time animations (fade in/out)
     // Fade in: Texto de créditos + splash logo + preload bar
-    this.game.time.events.add(20, function() {
-      this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.preload_bar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
-    }, this);
+    // this.game.time.events.add(20, function() {
+    //   this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(this.preload_bar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+    // }, this);
 
-    // Fade out: Texto de créditos + splash logo + preload bar
-    this.game.time.events.add(1200, function() {
-      this.game.add.tween(this.splash).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    }, this);
+    // // Fade out: Texto de créditos + splash logo + preload bar
+    // this.game.time.events.add(1200, function() {
+    //   this.game.add.tween(this.splash).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    // }, this);
 
-    // Fade in: Nome do jogo + Imagem personagem intro
-    this.game.time.events.add(2020, function() {
-      this.game.add.tween(this.zac_intro).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.game_name).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    }, this);
+    // // Fade in: Nome do jogo + Imagem personagem intro
+    // this.game.time.events.add(2020, function() {
+    //   this.game.add.tween(this.zac_intro).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(this.game_name).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    // }, this);
 
-    // Fade out: Nome do jogo + Imagem personagem intro
-    this.game.time.events.add(3020, function() {
-      this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    }, this);
+    // // Fade out: Nome do jogo + Imagem personagem intro
+    // this.game.time.events.add(3020, function() {
+    //   this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    // }, this);
 
     // Inicia estado 'PreMenu'
-    this.game.time.events.add(1025, function() { this.state.start('PlayGame'); }, this);
+    this.game.time.events.add(1025, function() { this.state.start('PreMenu'); }, this);
 
   },
 

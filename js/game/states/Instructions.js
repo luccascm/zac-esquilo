@@ -8,7 +8,8 @@ ZacEsquilo.Instructions.prototype = {
 
   create: function() {
     this.createText();
-    ZacEsquilo.back = this.game.add.button(window.innerWidth - 289, window.innerHeight - 100, 'back', this.backToMenu, this, 1, 0);
+    ZacEsquilo.back = this.game.add.button(this.game.world.width -10 , this.game.world.height - 10, 'back', this.backToMenu, this, 1, 0);
+    ZacEsquilo.back.anchor.setTo(1);
 
     // instanciar um oneswitchmanager
     var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
@@ -23,13 +24,13 @@ ZacEsquilo.Instructions.prototype = {
 
     ZacEsquilo.optionsTitle = this.game.add.text(20, 60, "Instruções", this.fontStyleTitle);
 
-    var gameObjective = "O objetivo do jogo é levar o esquilo Zac de um lado ao outro passando por vários obstáculos.";
-    gameObjective += "\n Zac morre se cair na água ou se for atingido por um automóvel.";
-    gameObjective += "\n Os troncos de madeira sustentam o peso de Zac e podem o auxiliar na travessia do rio.";
-    gameObjective += "\n Os automóveis sempre se movimentam na mesma direção, com velocidade constante.";
-    ZacEsquilo.gameObjective = this.game.add.text(50, 160, gameObjective, this.fontStyleOptions);
+    var gameObjective = "* O objetivo do jogo é levar o esquilo Zac de um lado ao outro passando por vários obstáculos.";
+    gameObjective += "\n * Zac morre se cair na água ou se for atingido por um automóvel.";
+    gameObjective += "\n * Os troncos de madeira sustentam o peso de Zac e podem o auxiliar na travessia do rio.";
+    gameObjective += "\n * Os automóveis se movimentam sempre na mesma direção, com velocidade constante.";
+    ZacEsquilo.gameObjective = this.game.add.text(20, 160, gameObjective, this.fontStyleOptions);
     ZacEsquilo.gameObjective.wordWrap = true;
-    ZacEsquilo.gameObjective.wordWrapWidth = window.innerWidth - 50;
+    ZacEsquilo.gameObjective.wordWrapWidth = this.game.world.width - 30;
 
     var accessibleModeInstructions = "Utilize o botão configurado (o padrão é a barra de espaço) para movimentar Zac.";
     accessibleModeInstructions += "\n Pressionar o botão configurado movimenta Zac para uma das 4 direções.";

@@ -21,6 +21,9 @@ ZacEsquilo.PreMenu.prototype = {
     ZacEsquilo.switch_off.onInputOver.add(this.over,this);
     ZacEsquilo.switch_off.onInputOut.add(this.out,this);
 
+    soundtrack = this.game.add.audio('main_theme');
+    soundtrack.play();
+
     // Define botão switch_on como selecionado a priori
     this.game.time.events.add(200, function(){
       ZacEsquilo.switch_on;
