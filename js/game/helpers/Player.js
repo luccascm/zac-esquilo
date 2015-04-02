@@ -59,7 +59,7 @@ ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
     // this.game.time.events.add(20, function() {
     //   this.game.add.tween(player).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
     // }, this);
-     
+
     // -1 vida
     ZacEsquilo.config.playerLives = ZacEsquilo.config.playerLives - 1;
     if(ZacEsquilo.config.playerLives > 0){
@@ -105,5 +105,5 @@ ZacEsquilo.Player.prototype.playerDrown = function(player, friend){
 
 ZacEsquilo.Player.prototype.winLevel = function(player, winnerTile){
   console.log('reach winnerTile');
-  // this.state.start("Scoreboard");
+  this.game.state.start("Scoreboard");
 }
