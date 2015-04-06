@@ -8,7 +8,7 @@ ZacEsquilo.config = {
   playerSpeed: 5
 };
 
-ZacEsquilo.Boot = function() {};
+ZacEsquilo.Boot = function() {  };
 
 ZacEsquilo.Boot.prototype = {
   preload: function() {
@@ -25,6 +25,10 @@ ZacEsquilo.Boot.prototype = {
 
     // carregando audio
     this.game.load.audio('main_theme', 'assets/audio/Frogger_main_theme.mp3', true);
+    this.game.load.audio('frogger_win_game', 'assets/audio/frogger_win_game.wav', false);
+    this.game.load.audio('frogger_hop', 'assets/audio/frogger_hop.wav', false);
+    this.game.load.audio('frogger_drown', 'assets/audio/frogger_drown.wav', false);
+    this.game.load.audio('frogger_run_down', 'assets/audio/frogger_run_down.wav', false);
   },
 
   create: function(){

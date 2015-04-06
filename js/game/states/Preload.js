@@ -43,7 +43,8 @@ ZacEsquilo.Preload.prototype = {
     this.load.image('mini_truck', 'assets/images/sprites/enemies/mini_truck.png');
 
     // Friends ( wood & nuts )
-    this.load.image('log', 'assets/images/sprites/friends/log100.png');
+    this.load.image('short_log', 'assets/images/sprites/friends/log100.png');
+    this.load.image('long_log', 'assets/images/sprites/friends/log150.png');
 
     // Cria textos e define parametros iniciais da animação de carregamento
     this.createText();

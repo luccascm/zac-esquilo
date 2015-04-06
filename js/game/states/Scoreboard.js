@@ -25,13 +25,14 @@ ZacEsquilo.Scoreboard.prototype = {
   },
 
   createText: function(){
-    this.fontStyle = { font: "25px Bubblegum Sans", fill: "#fff", align: "center"};
-    this.scoreText = this.game.add.text(this.game.world.centerX, 100, "Parabéns! Você ajudou Zac a voltar para a floresta e venceu o jogo!", this.fontStyle);
+    this.fontStyle = { font: "60px Bubblegum Sans", fill: "#fff", align: "center"};
+    this.fontStyle_small = { font: "30px Bubblegum Sans", fill: "#fff", align: "center"};
+    this.scoreText = this.game.add.text(this.game.world.centerX, 100, "Game Over!!", this.fontStyle);
     this.scoreText.anchor.setTo(0.5);
     this.scoreText.wordWrap = true;
     this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-    this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione espaço para jogar novamente", this.fontStyle);
+    this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione espaço para jogar novamente", this.fontStyle_small);
     this.playAgainText.anchor.setTo(0.5);
     this.playAgainText.wordWrap = true;
     this.playAgainText.wordWrapWidth = this.game.world.width - 30;

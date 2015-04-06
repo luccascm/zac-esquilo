@@ -35,7 +35,7 @@ ZacEsquilo.Entity.prototype = {
   move: function(direction){
     // Checar se pode movimentar nessa direcao (pode estar no final do cenario)
     // Se puder mover
-    if(this.ismoving){ return; }
+    if(this.ismoving || this.won){ return; }
     this.ismoving = true;
     switch(direction){
       case 'up':

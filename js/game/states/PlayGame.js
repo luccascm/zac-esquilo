@@ -88,12 +88,12 @@ ZacEsquilo.PlayGame.prototype = {
 
 
     this.friends = [
-      new ZacEsquilo.Friend(2, this.game.world.height/ZacEsquilo.config.tileSize - 6, 1, 1, 'log', this.game, 'right'),
-      new ZacEsquilo.Friend(8, this.game.world.height/ZacEsquilo.config.tileSize - 6 , 1, 1, 'log', this.game, 'right'),
-      new ZacEsquilo.Friend(5, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'log', this.game, 'left'),
-      new ZacEsquilo.Friend(10, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'log', this.game, 'left'),
-      new ZacEsquilo.Friend(4, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'log', this.game, 'right'),
-      new ZacEsquilo.Friend(9, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'log', this.game, 'right')
+      new ZacEsquilo.Friend(2, this.game.world.height/ZacEsquilo.config.tileSize - 6, 1, 1, 'long_log', this.game, 'right'),
+      new ZacEsquilo.Friend(8, this.game.world.height/ZacEsquilo.config.tileSize - 6 , 1, 1, 'long_log', this.game, 'right'),
+      new ZacEsquilo.Friend(5, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'short_log', this.game, 'left'),
+      new ZacEsquilo.Friend(10, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'long_log', this.game, 'left'),
+      new ZacEsquilo.Friend(4, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'short_log', this.game, 'right'),
+      new ZacEsquilo.Friend(9, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'short_log', this.game, 'right')
       ];
 
     for (var i = 0; i < this.friends.length; i++){
