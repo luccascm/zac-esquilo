@@ -18,7 +18,12 @@ ZacEsquilo.Entity.prototype = {
     this.sprite.scale.setTo(scale);
     this.sprite.anchor.setTo(0.5);
     
-    this.cursors = this.game.input.keyboard.createCursorKeys();
+    if (ZacEsquilo.config.oneSwitchActive === false) { this.cursors = this.game.input.keyboard.createCursorKeys(); }
+    else{
+      this.game.input.keyboard.addKeyCapture(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
+      this.key = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
+    }
+    
     this.ismoving = false;
     
     this.game.physics.arcade.enable(this.sprite); // Enabling arcade physics on player sprite

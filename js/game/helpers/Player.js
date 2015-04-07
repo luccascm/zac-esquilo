@@ -39,21 +39,27 @@ ZacEsquilo.Player.prototype.update = function(){
   if(!this.ismoving && !this.won){
     this.speed = ZacEsquilo.config.playerSpeed;
 
-    if (this.cursors.up.isDown){
-      this.frogger_hop.play();
-      this.move('up');
+    if (ZacEsquilo.config.oneSwitchActive === false){
+      if (this.cursors.up.isDown){
+        this.frogger_hop.play();
+        this.move('up');
+      }
+      if (this.cursors.right.isDown){
+        this.frogger_hop.play();
+        this.move('right');
+      }
+      if (this.cursors.down.isDown){
+        this.frogger_hop.play();
+        this.move('down');
+      }
+      if (this.cursors.left.isDown){
+        this.frogger_hop.play();
+        this.move('left');
+      }
     }
-    if (this.cursors.right.isDown){
-      this.frogger_hop.play();
-      this.move('right');
-    }
-    if (this.cursors.down.isDown){
-      this.frogger_hop.play();
-      this.move('down');
-    }
-    if (this.cursors.left.isDown){
-      this.frogger_hop.play();
-      this.move('left');
+
+    else{
+      this.key.onDown.add(this.oneSwitchMove, this);
     }
   }
 
@@ -63,6 +69,10 @@ ZacEsquilo.Player.prototype.update = function(){
   this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, this.winLevel, null, this);
   this.game.physics.arcade.overlap(this.sprite, this.waterGroup, this.playerDrown, null, this);
 };
+
+ZacEsquilo.Player.prototype.oneSwitchMove = function(){
+  this.move('up');
+}
 
 ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   if(this.ismoving){ return; }
@@ -92,10 +102,6 @@ ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   }
 };
 
-ZacEsquilo.Player.prototype.resetSpeed = function(){
-  this.speed = this.speed;
-},
-
 ZacEsquilo.Player.prototype.playerCarried = function(player, friend){
   player.isSafe = true;
   friend.entity.carry(player.entity);
@@ -122,14 +128,16 @@ ZacEsquilo.Player.prototype.playerDrown = function(player, friend){
 };
 
 ZacEsquilo.Player.prototype.winLevel = function(player, winnerTile){
+  // scoreboard.show(this.score)
   if (player.y == winnerTile.y){
     this.frogger_win_game.play();
+    // var scoreboard = new ZacEsquilo.Scoreboard2(this.game);
     this.winScreen();
     // winnerTile.kill();
     return;
   }
   // this.game.state.start("Scoreboard");
-}
+};
 
 ZacEsquilo.Player.prototype.winScreen = function(){
   this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, '', null, this);
@@ -154,9 +162,9 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
   
   // this.game.paused = true;
-}
+};
 
 ZacEsquilo.Player.prototype.restartGame = function(key){
   // this.game.paused = false;
   this.game.state.start('Boot');
-}
+};
