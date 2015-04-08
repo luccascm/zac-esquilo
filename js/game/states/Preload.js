@@ -30,10 +30,17 @@ ZacEsquilo.Preload.prototype = {
 
     // Imagem de fundo do menu inicial
     this.load.image('forestBackground', 'assets/images/credits/forest-bg-small.png');
+    this.load.image('menu-bg', 'assets/images/credits/capa_small.jpg');
+    this.load.image('win-bg', 'assets/images/credits/vitoria_small.jpg');
 
     // Imagem (sprite) do personagem
     // #TODO: Alterar imagem para spritesheet
     this.load.image('char', 'assets/images/sprites/player/esquilo.png');
+    this.game.load.spritesheet('zac-sprite', 'assets/images/sprites/player/zac_spritesheet2.png', 50, 50, 5);
+
+    //  37x45 is the size of each frame
+    //  There are 18 frames in the PNG - you can leave this value blank if the frames fill up the entire PNG, but in this case there are some
+    //  blank frames at the end, so we tell the loader how many to load
 
     // Enemies (cars)
     // #TODO: Transformar imagem em spritesheet
@@ -66,32 +73,32 @@ ZacEsquilo.Preload.prototype = {
 
     // Time animations (fade in/out)
     // Fade in: Texto de créditos + splash logo + preload bar
-    // this.game.time.events.add(20, function() {
-    //   this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(this.preload_bar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
-    // }, this);
+    this.game.time.events.add(20, function() {
+      this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(this.preload_bar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+    }, this);
 
     // // Fade out: Texto de créditos + splash logo + preload bar
-    // this.game.time.events.add(1200, function() {
-    //   this.game.add.tween(this.splash).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    // }, this);
+    this.game.time.events.add(1200, function() {
+      this.game.add.tween(this.splash).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    }, this);
 
     // // Fade in: Nome do jogo + Imagem personagem intro
-    // this.game.time.events.add(2020, function() {
-    //   this.game.add.tween(this.zac_intro).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(this.game_name).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    // }, this);
+    this.game.time.events.add(2020, function() {
+      this.game.add.tween(this.zac_intro).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(this.game_name).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    }, this);
 
     // // Fade out: Nome do jogo + Imagem personagem intro
-    // this.game.time.events.add(3020, function() {
-    //   this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    //   this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    // }, this);
+    this.game.time.events.add(3020, function() {
+      this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+      this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    }, this);
 
     // Inicia estado 'PreMenu'
-    this.game.time.events.add(1025, function() { this.state.start('PreMenu'); }, this);
+    this.game.time.events.add(4000, function() { this.state.start('PreMenu'); }, this);
 
   },
 

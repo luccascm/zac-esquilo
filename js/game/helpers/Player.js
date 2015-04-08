@@ -3,6 +3,10 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
 
   // outros params
   this.sprite.body.moves = true;
+  this.sprite.animations.add('walk-left', [0,3,3,3,3,0]);
+  this.sprite.animations.add('walk-right', [0,1,1,1,1,0]);
+  this.sprite.animations.add('walk-up', [0,2,2,2,2,0]);
+  this.sprite.animations.add('walk-down', [0,2,2,2,0]);
   this.won = false;
   this.enemiesGroup = enemiesGroup;
   this.friendsGroup = friendsGroup;
@@ -42,18 +46,22 @@ ZacEsquilo.Player.prototype.update = function(){
     if (ZacEsquilo.config.oneSwitchActive === false){
       if (this.cursors.up.isDown){
         this.frogger_hop.play();
+        this.sprite.animations.play('walk-up', 15, false);
         this.move('up');
       }
       if (this.cursors.right.isDown){
         this.frogger_hop.play();
+        this.sprite.animations.play('walk-right', 15, false);
         this.move('right');
       }
       if (this.cursors.down.isDown){
         this.frogger_hop.play();
+        this.sprite.animations.play('walk-down', 15, false);
         this.move('down');
       }
       if (this.cursors.left.isDown){
         this.frogger_hop.play();
+        this.sprite.animations.play('walk-left', 15, false);
         this.move('left');
       }
     }

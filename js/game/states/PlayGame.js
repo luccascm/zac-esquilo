@@ -101,7 +101,7 @@ ZacEsquilo.PlayGame.prototype = {
     }
 
     // Jogador
-    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize - 1, 5, 0.9, 'char', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
+    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize - 1, 5, 0.9, 'zac-sprite', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
 
 
   },
