@@ -67,13 +67,13 @@ ZacEsquilo.PlayGame.prototype = {
     this.enemiesGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
     this.enemies = [
-      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 2, 1, 0.85, 'blue_car', this.game, 'left'),
-      new ZacEsquilo.Enemy(10, this.game.world.height/ZacEsquilo.config.tileSize - 2 , 1, 0.85, 'blue_car', this.game, 'left'),
-      new ZacEsquilo.Enemy(2, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'black_viper', this.game, 'right'),
-      new ZacEsquilo.Enemy(9, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'black_viper', this.game, 'right'),
-      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_truck', this.game, 'left'),
-      new ZacEsquilo.Enemy(7, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_truck', this.game, 'left'),
-      new ZacEsquilo.Enemy(12, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_truck', this.game, 'left')
+      new ZacEsquilo.Enemy(1, this.game.world.height/ZacEsquilo.config.tileSize - 2, 1, 0.85, 'mini_truck2', this.game, 'left'),
+      new ZacEsquilo.Enemy(8, this.game.world.height/ZacEsquilo.config.tileSize - 2 , 1, 0.85, 'mini_truck2', this.game, 'left'),
+      new ZacEsquilo.Enemy(2, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'conversivel', this.game, 'left'),
+      new ZacEsquilo.Enemy(12, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'mini_truck2', this.game, 'left'),
+      new ZacEsquilo.Enemy(7, this.game.world.height/ZacEsquilo.config.tileSize - 3, 1, 0.85, 'conversivel', this.game, 'left'),
+      new ZacEsquilo.Enemy(4, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'mini_car', this.game, 'right'),
+      new ZacEsquilo.Enemy(12, this.game.world.height/ZacEsquilo.config.tileSize - 4, 1, 0.85, 'truck', this.game, 'right')
       ];
 
     for (var i = 0; i < this.enemies.length; i++){
@@ -88,12 +88,12 @@ ZacEsquilo.PlayGame.prototype = {
 
 
     this.friends = [
-      new ZacEsquilo.Friend(2, this.game.world.height/ZacEsquilo.config.tileSize - 6, 1, 1, 'long_log', this.game, 'right'),
-      new ZacEsquilo.Friend(8, this.game.world.height/ZacEsquilo.config.tileSize - 6 , 1, 1, 'long_log', this.game, 'right'),
-      new ZacEsquilo.Friend(5, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'short_log', this.game, 'left'),
-      new ZacEsquilo.Friend(10, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'long_log', this.game, 'left'),
-      new ZacEsquilo.Friend(4, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'short_log', this.game, 'right'),
-      new ZacEsquilo.Friend(9, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'short_log', this.game, 'right')
+      new ZacEsquilo.Friend(2, this.game.world.height/ZacEsquilo.config.tileSize - 6, 1, 1, 'log1', this.game, 'right'),
+      new ZacEsquilo.Friend(8, this.game.world.height/ZacEsquilo.config.tileSize - 6 , 1, 1, 'log1', this.game, 'right'),
+      new ZacEsquilo.Friend(5, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'log2', this.game, 'left'),
+      new ZacEsquilo.Friend(10, this.game.world.height/ZacEsquilo.config.tileSize - 7, 2, 1, 'log1', this.game, 'left'),
+      new ZacEsquilo.Friend(4, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'log2', this.game, 'right'),
+      new ZacEsquilo.Friend(9, this.game.world.height/ZacEsquilo.config.tileSize - 8, 3, 1, 'log2', this.game, 'right')
       ];
 
     for (var i = 0; i < this.friends.length; i++){

@@ -38,13 +38,19 @@ ZacEsquilo.Preload.prototype = {
     // Enemies (cars)
     // #TODO: Transformar imagem em spritesheet
     // Params: key, path, width, height, num of frames
-    this.load.image('blue_car', 'assets/images/sprites/enemies/blue_car.png');
-    this.load.image('black_viper', 'assets/images/sprites/enemies/black_viper.png');
-    this.load.image('mini_truck', 'assets/images/sprites/enemies/mini_truck.png');
+    // this.load.image('blue_car', 'assets/images/sprites/enemies/blue_car.png');
+    // this.load.image('black_viper', 'assets/images/sprites/enemies/black_viper.png');
+    // this.load.image('mini_truck', 'assets/images/sprites/enemies/mini_truck.png');
+    this.load.image('truck', 'assets/images/sprites/enemies/truck.png');
+    this.load.image('mini_car', 'assets/images/sprites/enemies/mini_car.png');
+    this.load.image('conversivel', 'assets/images/sprites/enemies/conversivel.png');
+    this.load.image('mini_truck2', 'assets/images/sprites/enemies/mini_truck2.png');
 
     // Friends ( wood & nuts )
-    this.load.image('short_log', 'assets/images/sprites/friends/log100.png');
-    this.load.image('long_log', 'assets/images/sprites/friends/log150.png');
+    this.load.image('log1', 'assets/images/sprites/friends/log1.png');
+    this.load.image('log2', 'assets/images/sprites/friends/log2.png');
+    // this.load.image('short_log', 'assets/images/sprites/friends/log100.png');
+    // this.load.image('long_log', 'assets/images/sprites/friends/log150.png');
 
     // Cria textos e define parametros iniciais da animação de carregamento
     this.createText();
@@ -56,7 +62,7 @@ ZacEsquilo.Preload.prototype = {
 
   create: function() {
     this.preload_bar.cropEnabled = false;
-    
+
 
     // Time animations (fade in/out)
     // Fade in: Texto de créditos + splash logo + preload bar
@@ -104,7 +110,7 @@ ZacEsquilo.Preload.prototype = {
                                 "Lucas Cardoso Medeiros \n\n apresenta",
                                 this.fontStyle2
                               );
-    
+
     ZacEsquilo.credits_text.anchor.setTo(0.5);
   },
 };
