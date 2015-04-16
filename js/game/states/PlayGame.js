@@ -6,6 +6,7 @@ ZacEsquilo.PlayGame.prototype = {
   preload: function(){
     this.game.stage.backgroundColor = '#fff';
     ZacEsquilo.config.playerLives = 3;
+    this.game.load.image('tileset_sprites50', 'assets/tilemaps/tiles/tileset_sprites50.png');
 
     // Carregando tilemap
     this.game.load.tilemap('map-1', 'assets/tilemaps/maps/json/tilemap1-50-complete.json', null, Phaser.Tilemap.TILED_JSON);
@@ -16,7 +17,8 @@ ZacEsquilo.PlayGame.prototype = {
     this.game.load.image('grass', 'assets/tilemaps/tiles/grass.png');
     this.game.load.image('street_dash', 'assets/tilemaps/tiles/street_dash.png');
     this.game.load.image('street_clear', 'assets/tilemaps/tiles/street_clear.png');
-    this.game.load.image('tileset_sprites50', 'assets/tilemaps/tiles/tileset_sprites50.png');
+
+    this.game.load.image('lifeHeart', 'assets/images/sprites/others/heart.png');
 
     ZacEsquilo.soundtrack.stop();
 
@@ -103,6 +105,13 @@ ZacEsquilo.PlayGame.prototype = {
     // Jogador
     this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize - 1, 5, 0.9, 'zac-sprite', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
 
+    // Indicador de vidas
+    this.lifeTextStyle = { font: "20px Sigmar One", fill: "#330033", align: "left"};
+    this.lifeIndicatorText = this.game.add.text(10, this.game.world.height - 40, "Vidas: ", this.lifeTextStyle);
+
+    ZacEsquilo.life1 = this.game.add.sprite(100, this.game.world.height-40, 'lifeHeart');
+    ZacEsquilo.life2 = this.game.add.sprite(150, this.game.world.height-40, 'lifeHeart');
+    ZacEsquilo.life3 = this.game.add.sprite(200, this.game.world.height-40, 'lifeHeart');
 
   },
 

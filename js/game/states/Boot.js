@@ -5,7 +5,8 @@ ZacEsquilo.config = {
   oneSwitchActive: true,
   tileSize: 50,
   playerLives: 3,
-  playerSpeed: 5
+  playerSpeed: 5,
+  won: false
 };
 
 ZacEsquilo.Boot = function() {  };
@@ -18,7 +19,7 @@ ZacEsquilo.Boot.prototype = {
     this.load.image('preloadBar', 'assets/images/credits/preloader-bar.png');
     this.load.image('gameName', 'assets/images/credits/Zac-IntroText.png');
     
-    this.load.image('zacStart', 'assets/images/sprites/player/zacStart.gif');
+    this.load.image('zacStart', 'assets/images/sprites/player/zac_pose.png');
 
     this.load.spritesheet('back', 'assets/images/buttons/voltar.png', 189, 58, 2);
     this.load.spritesheet('control_keys', 'assets/images/buttons/teclas_controle.png', 189, 58, 2);

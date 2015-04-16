@@ -7,7 +7,7 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.sprite.animations.add('walk-right', [0,1,1,1,1,0]);
   this.sprite.animations.add('walk-up', [0,2,2,2,2,0]);
   this.sprite.animations.add('walk-down', [0,2,2,2,0]);
-  this.won = false;
+  ZacEsquilo.config.won = false;
   this.enemiesGroup = enemiesGroup;
   this.friendsGroup = friendsGroup;
   this.winnerTilesGroup = winnerTilesGroup;
@@ -28,6 +28,7 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.frogger_win_game = this.game.add.audio('frogger_win_game', 1, false);
 
   this.restartKey = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
+  this.movePlayerKey = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
 
   // this.game.physics.arcade.overlap(this.sprite, this.enemiesGroup, this.playerHit, null, this);
   // this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, null, this);
@@ -40,7 +41,7 @@ ZacEsquilo.Player.prototype = Object.create(ZacEsquilo.Entity.prototype);
 ZacEsquilo.Player.prototype.chooseKey = function(key){}
 
 ZacEsquilo.Player.prototype.update = function(){
-  if(!this.ismoving && !this.won){
+  if(!this.ismoving && !ZacEsquilo.config.won){
     this.speed = ZacEsquilo.config.playerSpeed;
 
     if (ZacEsquilo.config.oneSwitchActive === false){
@@ -67,7 +68,12 @@ ZacEsquilo.Player.prototype.update = function(){
     }
 
     else{
-      this.key.onDown.add(this.oneSwitchMove, this);
+      if (this.movePlayerKey.isDown){
+        for (e in this.enemiesGroup){
+          console.log('ex: '+ e);
+        }
+      }
+      // this.key.onDown.add(this.oneSwitchMove, this);
     }
   }
 
@@ -78,22 +84,30 @@ ZacEsquilo.Player.prototype.update = function(){
   this.game.physics.arcade.overlap(this.sprite, this.waterGroup, this.playerDrown, null, this);
 };
 
-ZacEsquilo.Player.prototype.oneSwitchMove = function(){
-  this.move('up');
+ZacEsquilo.Player.prototype.oneSwitchMove = function(player, enemiesGroup){
+  for (e in enemiesGroup){
+    console.log('ex: '+e.x);
+  }
+  // this.move('up');
 }
 
 ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   if(this.ismoving){ return; }
   else if ( !this.game.physics.arcade.overlap(this.sprite, this.friendsGroup) ){
     this.frogger_run_down.play();
-    console.log('atropelado');
+    console.log('atropelado');    
     player.kill();
+
     // Animação de morte suavizada
     // this.game.time.events.add(20, function() {
     //   this.game.add.tween(player).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
     // }, this);
 
+
     // -1 vida
+    if (ZacEsquilo.config.playerLives == 3){ ZacEsquilo.life3.kill();}
+    if (ZacEsquilo.config.playerLives == 2){ ZacEsquilo.life2.kill();}
+    if (ZacEsquilo.config.playerLives == 1){ ZacEsquilo.life1.kill();}
     ZacEsquilo.config.playerLives = ZacEsquilo.config.playerLives - 1;
     if(ZacEsquilo.config.playerLives > 0){
       // Animação de reset suavizada
@@ -148,11 +162,14 @@ ZacEsquilo.Player.prototype.winLevel = function(player, winnerTile){
 };
 
 ZacEsquilo.Player.prototype.winScreen = function(){
+  this.tela_Vitoria = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'win-bg');
+  this.tela_Vitoria.anchor.setTo(0.5, 0);
+
   this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, '', null, this);
   // this.game.pause();
   this.sprite.body.moves = true;
   this.sprite.body.immovable = true;
-  this.won = true;
+  ZacEsquilo.config.won = true;
   console.log(this.sprite);
   console.log(this);
   
@@ -169,6 +186,7 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
   
+  this.game.add.tween(this.tela_Vitoria).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
   // this.game.paused = true;
 };
 

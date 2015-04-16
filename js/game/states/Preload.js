@@ -19,13 +19,13 @@ ZacEsquilo.Preload.prototype = {
     this.load.setPreloadSprite(this.preload_bar);
 
     // Imagem do personagem para introdução
-    this.zac_intro = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'zacStart');
+    this.zac_intro = this.add.sprite(this.game.world.centerX, 210, 'zacStart');
     this.zac_intro.anchor.setTo(0.5);
-    this.zac_intro.scale.x = 0.7;
-    this.zac_intro.scale.y = 0.7;
+    this.zac_intro.scale.x = 0.4;
+    this.zac_intro.scale.y = 0.4;
 
     // Imagem com nome do jogo
-    this.game_name = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 128, 'gameName')
+    this.game_name = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 195, 'gameName')
     this.game_name.anchor.setTo(0.5);
 
     // Imagem de fundo do menu inicial
@@ -92,13 +92,13 @@ ZacEsquilo.Preload.prototype = {
     }, this);
 
     // // Fade out: Nome do jogo + Imagem personagem intro
-    this.game.time.events.add(3020, function() {
+    this.game.time.events.add(5020, function() {
       this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
       this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
     }, this);
 
     // Inicia estado 'PreMenu'
-    this.game.time.events.add(4000, function() { this.state.start('PreMenu'); }, this);
+    this.game.time.events.add(6100, function() { this.state.start('PreMenu'); }, this);
 
   },
 
@@ -114,7 +114,7 @@ ZacEsquilo.Preload.prototype = {
     ZacEsquilo.credits_text = this.game.add.text(
                                 this.game.world.centerX,
                                 this.game.world.centerY + 55,
-                                "Lucas Cardoso Medeiros \n\n apresenta",
+                                "Lucas Cardoso Medeiros \n apresenta",
                                 this.fontStyle2
                               );
 

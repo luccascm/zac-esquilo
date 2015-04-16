@@ -12,33 +12,50 @@ ZacEsquilo.Instructions.prototype = {
     ZacEsquilo.back.anchor.setTo(1);
 
     // instanciar um oneswitchmanager
-    var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
-      ZacEsquilo.back,
-    ], 2, this.game);
-    oneswitchmanager.start();
+    if(ZacEsquilo.config.oneSwitchActive === true){
+      var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
+        ZacEsquilo.back,
+      ], 2, this.game);
+      oneswitchmanager.start();
+    }
   },
 
   createText: function() {
-    this.fontStyleTitle = { font: "30px Revalia", fill: "#330033", align: "center"};
-    this.fontStyleOptions = { font: "25px Bubblegum Sans", fill: "#330033", align: "center"};
+    this.fontStyleTitle = { font: "30px Revalia", fill: "#330033", align: "left"};
+    this.fontStyleSubtitle = { font: "25px Revalia", fill: "#330033", align: "left"};
+    this.fontStyleOptions = { font: "20px Bubblegum Sans", fill: "#330033", align: "left"};
 
-    ZacEsquilo.optionsTitle = this.game.add.text(20, 60, "Instruções", this.fontStyleTitle);
+    this.instructionsTitle = this.game.add.text(20, 30, "Instruções", this.fontStyleTitle);
 
-    var gameObjective = "* O objetivo do jogo é levar o esquilo Zac de um lado ao outro passando por vários obstáculos.";
-    gameObjective += "\n * Zac morre se cair na água ou se for atingido por um automóvel.";
-    gameObjective += "\n * Os troncos de madeira sustentam o peso de Zac e podem o auxiliar na travessia do rio.";
-    gameObjective += "\n * Os automóveis se movimentam sempre na mesma direção, com velocidade constante.";
-    ZacEsquilo.gameObjective = this.game.add.text(20, 160, gameObjective, this.fontStyleOptions);
-    ZacEsquilo.gameObjective.wordWrap = true;
-    ZacEsquilo.gameObjective.wordWrapWidth = this.game.world.width - 30;
+    var gameObjectiveText = "* O objetivo do jogo é levar o esquilo Zac de um lado ao outro passando por vários obstáculos.";
+    gameObjectiveText += "\n * Zac morre se cair na água ou se for atingido por um automóvel.";
+    gameObjectiveText += "\n * Os troncos de madeira sustentam o peso de Zac e podem o auxiliar na travessia do rio.";
+    gameObjectiveText += "\n * Os automóveis se movimentam sempre na mesma direção, com velocidade constante.";
+    this.gameObjective = this.game.add.text(20, 80, gameObjectiveText, this.fontStyleOptions);
+    this.gameObjective.wordWrap = true;
+    this.gameObjective.wordWrapWidth = this.game.world.width - 20;
+    this.gameObjective.anchor.setTo(0);
 
-    var accessibleModeInstructions = "Utilize o botão configurado (o padrão é a barra de espaço) para movimentar Zac.";
-    accessibleModeInstructions += "\n Pressionar o botão configurado movimenta Zac para uma das 4 direções.";
-    accessibleModeInstructions += "\n A escolha da direção é feita automaticamente, de forma a efetivar o alcance do objetivo e evitar a morte do personagem.";
-    accessibleModeInstructions += "\n Pressione o botão duas vezes, rapidamente, para pausar o jogo.";
+    this.accessibleModeTitle = this.game.add.text(20, 200, "Modo Acessível", this.fontStyleSubtitle);
+    this.accessibleModeTitle.wordWrap = true;
+    this.accessibleModeTitle.wordWrapWidth = this.game.world.width - 20;
 
-    var normalModeInstructions = "Utilize as teclas configuradas (setas direcionais, por padrão) para movimentar Zac nas 4 direções.";
-    normalModeInstructions = "Utilize as teclas de pausar (tecla p, por padrão) para pausar o jogo.";
+    var accessibleModeInstructionsText = "* Utilize a barra de espaço para movimentar Zac.";
+    accessibleModeInstructionsText += "\n * Pressioná-la movimenta Zac para uma das 4 direções.";
+    accessibleModeInstructionsText += "\n * A escolha da direção é feita automaticamente, de forma a efetivar o alcance do objetivo e evitar a morte do personagem.";
+    this.accessibleModeInstructions = this.game.add.text(20, 245, accessibleModeInstructionsText, this.fontStyleOptions);
+    this.accessibleModeInstructions.wordWrap = true;
+    this.accessibleModeInstructions.wordWrapWidth = this.game.world.width;
+
+    this.normalModeTitle = this.game.add.text(20, 360, "Modo Normal", this.fontStyleSubtitle);
+    this.normalModeTitle.wordWrap = true;
+    this.normalModeTitle.wordWrapWidth = this.game.world.width - 20;
+
+    var normalModeInstructionsText = "* Utilize as setas direcionais para movimentar Zac nas 4 direções.";
+    // normalModeInstructionsText += "\n * Utilize a tecla P para pausar o jogo.";
+    this.normalModeInstructions = this.game.add.text(20, 400, normalModeInstructionsText, this.fontStyleOptions);
+    this.normalModeInstructions.wordWrap = true;
+    this.normalModeInstructions.wordWrapWidth = this.game.world.width - 20;
   },
 
   backToMenu: function(){
