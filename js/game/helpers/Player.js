@@ -84,18 +84,28 @@ ZacEsquilo.Player.prototype.update = function(){
   this.game.physics.arcade.overlap(this.sprite, this.waterGroup, this.playerDrown, null, this);
 };
 
-ZacEsquilo.Player.prototype.oneSwitchMove = function(player, enemiesGroup){
-  for (e in enemiesGroup){
-    console.log('ex: '+e.x);
-  }
-  // this.move('up');
+
+// ZacEsquilo.Player.prototype.oneSwitchMove = function(player, enemiesGroup){
+//   for (e in enemiesGroup){
+//     console.log('ex: '+e.x);
+//   }
+//   this.move('up');
+// }
+
+ZacEsquilo.Player.prototype.oneSwitchMove = function(){
+  console.log( this.hasEnemyUp(this.sprite, this.enemiesGroup) );
+  if( this.hasEnemyUp(this.sprite, this.enemiesGroup) )
+    this.move('left');
+  else
+    this.move('up');
+
 }
 
 ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   if(this.ismoving){ return; }
   else if ( !this.game.physics.arcade.overlap(this.sprite, this.friendsGroup) ){
     this.frogger_run_down.play();
-    console.log('atropelado');    
+    console.log('atropelado');
     player.kill();
 
     // Animação de morte suavizada
@@ -172,7 +182,7 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   ZacEsquilo.config.won = true;
   console.log(this.sprite);
   console.log(this);
-  
+
   this.restartKey.onDown.add(this.restartGame,this);
 
   this.fontStyle = { font: "40px Bubblegum Sans", fill: "#fff", align: "center"};
@@ -185,8 +195,12 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
-  
+<<<<<<< Updated upstream
+
   this.game.add.tween(this.tela_Vitoria).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
+=======
+
+>>>>>>> Stashed changes
   // this.game.paused = true;
 };
 

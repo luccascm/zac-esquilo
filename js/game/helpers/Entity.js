@@ -17,15 +17,15 @@ ZacEsquilo.Entity.prototype = {
     // this.sprite = game.add.sprite((tileX * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2), (tileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2), spriteKey);
     this.sprite.scale.setTo(scale);
     this.sprite.anchor.setTo(0.5);
-    
+
     if (ZacEsquilo.config.oneSwitchActive === false) { this.cursors = this.game.input.keyboard.createCursorKeys(); }
     else{
       this.game.input.keyboard.addKeyCapture(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
       this.key = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
     }
-    
+
     this.ismoving = false;
-    
+
     this.game.physics.arcade.enable(this.sprite); // Enabling arcade physics on player sprite
     this.game.physics.arcade.enableBody(this.sprite);
     this.sprite.body.allowGravity = false;
@@ -122,5 +122,22 @@ ZacEsquilo.Entity.prototype = {
         }
       }
     }
+  },
+
+  hasEnemyUp: function(player, enemiesGroup){
+    for (var i = 0; i < enemiesGroup.length; i++){
+      enemy = enemiesGroup.children[i];
+      if (enemy.y == player.y - 50){
+        if ( enemy.x <= player.x + 50 && enemy.x > player.x - 50) {
+          console.log('ex: '+enemy.x);
+          console.log('px: '+player.x);
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+    }
+      // console.log(enemiesGroup.children[i]);
   }
 }
