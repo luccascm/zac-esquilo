@@ -34,16 +34,22 @@ ZacEsquilo.MainMenu.prototype = {
     // Cria texto "MENU INICIAL"
     this.createText();
 
-    ZacEsquilo.play_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY - 70, 'playBtn', this.startGame, this, 1, 0);
-    ZacEsquilo.options_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.configOptions, this, 1, 0);
-    ZacEsquilo.instructions_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 70, 'instructionsBtn', this.instructions, this, 1, 0);
-    ZacEsquilo.credits_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 140, 'creditsBtn', this.credits, this, 1, 0);
+    ZacEsquilo.play_btn = this.game.add.button(this.game.world.centerX, 120, 'playBtn', this.startGame, this, 1, 0);
+    ZacEsquilo.options_btn = this.game.add.button(this.game.world.centerX, 210, 'optionsBtn', this.configOptions, this, 1, 0);
+    ZacEsquilo.instructions_btn = this.game.add.button(this.game.world.centerX, 300, 'instructionsBtn', this.instructions, this, 1, 0);
+    ZacEsquilo.credits_btn = this.game.add.button(this.game.world.centerX, 390, 'creditsBtn', this.credits, this, 1, 0);
+
+    ZacEsquilo.play_btn.anchor.setTo(0.5, 0);
+    ZacEsquilo.options_btn.anchor.setTo(0.5, 0);
+    ZacEsquilo.instructions_btn.anchor.setTo(0.5, 0);
+    ZacEsquilo.credits_btn.anchor.setTo(0.5, 0);
 
     if(ZacEsquilo.config.oneSwitchActive === true){
       var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
         ZacEsquilo.play_btn,
         ZacEsquilo.options_btn,
-        ZacEsquilo.instructions_btn
+        ZacEsquilo.instructions_btn,
+        ZacEsquilo.credits_btn,
       ], 2, this.game);
       oneswitchmanager.start();
     }

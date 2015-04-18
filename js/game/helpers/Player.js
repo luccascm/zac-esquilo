@@ -129,7 +129,8 @@ ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
     }
     else{
       // player.kill();
-      this.game.state.start('Scoreboard');
+      this.gameOverScreen();
+      // this.game.state.start('GameOver');
     }
   }
 };
@@ -153,7 +154,8 @@ ZacEsquilo.Player.prototype.playerDrown = function(player, friend){
       this.abortMovement();
     }
     else{
-      this.game.state.start('Scoreboard');
+      // this.game.state.start('GameOver');
+      this.gameOverScreen();
     }
   }
 
@@ -180,8 +182,6 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.sprite.body.moves = true;
   this.sprite.body.immovable = true;
   ZacEsquilo.config.won = true;
-  console.log(this.sprite);
-  console.log(this);
 
   this.restartKey.onDown.add(this.restartGame,this);
 
@@ -191,7 +191,7 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione espaço para jogar novamente", this.fontStyle);
+  this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
@@ -199,6 +199,33 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.game.add.tween(this.tela_Vitoria).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
   // this.game.paused = true;
 };
+
+ZacEsquilo.Player.prototype.gameOverScreen = function(){
+  this.tela_gameover = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'forestBackground');
+  this.tela_gameover.anchor.setTo(0.5, 0);
+
+  this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, '', null, this);
+  // this.game.pause();
+  this.sprite.body.moves = true;
+  this.sprite.body.immovable = true;
+  ZacEsquilo.config.won = true;
+
+  this.restartKey.onDown.add(this.restartGame,this);
+
+  this.fontStyle = { font: "40px Bubblegum Sans", fill: "#fff", align: "center"};
+  this.scoreText = this.game.add.text(this.game.world.centerX, 100, "Game Over!!", this.fontStyle);
+  this.scoreText.anchor.setTo(0.5);
+  this.scoreText.wordWrap = true;
+  this.scoreText.wordWrapWidth = this.game.world.width - 30;
+
+  this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
+  this.playAgainText.anchor.setTo(0.5);
+  this.playAgainText.wordWrap = true;
+  this.playAgainText.wordWrapWidth = this.game.world.width - 30;
+
+  this.game.add.tween(this.tela_gameover).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
+  // this.game.paused = true;
+}
 
 ZacEsquilo.Player.prototype.restartGame = function(key){
   // this.game.paused = false;

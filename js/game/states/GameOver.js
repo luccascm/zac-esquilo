@@ -6,13 +6,17 @@ ZacEsquilo.GameOver = function(game) { this.scoreText = null; };
 
 ZacEsquilo.GameOver.prototype = {
   preload: function(){
-    this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'forestBackground');
+    // this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'forestBackground');
     
     this.restartKey = this.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
 
   },
 
   create: function(){
+    this.tela_gameover = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'forestBackground');
+    this.tela_gameover.anchor.setTo(0.5, 0);
+    this.game.add.tween(this.tela_gameover).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
+    
     this.preload_char = this.add.sprite(30, this.game.world.height - 190, 'zacStart');
     this.preload_char.scale = 0.4;
 

@@ -23,11 +23,11 @@ Preparando tentativa de refatoracao
 - keyboard
 
 
-Finalizar modo one switch
-Alterar texto preload
-padronizar botoes
-tirar efeito hover no modo one switch
-finalizar tela de opcoes (som e velocidade)
-bugs game over
+  Finalizar modo one switch
+x Alterar texto preload
+x padronizar botoes
+  tirar efeito hover no modo one switch
+  finalizar tela de opcoes (som e velocidade)
+  bugs game over
 
 */

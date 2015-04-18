@@ -30,6 +30,8 @@ ZacEsquilo.Boot.prototype = {
     this.game.load.audio('frogger_hop', 'assets/audio/frogger_hop.wav', false);
     this.game.load.audio('frogger_drown', 'assets/audio/frogger_drown.wav', false);
     this.game.load.audio('frogger_run_down', 'assets/audio/frogger_run_down.wav', false);
+    
+    this.game.load.audio('switch_option', 'assets/audio/beat.mp3', false);
   },
 
   create: function(){

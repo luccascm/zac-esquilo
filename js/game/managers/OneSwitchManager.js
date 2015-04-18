@@ -34,6 +34,9 @@ ZacEsquilo.OneSwitchManager.prototype = {
     // recuperar o item da lista options com o indice this.selected
     var curr_item = this.options[this.selected];
 
+    this.switch_option_sound = this.game.add.audio('switch_option', 2, false);
+    this.switch_option_sound.play();
+
     // definir o frame desse item para o frame selecionado
     curr_item.frame = (curr_item. frame + 1) % 2;
 
