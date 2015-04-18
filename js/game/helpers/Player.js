@@ -68,12 +68,12 @@ ZacEsquilo.Player.prototype.update = function(){
     }
 
     else{
-      if (this.movePlayerKey.isDown){
-        for (e in this.enemiesGroup){
-          console.log('ex: '+ e);
-        }
-      }
-      // this.key.onDown.add(this.oneSwitchMove, this);
+      this.key.onDown.add(this.oneSwitchMove, this);
+      // if (this.movePlayerKey.isDown){
+      //   for (e in this.enemiesGroup){
+      //     console.log('ex: '+ e);
+      //   }
+      // }
     }
   }
 
@@ -195,16 +195,12 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
-<<<<<<< Updated upstream
 
   this.game.add.tween(this.tela_Vitoria).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
-=======
-
->>>>>>> Stashed changes
   // this.game.paused = true;
 };
 
 ZacEsquilo.Player.prototype.restartGame = function(key){
   // this.game.paused = false;
-  this.game.state.start('Boot');
+  this.game.state.start('MainMenu');
 };

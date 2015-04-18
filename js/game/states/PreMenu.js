@@ -39,7 +39,10 @@ ZacEsquilo.PreMenu.prototype = {
 
   createText: function() {
     ZacEsquilo.switch_text = null;
-    this.switch_question = "O modo de jogo acessível (One Switch) está ativado. \n Pressione a barra de espaço para \n selecionar a opção desejada. "
+    var up_arrow = String.fromCharCode(24);
+    this.switch_question = "É possível jogar este jogo utilizando apenas uma tecla ou do modo tradicional ( \u2191 \u2192 \u2193 \u2190 )";
+    this.switch_question += "\n Escolha qual o modo desejado utilizando a";
+    this.spacebar_text = "barra de espaço";
 
     // this.fontStyle = { font: "20px Arial", fill: "#330033", align: "center"};
     this.fontStyle = { font: "25px Sigmar One", fill: "#330033", align: "center"};
@@ -68,3 +71,11 @@ ZacEsquilo.PreMenu.prototype = {
     this.state.start('MainMenu');
   }
 };
+
+
+/*
+É possível jogar este jogo utilizando apenas uma tecla ou do modo tradicional (setas direcionais).
+Escolha qual o modo de jogo desejado utilizando a [barra de espaço].
+
+Padronizar botoes
+*/

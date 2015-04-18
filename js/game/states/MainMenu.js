@@ -22,6 +22,7 @@ ZacEsquilo.MainMenu.prototype = {
     this.load.spritesheet('playBtn', 'assets/images/buttons/play.png', 189, 58, 2);
     this.load.spritesheet('optionsBtn', 'assets/images/buttons/options.png', 189, 58, 2);
     this.load.spritesheet('instructionsBtn', 'assets/images/buttons/instructions.png', 189, 58, 2);
+    this.load.spritesheet('creditsBtn', 'assets/images/buttons/credits.png', 189, 58, 2);
   },
 
   create: function(){
@@ -36,6 +37,7 @@ ZacEsquilo.MainMenu.prototype = {
     ZacEsquilo.play_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY - 70, 'playBtn', this.startGame, this, 1, 0);
     ZacEsquilo.options_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'optionsBtn', this.configOptions, this, 1, 0);
     ZacEsquilo.instructions_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 70, 'instructionsBtn', this.instructions, this, 1, 0);
+    ZacEsquilo.credits_btn = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 140, 'creditsBtn', this.credits, this, 1, 0);
 
     if(ZacEsquilo.config.oneSwitchActive === true){
       var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
@@ -89,5 +91,9 @@ ZacEsquilo.MainMenu.prototype = {
 
   instructions: function() {
     this.state.start('Instructions');
+  },
+
+  credits: function() {
+    this.state.start('Credits');
   }
 };

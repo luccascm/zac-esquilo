@@ -36,7 +36,7 @@ ZacEsquilo.Instructions.prototype = {
     this.gameObjective.wordWrapWidth = this.game.world.width - 20;
     this.gameObjective.anchor.setTo(0);
 
-    this.accessibleModeTitle = this.game.add.text(20, 200, "Modo Acessível", this.fontStyleSubtitle);
+    this.accessibleModeTitle = this.game.add.text(20, 200, "Modo Acessível (Botão único)", this.fontStyleSubtitle);
     this.accessibleModeTitle.wordWrap = true;
     this.accessibleModeTitle.wordWrapWidth = this.game.world.width - 20;
 

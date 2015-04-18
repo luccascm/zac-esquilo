@@ -10,5 +10,6 @@ game.state.add('ConfigKeys', ZacEsquilo.ConfigKeys);
 game.state.add('Instructions', ZacEsquilo.Instructions);
 game.state.add('PlayGame', ZacEsquilo.PlayGame);
 game.state.add('GameOver', ZacEsquilo.GameOver);
+game.state.add('Credits', ZacEsquilo.Credits);
 
 game.state.start('Boot');

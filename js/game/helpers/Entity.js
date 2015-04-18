@@ -124,6 +124,7 @@ ZacEsquilo.Entity.prototype = {
     }
   },
 
+  // enemy.entity.tileY
   hasEnemyUp: function(player, enemiesGroup){
     for (var i = 0; i < enemiesGroup.length; i++){
       enemy = enemiesGroup.children[i];
