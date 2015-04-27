@@ -1,10 +1,16 @@
-ZacEsquilo.OneSwitchManager = function(options, interval, game){
+ZacEsquilo.OneSwitchManager = function(options, interval, game, soundEffect){
   this.options = options;
   this.interval = interval;
   this.game = game;
   // this.timer1 = this.game.time.create(false);
   this.timer1 = this.game.time.events.loop(Phaser.Timer.SECOND * this.interval, this.changeState, this);
   this.selected = 0;
+  if (ZacEsquilo.config.soundEffect){
+    this.soundEffect = soundEffect;
+  }
+  else{
+    this.soundEffect = false;
+  }
 };
 
 ZacEsquilo.OneSwitchManager.prototype = {
@@ -21,7 +27,7 @@ ZacEsquilo.OneSwitchManager.prototype = {
   },
 
   stop: function(){
-    // this.time.stop();
+    this.timer1.timer.stop();
   },
 
   changeState: function(){
@@ -34,8 +40,10 @@ ZacEsquilo.OneSwitchManager.prototype = {
     // recuperar o item da lista options com o indice this.selected
     var curr_item = this.options[this.selected];
 
-    this.switch_option_sound = this.game.add.audio('switch_option', 2, false);
-    this.switch_option_sound.play();
+    if (this.soundEffect){
+      this.switch_option_sound = this.game.add.audio('switch_option', 2, false);
+      this.switch_option_sound.play();
+    }
 
     // definir o frame desse item para o frame selecionado
     curr_item.frame = (curr_item. frame + 1) % 2;

@@ -1,6 +1,8 @@
 ZacEsquilo.Friend = function(tileX, tileY, speed, scale, spriteKey, game, direction){
   this.init(tileX, tileY, speed, scale, spriteKey, game);
   // outros params
+  this.initialTileX = tileX;
+  this.initialTileY = tileY;
   this.direction = direction;
   this.sprite.animations.add('mover')
   this.sprite.animations.play('mover', 5, true);
@@ -12,11 +14,14 @@ ZacEsquilo.Friend.prototype.update = function(){
   if(!this.ismoving){
     this.move(this.direction); //direction
   }
-  if (this.sprite.x >= this.game.world.width){
-    this.sprite.x = this.tileX;
+  if (this.sprite.x > this.game.world.width){
+    // this.sprite.x = this.tileX;
+    // if (this.direction == 'left'){ this.sprite.reset(); }
+    if (this.direction == 'right'){ this.sprite.kill(); this.sprite.reset(0, (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2)); }
   }
   if (this.sprite.x < 0){
-    this.sprite.x = this.game.world.width;
+    if (this.direction == 'left'){ this.sprite.kill(); this.sprite.reset(this.game.world.width + this.sprite.width, (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2)); }
+    // this.sprite.x = this.game.world.width;
   }
 
   var prevX = this.sprite.x,

@@ -29,14 +29,23 @@ ZacEsquilo.PlayGame.prototype = {
 
     //Criando tilemap
     this.map = this.game.add.tilemap('map-1');
+    ZacEsquilo.map = this.game.add.tilemap('map-1');
+    this.map = this.game.add.tilemap('map-1');
+    ZacEsquilo.map = this.game.add.tilemap('map-1');
     this.map.addTilesetImage('tileset_sprites50');
+    ZacEsquilo.map.addTilesetImage('tileset_sprites50');
     this.map.addTilesetImage('land');
+    ZacEsquilo.map.addTilesetImage('land');
     this.map.addTilesetImage('water');
+    ZacEsquilo.map.addTilesetImage('water');
     this.map.addTilesetImage('grass');
+    ZacEsquilo.map.addTilesetImage('grass');
 
     // Criando layers
     // layer background
     this.bg_layer = this.map.createLayer('backgroundLayer');
+    ZacEsquilo.bg_layer = ZacEsquilo.map.createLayer('backgroundLayer');
+    ZacEsquilo.obj_layer = ZacEsquilo.map.createLayer('objectsLayer');
     // this.bg_layer.resizeWorld();
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);

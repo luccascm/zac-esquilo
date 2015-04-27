@@ -3,9 +3,12 @@ var ZacEsquilo = function() {};
 ZacEsquilo.config = {
   oneSwitchKey: "SPACEBAR",
   oneSwitchActive: true,
+  oneSwitchSpeed: 2,
   tileSize: 50,
   playerLives: 3,
   playerSpeed: 5,
+  music: true,
+  soundEffects: true,
   won: false
 };
 

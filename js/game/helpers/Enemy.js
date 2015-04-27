@@ -10,13 +10,15 @@ ZacEsquilo.Enemy.prototype = Object.create(ZacEsquilo.Entity.prototype);
 
 ZacEsquilo.Enemy.prototype.update = function(){
   if(!this.ismoving){
-    this.move(this.direction); //direction
+    this.move(this.direction);
   }
-  if (this.sprite.x >= this.game.world.width){
-    this.sprite.x = this.tileX;
+
+  // Reset sprite ao sair da tela
+  if (this.sprite.x > this.game.world.width){
+    if (this.direction == 'right'){ this.sprite.kill(); this.sprite.reset(0, (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2)); }
   }
   if (this.sprite.x < 0){
-    this.sprite.x = this.game.world.width;
+    if (this.direction == 'left'){ this.sprite.kill(); this.sprite.reset(this.game.world.width + this.sprite.width, (this.initialtileY * ZacEsquilo.config.tileSize) - (ZacEsquilo.config.tileSize / 2)); }
   }
 
   ZacEsquilo.Entity.prototype.update.call(this);

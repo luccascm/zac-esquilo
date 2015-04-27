@@ -30,10 +30,10 @@ ZacEsquilo.PreMenu.prototype = {
       ZacEsquilo.switch_off.onInputOut.add(null,this);
     }
 
-
-
-    ZacEsquilo.soundtrack = this.game.add.audio('main_theme', 0.3, true);
-    ZacEsquilo.soundtrack.play();
+    if (ZacEsquilo.config.music){
+      ZacEsquilo.soundtrack = this.game.add.audio('main_theme', 0.3, true);
+      ZacEsquilo.soundtrack.play();
+    }
 
     // Define botão switch_on como selecionado a priori
     this.game.time.events.add(200, function(){
@@ -61,9 +61,7 @@ ZacEsquilo.PreMenu.prototype = {
     this.spacebarText.fontWeight = "bold";
     this.spacebarText.setShadow(3, 1, 'rgba(0,0,0,0.4)', 2);
 
-
     this.fontStyle = { font: "25px Sigmar One", fill: "#330033", align: "center"};
-
 
     ZacEsquilo.switch_text = this.game.add.text(this.game.world.centerX, this.game.world.centerY/2, this.switch_question, this.fontStyle);
     ZacEsquilo.switch_text.anchor.setTo(0.5);
@@ -91,11 +89,3 @@ ZacEsquilo.PreMenu.prototype = {
     this.state.start('MainMenu');
   }
 };
-
-
-/*
-É possível jogar este jogo utilizando apenas uma tecla ou do modo tradicional (setas direcionais).
-Escolha qual o modo de jogo desejado utilizando a [barra de espaço].
-
-Padronizar botoes
-*/

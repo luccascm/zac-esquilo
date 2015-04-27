@@ -43,11 +43,7 @@ ZacEsquilo.Preload.prototype = {
     //  blank frames at the end, so we tell the loader how many to load
 
     // Enemies (cars)
-    // #TODO: Transformar imagem em spritesheet
     // Params: key, path, width, height, num of frames
-    // this.load.image('blue_car', 'assets/images/sprites/enemies/blue_car.png');
-    // this.load.image('black_viper', 'assets/images/sprites/enemies/black_viper.png');
-    // this.load.image('mini_truck', 'assets/images/sprites/enemies/mini_truck.png');
     this.load.image('truck', 'assets/images/sprites/enemies/truck.png');
     this.load.image('mini_car', 'assets/images/sprites/enemies/mini_car.png');
     this.load.image('conversivel', 'assets/images/sprites/enemies/conversivel.png');
@@ -56,8 +52,6 @@ ZacEsquilo.Preload.prototype = {
     // Friends ( wood & nuts )
     this.load.image('log1', 'assets/images/sprites/friends/log1.png');
     this.load.image('log2', 'assets/images/sprites/friends/log2.png');
-    // this.load.image('short_log', 'assets/images/sprites/friends/log100.png');
-    // this.load.image('long_log', 'assets/images/sprites/friends/log150.png');
 
     // Cria textos e define parametros iniciais da animação de carregamento
     this.createText();
@@ -73,32 +67,32 @@ ZacEsquilo.Preload.prototype = {
 
     // Time animations (fade in/out)
     // Fade in: Texto de créditos + splash logo + preload bar
-    this.game.time.events.add(20, function() {
-      this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.preload_bar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
-    }, this);
+    // this.game.time.events.add(20, function() {
+    //   this.game.add.tween(this.splash).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(this.preload_bar).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+    // }, this);
 
     // // Fade out: Texto de créditos + splash logo + preload bar
-    this.game.time.events.add(1200, function() {
-      this.game.add.tween(this.splash).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    }, this);
+    // this.game.time.events.add(1200, function() {
+    //   this.game.add.tween(this.splash).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(ZacEsquilo.credits_text).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    // }, this);
 
     // // Fade in: Nome do jogo + Imagem personagem intro
-    this.game.time.events.add(2020, function() {
-      this.game.add.tween(this.zac_intro).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.game_name).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
-    }, this);
+    // this.game.time.events.add(2020, function() {
+    //   this.game.add.tween(this.zac_intro).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(this.game_name).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true);
+    // }, this);
 
     // // Fade out: Nome do jogo + Imagem personagem intro
-    this.game.time.events.add(5020, function() {
-      this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-      this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-    }, this);
+    // this.game.time.events.add(5020, function() {
+    //   this.game.add.tween(this.zac_intro).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    //   this.game.add.tween(this.game_name).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+    // }, this);
 
     // Inicia estado 'PreMenu'
-    this.game.time.events.add(6100, function() { this.state.start('PreMenu'); }, this);
+    this.game.time.events.add(100, function() { this.state.start('PreMenu'); }, this);
 
   },
 
@@ -111,12 +105,7 @@ ZacEsquilo.Preload.prototype = {
     this.fontStyle = { font: "40px Bubblegum Sans", fill: "#330033", align: "center"};
     this.fontStyle2 = { font: "40px Sigmar One", fill: "#330033", align: "center"};
 
-    ZacEsquilo.credits_text = this.game.add.text(
-                                this.game.world.centerX,
-                                this.game.world.centerY + 55,
-                                "Lucas Cardoso Medeiros \n apresenta",
-                                this.fontStyle2
-                              );
+    ZacEsquilo.credits_text = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 55, "Lucas Cardoso Medeiros \n apresenta", this.fontStyle2 );
 
     ZacEsquilo.credits_text.anchor.setTo(0.5);
   },
