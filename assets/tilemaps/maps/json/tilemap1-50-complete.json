@@ -13,7 +13,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":10,
+         "height":0,
          "name":"objectsLayer",
          "objects":[
                 {
@@ -31,74 +31,6 @@
                  "visible":true,
                  "width":0,
                  "x":0,
-                 "y":100
-                }, 
-                {
-                 "gid":5,
-                 "height":0,
-                 "name":"winnerTile",
-                 "properties":
-                    {
-                     "sprite":"grass",
-                     "type":"grass",
-                     "winnerTile":""
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":200,
-                 "y":100
-                }, 
-                {
-                 "gid":5,
-                 "height":0,
-                 "name":"winnerTile",
-                 "properties":
-                    {
-                     "sprite":"grass",
-                     "type":"grass",
-                     "winnerTile":""
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":350,
-                 "y":100
-                }, 
-                {
-                 "gid":5,
-                 "height":0,
-                 "name":"winnerTile",
-                 "properties":
-                    {
-                     "sprite":"grass",
-                     "type":"grass",
-                     "winnerTile":""
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":500,
-                 "y":100
-                }, 
-                {
-                 "gid":5,
-                 "height":0,
-                 "name":"winnerTile",
-                 "properties":
-                    {
-                     "sprite":"grass",
-                     "type":"grass",
-                     "winnerTile":""
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":700,
                  "y":100
                 }, 
                 {
@@ -473,40 +405,6 @@
                  "visible":true,
                  "width":0,
                  "x":500,
-                 "y":150
-                }, 
-                {
-                 "gid":4,
-                 "height":0,
-                 "name":"water",
-                 "properties":
-                    {
-                     "rezzWood":"",
-                     "sprite":"water",
-                     "type":"water"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":500,
-                 "y":150
-                }, 
-                {
-                 "gid":4,
-                 "height":0,
-                 "name":"water",
-                 "properties":
-                    {
-                     "rezzWood":"",
-                     "sprite":"water",
-                     "type":"water"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":550,
                  "y":150
                 }, 
                 {
@@ -1851,11 +1749,79 @@
                  "width":0,
                  "x":350,
                  "y":500
+                }, 
+                {
+                 "gid":5,
+                 "height":0,
+                 "name":"winnerTile",
+                 "properties":
+                    {
+                     "sprite":"grass",
+                     "type":"grass",
+                     "winnerTile":""
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":200,
+                 "y":100
+                }, 
+                {
+                 "gid":5,
+                 "height":0,
+                 "name":"winnerTile",
+                 "properties":
+                    {
+                     "sprite":"grass",
+                     "type":"grass",
+                     "winnerTile":""
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":350,
+                 "y":100
+                }, 
+                {
+                 "gid":5,
+                 "height":0,
+                 "name":"winnerTile",
+                 "properties":
+                    {
+                     "sprite":"grass",
+                     "type":"grass",
+                     "winnerTile":""
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":500,
+                 "y":100
+                }, 
+                {
+                 "gid":5,
+                 "height":0,
+                 "name":"winnerTile",
+                 "properties":
+                    {
+                     "sprite":"grass",
+                     "type":"grass",
+                     "winnerTile":""
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":700,
+                 "y":100
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":15,
+         "width":0,
          "x":0,
          "y":0
         }],

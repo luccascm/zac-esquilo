@@ -99,7 +99,7 @@ ZacEsquilo.Player.prototype.update = function(){
 ZacEsquilo.Player.prototype.oneSwitchMove = function(){
   console.log( this.hasEnemyUp(this.sprite, this.enemiesGroup) );
   console.log( this.hasFriendUp(this.sprite, this.friendsGroup) );
-  this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup));
+  this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup));
 
   // ok para inimigos
   // if( this.hasEnemyUp(this.sprite, this.enemiesGroup) && Math.floor(this.sprite.entity.tileX) > 1 )

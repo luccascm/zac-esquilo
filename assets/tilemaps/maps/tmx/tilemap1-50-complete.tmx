@@ -179,20 +179,6 @@
     <property name="type" value="water"/>
    </properties>
   </object>
-  <object name="water" gid="4" x="500" y="150">
-   <properties>
-    <property name="rezzWood" value=""/>
-    <property name="sprite" value="water"/>
-    <property name="type" value="water"/>
-   </properties>
-  </object>
-  <object name="water" gid="4" x="550" y="150">
-   <properties>
-    <property name="rezzWood" value=""/>
-    <property name="sprite" value="water"/>
-    <property name="type" value="water"/>
-   </properties>
-  </object>
   <object name="water" gid="4" x="600" y="150">
    <properties>
     <property name="rezzWood" value=""/>

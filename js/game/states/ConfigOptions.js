@@ -5,12 +5,12 @@ ZacEsquilo.ConfigOptions = function() {
 ZacEsquilo.ConfigOptions.prototype = {
   preload: function() {
     this.game.stage.backgroundColor = "#FFB631";
-    this.load.spritesheet('speed1', 'assets/images/buttons/speed1.png', 189, 58, 2);
-    this.load.spritesheet('speed2', 'assets/images/buttons/speed2.png', 189, 58, 2);
-    this.load.spritesheet('speed3', 'assets/images/buttons/speed3.png', 189, 58, 2);
+    this.load.spritesheet('speed1', 'assets/images/buttons/speed1.png', 256, 58, 2);
+    this.load.spritesheet('speed2', 'assets/images/buttons/speed2.png', 256, 58, 2);
+    this.load.spritesheet('speed3', 'assets/images/buttons/speed3.png', 256, 58, 2);
 
-    this.load.spritesheet('optionOn', 'assets/images/buttons/optionOn.png', 189, 58, 2);
-    this.load.spritesheet('optionOff', 'assets/images/buttons/optionOff.png', 189, 58, 2);
+    this.load.spritesheet('optionOn', 'assets/images/buttons/optionOn.png', 256, 58, 2);
+    this.load.spritesheet('optionOff', 'assets/images/buttons/optionOff.png', 256, 58, 2);
 
     this.load.spritesheet('speedIndicator', 'assets/images/buttons/speedIndicator.png', 35, 35, 2);
   },

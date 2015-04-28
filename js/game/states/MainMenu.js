@@ -12,10 +12,10 @@ ZacEsquilo.MainMenu.prototype = {
     this.background = ZacEsquilo.menu_bg;
 
     // Botões de opções do menu
-    this.load.spritesheet('playBtn', 'assets/images/buttons/play.png', 189, 58, 2);
-    this.load.spritesheet('optionsBtn', 'assets/images/buttons/options.png', 189, 58, 2);
-    this.load.spritesheet('instructionsBtn', 'assets/images/buttons/instructions.png', 189, 58, 2);
-    this.load.spritesheet('creditsBtn', 'assets/images/buttons/credits.png', 189, 58, 2);
+    this.load.spritesheet('playBtn', 'assets/images/buttons/play.png', 256, 58, 2);
+    this.load.spritesheet('optionsBtn', 'assets/images/buttons/options.png', 256, 58, 2);
+    this.load.spritesheet('instructionsBtn', 'assets/images/buttons/instructions.png', 256, 58, 2);
+    this.load.spritesheet('creditsBtn', 'assets/images/buttons/credits.png', 256, 58, 2);
   },
 
   create: function(){

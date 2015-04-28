@@ -2,8 +2,8 @@ ZacEsquilo.PreMenu = function() {};
 
 ZacEsquilo.PreMenu.prototype = {
   preload: function(){
-    this.load.spritesheet('oneSwitchOn', 'assets/images/buttons/teclaUnica.png', 189, 58, 2);
-    this.load.spritesheet('oneSwitchOff', 'assets/images/buttons/modoTradicional.png', 189, 58, 2);
+    this.load.spritesheet('oneSwitchOn', 'assets/images/buttons/teclaUnica.png', 256, 58, 2);
+    this.load.spritesheet('oneSwitchOff', 'assets/images/buttons/modoTradicional.png', 256, 58, 2);
   },
 
   create: function(){

@@ -186,15 +186,15 @@ ZacEsquilo.Entity.prototype = {
   //   return false;    
   // },
 
-  sideDanger: function(player, enemiesGroup, friendsGroup){
+  sideDanger: function(player, enemiesGroup){
     for (var i = 0; i < enemiesGroup.length; i++){
       enemy = enemiesGroup.children[i];
       if (enemy.entity.tileY == Math.floor(player.entity.tileY)){
-        if (enemy.entity.tileX == Math.floor(player.entity.tileX) + 1 && enemy.entity.direction == 'left'){ return true; }
-        if (enemy.entity.tileX == Math.floor(player.entity.tileX) - 1 && enemy.entity.direction == 'right'){ return true; }
+        if (enemy.entity.tileX == Math.floor(player.entity.tileX) + 1 && enemy.entity.direction == 'left'){ return 'left'; }
+        if (enemy.entity.tileX == Math.floor(player.entity.tileX) - 1 && enemy.entity.direction == 'right'){ return 'right'; }
       }
     }
-    return false;
+    return 'clear';
     // for (var j = 0; j < friendsGroup.length; j++){
     //   friend = friendsGroup.children[j];
     //   if (friend.entity.tileY == Math.floor(player.entity.tileY)){
@@ -221,23 +221,76 @@ ZacEsquilo.Entity.prototype = {
         // }
       }
     }
+    return false;
   },
 
-  autoMove: function(player, enemiesGroup, friendsGroup){
+  hasWaterUp: function(player, waterGroup){
+    for (var i = 0; i < waterGroup.length; i++){
+      water = waterGroup.children[i];
+      if ( (player.y + player.height/2 - 50) <= water.y - (water.y/2) ) {
+        if (player.x >= water.x - (water.width/2) && player.x <= water.x + (water.width/2) ) return true; 
+      }
+    }
+    return false;
+  },
+
+  moveOverFriend: function(player, friendsGroup){
+    for (var i = 0; i < friendsGroup.length; i++){
+      friend = friendsGroup.children[i];
+      if ( friend.entity.tileY == Math.floor(player.entity.tileY) ){
+        if (player.x - 50 >= friend.x - (friend.width/2) ) return 'left';
+        else if (player.x + 50 <= friend.x + (friend.width/2) ) return 'right';
+      }
+    }
+    return 'down';
+  },
+
+  autoMove: function(player, enemiesGroup, friendsGroup, waterGroup){
+    // Se tiver friend em cima vai para cima
+    if ( this.hasFriendUp(player, friendsGroup) ){ return 'up'; }
+
+    // Se nao tiver friend e tiver enemy em cima vai para um dos lados ou para baixo
+    else if ( this.hasEnemyUp(player, enemiesGroup) ){
+      if ( this.sideDanger(player, enemiesGroup) != 'clear' ) return 'down';
+      else return this.sideDanger(player, enemiesGroup); 
+    }
+    
+    // Se nao tiver friend nem eneny em cima mas tiver agua em cima vai para um dos lados ou para baixo
+    else if ( this.hasWaterUp(player, waterGroup) ){
+      return this.moveOverFriend(player, friendsGroup);
+    }
+
+    // Se nao tiver friend nem enemy nem agua vai para cima
+    else return 'up';
     // var enemy = enemiesGroup.children[0];
     // var friend = friendsGroup.children[0];
-    console.log( ZacEsquilo.map.getTile(ZacEsquilo.obj_layer.getTileX(player.x), ZacEsquilo.obj_layer.getTileY(player.y), 'objectsLayer') );
-    if ( this.hasEnemyUp(player, enemiesGroup) ){
-      if (this.sideDanger(player, enemiesGroup, friendsGroup) ){ return 'down'; }
-      else return enemy.entity.direction;
-    }
-    else if (player.entity.tileY == 6 && !this.hasFriendUp(player, friendsGroup)){
-      if (Math.floor(player.entity.tileX) > 2) return 'left';
-      else return 'right';
-    }
-    else if ( player.entity.tileY == 6 && this.hasFriendUp(player, friendsGroup) ) return 'up';
-    // else if ( player.entity.tileY < 6 && ( this.hasFriendUp(player,friendsGroup) ||  ) )
-    else return 'up';
+    // console.log( ZacEsquilo.map.getTile(ZacEsquilo.obj_layer.getTileX(player.x), ZacEsquilo.obj_layer.getTileY(player.y), 'objectsLayer') );
+    // if ( this.hasEnemyUp(player, enemiesGroup) || this.hasWaterUp(player, waterGroup) ){
+    //   if (this.sideDanger(player, enemiesGroup, friendsGroup) ){ return 'down'; }
+    //   else return enemy.entity.direction;
+    // }
+
+    // else if ( this.hasFriendUp(player, friendsGroup) ) return 'up';
+
+    // else if ( !this.hasEnemyUp(player, enemiesGroup) && this.hasWaterUp(player, waterGroup)){
+    //   for (var f = 0; f < friendsGroup.length; f++){
+    //     friend = friendsGroup.children[f];
+    //     if (friend.entity.tileY == Math.floor(player.entity.tileY)){
+    //       if (player.x - 50 >= friend.x - (friend.width/2) ) return 'left';
+    //       else if ( player.x + 50 <= friend.x + (friend.width/2) ) return 'right';
+    //       else return 'up';
+    //     }
+    //   }
+    // }
+
+    // else if (player.entity.tileY == 6 && !this.hasFriendUp(player, friendsGroup)){
+    //   if (Math.floor(player.entity.tileX) > 2) return 'left';
+    //   else return 'right';
+    // }
+    
+    // else if ( player.entity.tileY == 6 && this.hasFriendUp(player, friendsGroup) ) return 'up';
+
+    // else return 'up';
   },
 
   teleport: function(tileX) {
