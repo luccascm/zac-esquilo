@@ -18,6 +18,9 @@ ZacEsquilo.Entity.prototype = {
     this.sprite.scale.setTo(scale);
     this.sprite.anchor.setTo(0.5);
 
+    ZacEsquilo.config.gameHeight = this.game.world.height;
+    ZacEsquilo.config.gameWidth = this.game.world.width;
+
     if (ZacEsquilo.config.oneSwitchActive === false) { this.cursors = this.game.input.keyboard.createCursorKeys(); }
     else{
       this.game.input.keyboard.addKeyCapture(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
@@ -132,25 +135,30 @@ ZacEsquilo.Entity.prototype = {
   hasEnemyUp: function(player, enemiesGroup){
     for (var i = 0; i < enemiesGroup.length; i++){
       enemy = enemiesGroup.children[i];
-      
+      enemy_left_border = enemy.x - (enemy.width/2);
+      enemy_right_border = enemy.x + (enemy.width/2);
+      player_left_border = player.x - (player.width/2);
+      player_right_border = player.x + (player.width/2);
       // if (enemy.entity.tileY == player.entity.tileY - 1){
       //   if (enemy.entity.direction == 'left'){
-      //     if (enemy.entity.tileX > player.entity.tileX + 1 || enemy.entity.tileX <= player.entity.tileX) 
-      //       return false;
-      //     else
-      //       return true;
+      //     if (enemy.entity.tileX == player.entity.tileX + 1 ) return true;
       //   }
+        
       //   if (enemy.entity.direction == 'right'){
-      //     if (enemy.entity.tileX < player.entity.tileX - 1 || enemy.entity.tileX >= player.entity.tileX)
-      //       return false;
-      //     else
-      //       return true;
+      //     if (enemy.entity.tileX == player.entity.tileX - 1 ) return true;
       //   }
       // }
       
       if (enemy.entity.tileY == Math.floor(player.entity.tileY) - 1){
         // if (enemy.entity.tileX == Math.floor(player.entity.tileX)) return true;
-        if (enemy.x >= player.x - ZacEsquilo.config.tileSize + (ZacEsquilo.config.tileSize/2) && enemy.x <= player.x + ZacEsquilo.config.tileSize + (ZacEsquilo.config.tileSize/2) ) return true;        
+        if (enemy.entity.direction == 'left'){
+          if ( enemy_left_border <= player_right_border + ZacEsquilo.config.tileSize && enemy_right_border >= player_left_border - (ZacEsquilo.config.tileSize/5) ) return true;
+        }
+
+        else if (enemy.entity.direction == 'right'){
+          if ( enemy_right_border >= player_left_border - ZacEsquilo.config.tileSize && enemy_right_border <= player_right_border + (ZacEsquilo.config.tileSize/5) ) return true;
+        }
+        // if (enemy.x + (enemy.width/2) >= player.x + ZacEsquilo.config.tileSize + (ZacEsquilo.config.tileSize/2) && enemy.x <= player.x - ZacEsquilo.config.tileSize - (ZacEsquilo.config.tileSize/2) ) return true;        
         // if (enemy.entity.direction == 'left'){
         //   if (enemy.entity.tileX == Math.floor(player.entity.tileX) + 1 ) return true;
         // }
@@ -189,12 +197,16 @@ ZacEsquilo.Entity.prototype = {
   sideDanger: function(player, enemiesGroup){
     for (var i = 0; i < enemiesGroup.length; i++){
       enemy = enemiesGroup.children[i];
+      enemy_left_border = enemy.x - (enemy.width/2);
+      enemy_right_border = enemy.x + (enemy.width/2);
+      player_left_border = player.x - (player.width/2);
+      player_right_border = player.x + (player.width/2);
       if (enemy.entity.tileY == Math.floor(player.entity.tileY)){
-        if (enemy.entity.tileX == Math.floor(player.entity.tileX) + 1 && enemy.entity.direction == 'left'){ return 'left'; }
-        if (enemy.entity.tileX == Math.floor(player.entity.tileX) - 1 && enemy.entity.direction == 'right'){ return 'right'; }
+        if (enemy_left_border <= player.x + ZacEsquilo.config.tileSize && enemy_right_border >= player_left_border - (ZacEsquilo.config.tileSize) && enemy.entity.direction == 'left'){ return true; }
+        if (enemy_left_border >= player.x - ZacEsquilo.config.tileSize && enemy_right_border <= player_left_border + (ZacEsquilo.config.tileSize) && enemy.entity.direction == 'right'){ return true; }
       }
     }
-    return 'clear';
+    return false;
     // for (var j = 0; j < friendsGroup.length; j++){
     //   friend = friendsGroup.children[j];
     //   if (friend.entity.tileY == Math.floor(player.entity.tileY)){
@@ -206,8 +218,19 @@ ZacEsquilo.Entity.prototype = {
   hasFriendUp: function(player, friendsGroup){
     for (var i = 0; i < friendsGroup.length; i++){
       friend = friendsGroup.children[i];
+      friend_left_border = friend.x - (friend.width/2);
+      friend_right_border = friend.x + (friend.width/2);
+      player_left_border = player.x - (player.width/2);
+      player_right_border = player.x + (player.width/2);
       if (friend.entity.tileY == Math.floor(player.entity.tileY) - 1){
-        if (player.x >= friend.x - (friend.width/2) && player.x <= friend.x + (friend.width/2) ) return true; 
+        if (friend.entity.direction == 'left'){
+          if ( player_left_border >= friend_left_border && player_right_border <= friend_right_border ) return true;
+        }
+
+        else if (friend.entity.direction == 'right'){
+          if ( player_right_border <= friend_right_border && player_left_border >= friend_left_border ) return true;
+        }
+        // if (player.x >= friend.x - (friend.width/2) && player.x <= friend.x + (friend.width/2) ) return true; 
         // console.log('fx: ' + friend.entity.tileX);
         // console.log('fw: ' + friend.width);
         // if ( friend.entity.tileX == Math.floor(player.entity.tileX) ) return true;
@@ -227,8 +250,32 @@ ZacEsquilo.Entity.prototype = {
   hasWaterUp: function(player, waterGroup){
     for (var i = 0; i < waterGroup.length; i++){
       water = waterGroup.children[i];
-      if ( (player.y + player.height/2 - 50) <= water.y - (water.y/2) ) {
-        if (player.x >= water.x - (water.width/2) && player.x <= water.x + (water.width/2) ) return true; 
+      water_left_border = water.x;
+      water_right_border = water.x + water.width;
+      player_left_border = player.x - (player.width/2);
+      player_right_border = player.x + (player.width/2);
+      if (water.y == 200) console.log('water: '+ water.x + ',' + water.y);
+      if ( (player.y + player.height/2 - ZacEsquilo.config.tileSize) <= water.y + water.height ) {
+        if (player.x >= water_left_border && player.x <= water_right_border ) {
+          console.log('true');
+          return true;
+        }
+      }
+    }
+    return false;
+  },
+
+  hasWinnerTileUp: function(player, winnerTilesGroup){
+    for (var i = 0; i < winnerTilesGroup.length; i++){
+      winner = winnerTilesGroup.children[i];
+      winner_left_border = winner.x;
+      winner_right_border = winner.x + winner.width;
+      player_left_border = player.x - (player.width/2);
+      player_right_border = player.x + (player.width/2);
+      if ( (player.y + player.height/2 - ZacEsquilo.config.tileSize) <= winner.y + winner.height ) {
+        if (player.x >= winner_left_border && player.x <= winner_right_border ) {
+          return true;
+        }
       }
     }
     return false;
@@ -237,26 +284,61 @@ ZacEsquilo.Entity.prototype = {
   moveOverFriend: function(player, friendsGroup){
     for (var i = 0; i < friendsGroup.length; i++){
       friend = friendsGroup.children[i];
+      friend = friendsGroup.children[i];
+      friend_left_border = friend.x - (friend.width/2);
+      friend_right_border = friend.x + (friend.width/2);
+      player_left_border = player.x - (player.width/2);
+      player_right_border = player.x + (player.width/2);
       if ( friend.entity.tileY == Math.floor(player.entity.tileY) ){
-        if (player.x - 50 >= friend.x - (friend.width/2) ) return 'left';
-        else if (player.x + 50 <= friend.x + (friend.width/2) ) return 'right';
+        if ( player.x - ZacEsquilo.config.tileSize >= friend_left_border ) return 'left';
+        else if ( player.x + ZacEsquilo.config.tileSize <= friend_right_border ) return 'right';
       }
     }
     return 'down';
   },
 
-  autoMove: function(player, enemiesGroup, friendsGroup, waterGroup){
+  autoMove: function(player, enemiesGroup, friendsGroup, waterGroup, winnerTilesGroup){
+    var player_left_border = player.x - (player.width/2);
+    var player_right_border = player.x + (player.width/2);
+    var player_can_go_left, player_can_go_right;
+    if (player_left_border - ZacEsquilo.config.tileSize >= 0)
+      player_can_go_left = true;
+    else player_can_go_left = false;
     // Se tiver friend em cima vai para cima
     if ( this.hasFriendUp(player, friendsGroup) ){ return 'up'; }
 
+    // Se nao tiver friend mas tiver tile de vitoria em cima vai pra cima
+    else if ( this.hasWinnerTileUp(player, winnerTilesGroup) ){ return 'up'; }
+    
     // Se nao tiver friend e tiver enemy em cima vai para um dos lados ou para baixo
     else if ( this.hasEnemyUp(player, enemiesGroup) ){
-      if ( this.sideDanger(player, enemiesGroup) != 'clear' ) return 'down';
-      else return this.sideDanger(player, enemiesGroup); 
+      if ( this.sideDanger(player, enemiesGroup) ) return 'down';
+      else{
+        if ( player.x - ZacEsquilo.config.tileSize >= 0 ) return 'left';
+        else return 'right';
+      } 
     }
     
     // Se nao tiver friend nem eneny em cima mas tiver agua em cima vai para um dos lados ou para baixo
-    else if ( this.hasWaterUp(player, waterGroup) ){
+    else if ( this.hasWaterUp(player, waterGroup) && player.entity.tileY == 6){
+      if (player_left_border - ZacEsquilo.config.tileSize >= 0 && player_can_go_left){
+        return 'left';
+      }
+      else{
+        player_can_go_left = false;
+        player_can_go_right = true;
+        if (player_right_border + ZacEsquilo.config.tileSize >= ZacEsquilo.config.gameWidth && player_can_go_right){
+          player_can_go_left = true;
+          player_can_go_right = false;
+          return 'left';
+        } 
+        return 'right';
+
+      }
+    }
+    
+    // Se nao tiver friend nem enemy mas tiver agua e nao tiver tile de vitoria vai para um dos lados ou para baixo
+    else if ( this.hasWaterUp(player, waterGroup) && !this.hasWinnerTileUp(player, winnerTilesGroup) ){
       return this.moveOverFriend(player, friendsGroup);
     }
 

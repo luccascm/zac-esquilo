@@ -112,7 +112,7 @@ ZacEsquilo.PlayGame.prototype = {
     }
 
     // Jogador
-    this.zac = new ZacEsquilo.Player(this.game.world.centerX/ZacEsquilo.config.tileSize, this.game.world.height/ZacEsquilo.config.tileSize - 1, 5, 0.9, 'zac-sprite', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
+    this.zac = new ZacEsquilo.Player(Math.ceil(this.game.world.centerX/ZacEsquilo.config.tileSize), this.game.world.height/ZacEsquilo.config.tileSize - 1, 5, 0.9, 'zac-sprite', this.game, this.enemiesGroup, this.friendsGroup, this.winnerTilesGroup, this.waterGroup);
 
     // Indicador de vidas
     this.lifeTextStyle = { font: "20px Sigmar One", fill: "#330033", align: "left"};
