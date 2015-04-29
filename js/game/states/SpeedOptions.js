@@ -1,6 +1,4 @@
-ZacEsquilo.SpeedOptions = function() {
-  
-};
+ZacEsquilo.SpeedOptions = function() {};
 
 ZacEsquilo.SpeedOptions.prototype = {
   preload: function() {
@@ -26,20 +24,22 @@ ZacEsquilo.SpeedOptions.prototype = {
     ZacEsquilo.back = this.game.add.button(worldWidth - 10, this.game.world.height - 10, 'back', this.backToMenu, this, 1, 0);
     ZacEsquilo.back.anchor.setTo(1);
 
-    this.speed1Btn = this.game.add.button(quarterWidth - 90, 130, 'speed1', this.setSpeed1, this, 1, 0);
+    this.speed1Btn = this.game.add.button(quarterWidth - 64, 150, 'speed1', this.setSpeed1, this, 1, 0);
     this.speed1Btn.anchor.setTo(0.5, 0);
-    this.speed2Btn = this.game.add.button(halfWidth, 130, 'speed2', this.setSpeed2, this, 1, 0);
+    this.speed2Btn = this.game.add.button(quarterWidth - 64, 240, 'speed2', this.setSpeed2, this, 1, 0);
     this.speed2Btn.anchor.setTo(0.5, 0);
-    this.speed3Btn = this.game.add.button(worldWidth - quarterWidth + 90, 130, 'speed3', this.setSpeed3, this, 1, 0);
+    this.speed3Btn = this.game.add.button(quarterWidth - 64, 330, 'speed3', this.setSpeed3, this, 1, 0);
     this.speed3Btn.anchor.setTo(0.5, 0);
 
-    this.speedIndicator11 = this.game.add.button(quarterWidth - 90, 200, 'speedIndicator', this.speed1, this, 1, 0);
-    this.speedIndicator21 = this.game.add.button(quarterWidth - 90, 250, 'speedIndicator', this.speed1, this, 1, 0);
-    this.speedIndicator12 = this.game.add.button(halfWidth, 200, 'speedIndicator', this.speed2, this, 1, 0);
-    this.speedIndicator22 = this.game.add.button(halfWidth, 250, 'speedIndicator', this.speed2, this, 1, 0);
-    this.speedIndicator13 = this.game.add.button(worldWidth - quarterWidth + 90, 200, 'speedIndicator', this.speed3, this, 1, 0);
-    this.speedIndicator23 = this.game.add.button(worldWidth - quarterWidth + 90, 250, 'speedIndicator', this.speed3, this, 1, 0);
-    
+    this.speedIndicator11 = this.game.add.button(halfWidth, 150, 'speedIndicator', this.speed1, this, 1, 0);
+    this.speedIndicator21 = this.game.add.button(halfWidth + 60, 150, 'speedIndicator', this.speed1, this, 1, 0);
+
+    this.speedIndicator12 = this.game.add.button(halfWidth, 240, 'speedIndicator', this.speed2, this, 1, 0);
+    this.speedIndicator22 = this.game.add.button(halfWidth +60, 240, 'speedIndicator', this.speed2, this, 1, 0);
+
+    this.speedIndicator13 = this.game.add.button(halfWidth, 330, 'speedIndicator', this.speed3, this, 1, 0);
+    this.speedIndicator23 = this.game.add.button(halfWidth + 60, 330, 'speedIndicator', this.speed3, this, 1, 0);
+
     // instanciando one switch manager para speed1
     var oneSwitchSpeed1 = new ZacEsquilo.OneSwitchManager([this.speedIndicator11, this.speedIndicator21], 1, this.game, false);
     oneSwitchSpeed1.start();
@@ -51,13 +51,15 @@ ZacEsquilo.SpeedOptions.prototype = {
     oneSwitchSpeed3.start();
 
     // instanciando one switch manager para botoes de velocidade
-    var oneswitchSpeed = new ZacEsquilo.OneSwitchManager([
+    ZacEsquilo.oneswitchSpeed = new ZacEsquilo.OneSwitchManager([
       this.speed1Btn,
       this.speed2Btn,
       this.speed3Btn,
     ], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
-    oneswitchSpeed.start();    
-    
+    ZacEsquilo.oneswitchSpeed.start();
+
+    ZacEsquilo.oneswitchmanager_back = new ZacEsquilo.OneSwitchManager([ZacEsquilo.back], ZacEsquilo.config.oneSwitchSpeed, this.game);
+
   },
 
   createText: function() {
@@ -68,24 +70,32 @@ ZacEsquilo.SpeedOptions.prototype = {
     ZacEsquilo.optionsTitle = this.game.add.text(10, 20, "Controle de velocidade", this.fontStyleTitle);
     ZacEsquilo.optionsTitle.anchor.setTo(0);
 
-    ZacEsquilo.speedText = this.game.add.text(this.game.world.centerX, 100, "Escolha o tempo de alternância de seleção dos botões", this.fontStyleSubtitle);
-    ZacEsquilo.speedText.anchor.setTo(0.5);
+    ZacEsquilo.speedText = this.game.add.text(20, 100, "Escolha o tempo de alternância de seleção dos botões", this.fontStyleOptions);
+    ZacEsquilo.speedText.anchor.setTo(0);
+    ZacEsquilo.speedText.wordWrap = true;
+    ZacEsquilo.speedText.wordWrapWidth = this.game.world.width - 20;
 
   },
 
   backToMenu: function(){
-    this.state.start('MainMenu');
+    this.state.start('ConfigOptions');
   },
 
   setSpeed1: function(){
     ZacEsquilo.config.oneSwitchSpeed = 1;
+    ZacEsquilo.oneswitchSpeed.stop();
+    ZacEsquilo.oneswitchmanager_back.start();
   },
-  
+
   setSpeed2: function(){
     ZacEsquilo.config.oneSwitchSpeed = 2;
+    ZacEsquilo.oneswitchSpeed.stop();
+    ZacEsquilo.oneswitchmanager_back.start();
   },
-  
+
   setSpeed3: function(){
     ZacEsquilo.config.oneSwitchSpeed = 3;
+    ZacEsquilo.oneswitchSpeed.stop();
+    ZacEsquilo.oneswitchmanager_back.start();
   }
 }
