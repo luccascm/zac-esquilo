@@ -16,19 +16,21 @@ ZacEsquilo.ConfigOptions.prototype = {
     ZacEsquilo.back = this.game.add.button(this.game.world.width - 10, this.game.world.height - 10, 'back', this.backToMenu, this, 1, 0);
     ZacEsquilo.back.anchor.setTo(1);
 
-    this.speedControl = this.game.add.button(this.game.world.centerX, 150, 'speedControl', this.speedOptions, this, 1, 0);
-    this.speedControl.anchor.setTo(0.5);
-
     this.soundControl = this.game.add.button(this.game.world.centerX, 250, 'soundControl', this.soundOptions, this, 1, 0);
     this.soundControl.anchor.setTo(0.5);
 
-    // instanciando one switch manager para botoes de velocidade
-    var oneSwitchOptions = new ZacEsquilo.OneSwitchManager([
-      this.speedControl,
-      this.soundControl,
-      ZacEsquilo.back,
-    ], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
-    oneSwitchOptions.start();    
+    if(ZacEsquilo.config.oneSwitchActive){ 
+      this.speedControl = this.game.add.button(this.game.world.centerX, 150, 'speedControl', this.speedOptions, this, 1, 0);
+      this.speedControl.anchor.setTo(0.5);
+      
+      // instanciando one switch manager para botoes de velocidade
+      var oneSwitchOptions = new ZacEsquilo.OneSwitchManager([
+        this.speedControl,
+        this.soundControl,
+        ZacEsquilo.back,
+      ], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
+      oneSwitchOptions.start();
+    }
     
   },
 

@@ -33,7 +33,7 @@ ZacEsquilo.MainMenu.prototype = {
     ZacEsquilo.instructions_btn.anchor.setTo(0.5, 0);
     ZacEsquilo.credits_btn.anchor.setTo(0.5, 0);
 
-    if(ZacEsquilo.config.oneSwitchActive === true){
+    if(ZacEsquilo.config.oneSwitchActive){ 
       var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
         ZacEsquilo.play_btn,
         ZacEsquilo.options_btn,

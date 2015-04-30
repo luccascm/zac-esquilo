@@ -12,7 +12,7 @@ ZacEsquilo.Instructions.prototype = {
     ZacEsquilo.back.anchor.setTo(1);
 
     // instanciar um oneswitchmanager
-    if(ZacEsquilo.config.oneSwitchActive === true){
+    if(ZacEsquilo.config.oneSwitchActive){ 
       var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
         ZacEsquilo.back,
       ], ZacEsquilo.config.oneSwitchSpeed, this.game);

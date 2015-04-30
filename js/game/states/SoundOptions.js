@@ -33,13 +33,15 @@ ZacEsquilo.SoundOptions.prototype = {
     ZacEsquilo.soundEffectsOff = this.game.add.button(halfWidth + quarterWidth, 330, 'se_off', this.soundEffects_Off, this, 1, 0);
     ZacEsquilo.soundEffectsOff.anchor.setTo(0.5);
 
-    // instanciando one switch manager para musica
-    ZacEsquilo.oneswitch_music = new ZacEsquilo.OneSwitchManager([ZacEsquilo.musicOn, ZacEsquilo.musicOff], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
-    ZacEsquilo.oneswitch_music.start();
+    if(ZacEsquilo.config.oneSwitchActive){ 
+      // instanciando one switch manager para musica
+      ZacEsquilo.oneswitch_music = new ZacEsquilo.OneSwitchManager([ZacEsquilo.musicOn, ZacEsquilo.musicOff], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
+      ZacEsquilo.oneswitch_music.start();
 
-    ZacEsquilo.oneswitch_soundEffects = new ZacEsquilo.OneSwitchManager([ZacEsquilo.soundEffectsOn, ZacEsquilo.soundEffectsOff], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
+      ZacEsquilo.oneswitch_soundEffects = new ZacEsquilo.OneSwitchManager([ZacEsquilo.soundEffectsOn, ZacEsquilo.soundEffectsOff], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
 
-    ZacEsquilo.oneswitchmanager_back = new ZacEsquilo.OneSwitchManager([ZacEsquilo.back], ZacEsquilo.config.oneSwitchSpeed, this.game, null);
+      ZacEsquilo.oneswitchmanager_back = new ZacEsquilo.OneSwitchManager([ZacEsquilo.back], ZacEsquilo.config.oneSwitchSpeed, this.game, null);
+    }
 
   },
 
@@ -75,25 +77,22 @@ ZacEsquilo.SoundOptions.prototype = {
     ZacEsquilo.config.music = true;
     ZacEsquilo.soundtrack.play();
     ZacEsquilo.oneswitch_music.stop();
-    ZacEsquilo.oneswitch_soundEffects.start();
+    if(ZacEsquilo.config.oneSwitchActive){ ZacEsquilo.oneswitch_soundEffects.start(); }
   },
 
   music_Off: function(){
     ZacEsquilo.config.music = false;
     ZacEsquilo.soundtrack.stop();
-    ZacEsquilo.oneswitch_music.stop();
-    ZacEsquilo.oneswitch_soundEffects.start();
+    if(ZacEsquilo.config.oneSwitchActive){ ZacEsquilo.oneswitch_music.stop(); ZacEsquilo.oneswitch_soundEffects.start(); }
   },
 
   soundEffects_On: function(){
     ZacEsquilo.config.soundEffects = true;
-    ZacEsquilo.oneswitch_soundEffects.stop();
-    ZacEsquilo.oneswitchmanager_back.start();
+    if(ZacEsquilo.config.oneSwitchActive){ ZacEsquilo.oneswitch_soundEffects.stop(); ZacEsquilo.oneswitchmanager_back.start(); }
   },
 
   soundEffects_Off: function(){
     ZacEsquilo.config.soundEffects = false;
-    ZacEsquilo.oneswitch_soundEffects.stop();
-    ZacEsquilo.oneswitchmanager_back.start();
+    if(ZacEsquilo.config.oneSwitchActive){ ZacEsquilo.oneswitch_soundEffects.stop(); ZacEsquilo.oneswitchmanager_back.start(); }
   }
 }
