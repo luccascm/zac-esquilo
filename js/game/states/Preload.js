@@ -92,7 +92,7 @@ ZacEsquilo.Preload.prototype = {
     }, this);
 
     // Inicia estado 'PreMenu'
-    if (!this.game.device.desktop){ this.game.time.events.add(6500, function() { ZacEsquilo.config.oneSwitchActive == false; this.state.start('MainMenu'); }, this); }
+    if (!this.game.device.desktop){ this.game.time.events.add(6500, function() { ZacEsquilo.config.oneSwitchActive = false; this.state.start('MainMenu'); }, this); }
     else this.game.time.events.add(6500, function() { this.state.start('PreMenu'); }, this);
 
   },
