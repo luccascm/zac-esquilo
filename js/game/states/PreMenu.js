@@ -85,6 +85,7 @@ ZacEsquilo.PreMenu.prototype = {
 
   // Inicia MainMenu com modo one switch desativado
   playOneSwitchOff: function() {
+    ZacEsquilo.mouse_events.disabled = true;
     ZacEsquilo.config.oneSwitchActive = false;
     this.state.start('MainMenu');
   }

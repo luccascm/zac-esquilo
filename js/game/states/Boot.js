@@ -12,10 +12,14 @@ ZacEsquilo.config = {
   won: false
 };
 
+
 ZacEsquilo.Boot = function() {  };
 
 ZacEsquilo.Boot.prototype = {
   preload: function() {
+    ZacEsquilo.mouse_events = new Phaser.Mouse(this.game);
+    ZacEsquilo.mouse_events.disabled = true;
+    
     this.game.load.script('webfont', 'http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
     
     this.load.image('logo', 'assets/images/credits/logo-lcm-small.png');

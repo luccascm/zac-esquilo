@@ -11,6 +11,9 @@ ZacEsquilo.ConfigOptions.prototype = {
 
     this.load.spritesheet('optionOn', 'assets/images/buttons/optionOn.png', 256, 58, 2);
     this.load.spritesheet('optionOff', 'assets/images/buttons/optionOff.png', 256, 58, 2);
+    
+    this.load.spritesheet('speedControl', 'assets/images/buttons/controle_velocidade.png', 256, 58, 2);
+    this.load.spritesheet('soundControl', 'assets/images/buttons/som.png', 256, 58, 2);
 
     this.load.spritesheet('speedIndicator', 'assets/images/buttons/speedIndicator.png', 35, 35, 2);
   },
@@ -22,8 +25,16 @@ ZacEsquilo.ConfigOptions.prototype = {
 
     this.createText();
 
+    // botoes
+
     ZacEsquilo.back = this.game.add.button(worldWidth - 10, this.game.world.height - 10, 'back', this.backToMenu, this, 1, 0);
     ZacEsquilo.back.anchor.setTo(1);
+
+    this.speedControl = this.game.add.button(this.game.world.centerX, 50, 'speedControl', this.backToMenu, this, 1, 0);
+    this.speedControl.anchor.setTo(0.5);
+
+    this.soundControl = this.game.add.button(this.game.world.centerX, 100, 'soundControl', this.backToMenu, this, 1, 0);
+    this.soundControl.anchor.setTo(0.5);
 
     this.speed1Btn = this.game.add.button(quarterWidth - 90, 130, 'speed1', this.setSpeed1, this, 1, 0);
     this.speed1Btn.anchor.setTo(0.5, 0);
@@ -93,6 +104,14 @@ ZacEsquilo.ConfigOptions.prototype = {
 
   backToMenu: function(){
     this.state.start('MainMenu');
+  },
+
+  speedOptions: function(){
+
+  },
+
+  soundOptions: function(){
+
   },
 
   setSpeed1: function(){
