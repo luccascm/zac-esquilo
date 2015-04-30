@@ -39,7 +39,7 @@ ZacEsquilo.MainMenu.prototype = {
         ZacEsquilo.options_btn,
         ZacEsquilo.instructions_btn,
         ZacEsquilo.credits_btn,
-      ], ZacEsquilo.config.oneSwitchSpeed, this.game);
+      ], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
       oneswitchmanager.start();
     }
   },

@@ -18,16 +18,16 @@ ZacEsquilo.PreMenu.prototype = {
 
     // Listener (over, out) para botões de seleção de modo
     if (ZacEsquilo.config.oneSwitchActive){
+      ZacEsquilo.switch_on.onInputOver = null;
+      ZacEsquilo.switch_on.onInputOut = null;
+      ZacEsquilo.switch_off.onInputOver = null;
+      ZacEsquilo.switch_off.onInputOut = null;
+    }
+    else{
       ZacEsquilo.switch_on.onInputOver.add(this.over,this);
       ZacEsquilo.switch_on.onInputOut.add(this.out,this);
       ZacEsquilo.switch_off.onInputOver.add(this.over,this);
       ZacEsquilo.switch_off.onInputOut.add(this.out,this);
-    }
-    else{
-      ZacEsquilo.switch_on.onInputOver.add(null,this);
-      ZacEsquilo.switch_on.onInputOut.add(null,this);
-      ZacEsquilo.switch_off.onInputOver.add(null,this);
-      ZacEsquilo.switch_off.onInputOut.add(null,this);
     }
 
     if (ZacEsquilo.config.music){
@@ -44,7 +44,7 @@ ZacEsquilo.PreMenu.prototype = {
     var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
       ZacEsquilo.switch_on,
       ZacEsquilo.switch_off
-    ], 2, this.game);
+    ], 2, this.game, true);
     oneswitchmanager.start();
   },
 

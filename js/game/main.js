@@ -11,5 +11,7 @@ game.state.add('Instructions', ZacEsquilo.Instructions);
 game.state.add('PlayGame', ZacEsquilo.PlayGame);
 game.state.add('GameOver', ZacEsquilo.GameOver);
 game.state.add('Credits', ZacEsquilo.Credits);
+game.state.add('SpeedOptions', ZacEsquilo.SpeedOptions);
+game.state.add('SoundOptions', ZacEsquilo.SoundOptions);
 
 game.state.start('Boot');
