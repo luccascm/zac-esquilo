@@ -39,7 +39,7 @@ ZacEsquilo.SoundOptions.prototype = {
 
     ZacEsquilo.oneswitch_soundEffects = new ZacEsquilo.OneSwitchManager([ZacEsquilo.soundEffectsOn, ZacEsquilo.soundEffectsOff], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
 
-    ZacEsquilo.oneswitchmanager_back = new ZacEsquilo.OneSwitchManager([ZacEsquilo.back], ZacEsquilo.config.oneSwitchSpeed, this.game);
+    ZacEsquilo.oneswitchmanager_back = new ZacEsquilo.OneSwitchManager([ZacEsquilo.back], ZacEsquilo.config.oneSwitchSpeed, this.game, null);
 
   },
 
@@ -85,13 +85,13 @@ ZacEsquilo.SoundOptions.prototype = {
     ZacEsquilo.oneswitch_soundEffects.start();
   },
 
-  soundeffects_On: function(){
+  soundEffects_On: function(){
     ZacEsquilo.config.soundEffects = true;
     ZacEsquilo.oneswitch_soundEffects.stop();
     ZacEsquilo.oneswitchmanager_back.start();
   },
 
-  soundeffects_Off: function(){
+  soundEffects_Off: function(){
     ZacEsquilo.config.soundEffects = false;
     ZacEsquilo.oneswitch_soundEffects.stop();
     ZacEsquilo.oneswitchmanager_back.start();

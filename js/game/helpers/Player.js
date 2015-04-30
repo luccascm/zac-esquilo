@@ -5,10 +5,10 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.sprite.body.moves = true;
   this.sprite.enableBody = true;
   this.sprite.body.collideWorldBounds = true;
-  this.sprite.animations.add('walk-left', [0,3,3,3,3,0]);
-  this.sprite.animations.add('walk-right', [0,1,1,1,1,0]);
-  this.sprite.animations.add('walk-up', [0,2,2,2,2,0]);
-  this.sprite.animations.add('walk-down', [0,2,2,2,0]);
+  this.sprite.animations.add('walk-left', [3,3,3,3,3,3]);
+  this.sprite.animations.add('walk-right', [1,1,1,1,1,1]);
+  this.sprite.animations.add('walk-up', [2,2,2,2,2,2]);
+  this.sprite.animations.add('walk-down', [2,2,2,2,2,0]);
   ZacEsquilo.config.won = false;
   this.enemiesGroup = enemiesGroup;
   this.friendsGroup = friendsGroup;
@@ -24,7 +24,7 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.isSafe = false;
 
   // sons
-  if(ZacEsquilo.config.soundEffect){
+  if(ZacEsquilo.config.soundEffects){
     this.frogger_hop = this.game.add.audio('frogger_hop', 1, false);
     this.frogger_run_down = this.game.add.audio('frogger_run_down', 1, false);
     this.frogger_drown = this.game.add.audio('frogger_drown', 1, false);
@@ -50,22 +50,22 @@ ZacEsquilo.Player.prototype.update = function(){
 
     if (ZacEsquilo.config.oneSwitchActive === false){
       if (this.cursors.up.isDown){
-        if(ZacEsquilo.config.soundEffect){ this.frogger_hop.play(); }
+        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
         this.sprite.animations.play('walk-up', 15, false);
         this.move('up');
       }
       if (this.cursors.right.isDown){
-        if(ZacEsquilo.config.soundEffect){ this.frogger_hop.play(); }
+        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
         this.sprite.animations.play('walk-right', 15, false);
         this.move('right');
       }
       if (this.cursors.down.isDown){
-        if(ZacEsquilo.config.soundEffect){ this.frogger_hop.play(); }
+        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
         this.sprite.animations.play('walk-down', 15, false);
         this.move('down');
       }
       if (this.cursors.left.isDown){
-        if(ZacEsquilo.config.soundEffect){ this.frogger_hop.play(); }
+        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
         this.sprite.animations.play('walk-left', 15, false);
         this.move('left');
       }
@@ -97,8 +97,11 @@ ZacEsquilo.Player.prototype.update = function(){
 // }
 
 ZacEsquilo.Player.prototype.oneSwitchMove = function(){
-  console.log( 'water up ' + this.hasWaterUp(this.sprite, this.waterGroup) );
-  console.log( 'winner up ' + this.hasWinnerTileUp(this.sprite, this.winnerTilesGroup) );
+  // console.log( 'water up ' + this.hasWaterUp(this.sprite, this.waterGroup) );
+  // console.log( 'winner up ' + this.hasWinnerTileUp(this.sprite, this.winnerTilesGroup) );
+  var animation = 'walk-' + this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup);
+  this.sprite.animations.play(animation, 15, false);
+  if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
   this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup) );
 
   // ok para inimigos
@@ -114,7 +117,7 @@ ZacEsquilo.Player.prototype.oneSwitchMove = function(){
 ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
   if(this.ismoving){ return; }
   else if ( !this.game.physics.arcade.overlap(this.sprite, this.friendsGroup) ){
-    if(ZacEsquilo.config.soundEffect){ this.frogger_run_down.play(); }
+    if(ZacEsquilo.config.soundEffects){ this.frogger_run_down.play(); }
     console.log('atropelado');
     player.kill();
     this.resetTileCoordinates();
@@ -154,7 +157,7 @@ ZacEsquilo.Player.prototype.playerCarried = function(player, friend){
 ZacEsquilo.Player.prototype.playerDrown = function(player, friend){
   if(this.ismoving){ return; }
   else if ( !this.game.physics.arcade.overlap(this.sprite, this.friendsGroup) && !this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup) ){
-    if(ZacEsquilo.config.soundEffect){ this.frogger_drown.play(); }
+    if(ZacEsquilo.config.soundEffects){ this.frogger_drown.play(); }
     console.log('afogado');
     player.kill();
     this.resetTileCoordinates();
@@ -179,7 +182,7 @@ ZacEsquilo.Player.prototype.playerDrown = function(player, friend){
 ZacEsquilo.Player.prototype.winLevel = function(player, winnerTile){
   // scoreboard.show(this.score)
   if (player.y == winnerTile.y){
-    if(ZacEsquilo.config.soundEffect){ this.frogger_win_game.play(); }
+    if(ZacEsquilo.config.soundEffects){ this.frogger_win_game.play(); }
     // var scoreboard = new ZacEsquilo.Scoreboard2(this.game);
     this.winScreen();
     // winnerTile.kill();
@@ -206,10 +209,11 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
+  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
+  this.playAgainText.setShadow(3,3, 'rgba(0,0,0,1)', 0);
 
   this.game.add.tween(this.tela_Vitoria).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
   // this.game.paused = true;
@@ -233,10 +237,11 @@ ZacEsquilo.Player.prototype.gameOverScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
+  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
+  this.playAgainText.setShadow(3,3, 'rgba(0,0,0,1)', 0);
 
   this.game.add.tween(this.tela_gameover).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
   // this.game.paused = true;

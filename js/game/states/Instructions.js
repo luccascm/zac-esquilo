@@ -15,7 +15,7 @@ ZacEsquilo.Instructions.prototype = {
     if(ZacEsquilo.config.oneSwitchActive === true){
       var oneswitchmanager = new ZacEsquilo.OneSwitchManager([
         ZacEsquilo.back,
-      ], 2, this.game);
+      ], ZacEsquilo.config.oneSwitchSpeed, this.game);
       oneswitchmanager.start();
     }
   },
