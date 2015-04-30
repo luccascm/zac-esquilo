@@ -59,7 +59,7 @@ ZacEsquilo.Boot.prototype = {
       this.scale.minHeight = 500;
       this.scale.maxWidth = 2048;
       this.scale.maxHeight = 1536;
-      // this.scale.forceLandscape = true;
+      this.scale.forceLandscape = true;
       this.scale.pageAlignHorizontally = true;
       this.scale.setScreenSize(true);
     }
