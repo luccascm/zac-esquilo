@@ -17,13 +17,11 @@ ZacEsquilo.MainMenu.prototype = {
     this.load.spritesheet('instructionsBtn', 'assets/images/buttons/instructions.png', 256, 58, 2);
     this.load.spritesheet('creditsBtn', 'assets/images/buttons/credits.png', 256, 58, 2);
 
-    if ( !this.game.device.desktop ){ 
-      // ZacEsquilo.config.oneSwitchActive = false; }
-      if (ZacEsquilo.config.music){
-        ZacEsquilo.soundtrack = this.game.add.audio('main_theme', 0.3, true);
-        ZacEsquilo.soundtrack.play();
-      }
-    }
+    //   // ZacEsquilo.config.oneSwitchActive = false; }
+    // if (ZacEsquilo.config.music && ){
+    //   ZacEsquilo.soundtrack = this.game.add.audio('main_theme', 0.3, true);
+    //   ZacEsquilo.soundtrack.play();
+    // }
   },
 
   create: function(){

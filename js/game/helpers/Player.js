@@ -102,8 +102,9 @@ ZacEsquilo.Player.prototype.oneSwitchMove = function(){
   var animation = 'walk-' + this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup);
   this.sprite.animations.play(animation, 15, false);
   if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
-  this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup) );
 
+  if (location.search == "?t=alt"){ this.move('up'); } 
+  else this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup) );
   // ok para inimigos
   // if( this.hasEnemyUp(this.sprite, this.enemiesGroup) && Math.floor(this.sprite.entity.tileX) > 1 )
   //   this.move('left');
