@@ -2,7 +2,7 @@ ZacEsquilo.OneSwitchManager = function(options, interval, game, soundEffect){
   this.options = options;
   this.interval = interval;
   this.game = game;
-  
+
   this.selected = 0;
   if (ZacEsquilo.config.soundEffects){
     this.soundEffect = soundEffect;
@@ -32,6 +32,7 @@ ZacEsquilo.OneSwitchManager.prototype = {
   stop: function(){
     this.timer1.timer.remove(this.timer1);
     this.key.onDown.remove(this.oneSwitchPressed, this);
+    for (var i = 0; i < this.options.length; i++){ this.options[i].frame = 0; }
   },
 
   changeState: function(){

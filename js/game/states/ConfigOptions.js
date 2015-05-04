@@ -3,9 +3,10 @@ ZacEsquilo.ConfigOptions = function() {};
 ZacEsquilo.ConfigOptions.prototype = {
   preload: function() {
     this.game.stage.backgroundColor = "#FFB631";
-    
+
     this.load.spritesheet('speedControl', 'assets/images/buttons/controle_velocidade.png', 256, 58, 2);
     this.load.spritesheet('soundControl', 'assets/images/buttons/som.png', 256, 58, 2);
+    this.load.spritesheet('gameModeControl', 'assets/images/buttons/modo_de_jogo.png', 256, 58, 2);
 
   },
 
@@ -19,19 +20,23 @@ ZacEsquilo.ConfigOptions.prototype = {
     this.soundControl = this.game.add.button(this.game.world.centerX, 250, 'soundControl', this.soundOptions, this, 1, 0);
     this.soundControl.anchor.setTo(0.5);
 
-    if(ZacEsquilo.config.oneSwitchActive){ 
+    this.gameModeControl = this.game.add.button(this.game.world.centerX, 350, 'gameModeControl', this.gameModeOptions, this, 1, 0);
+    this.gameModeControl.anchor.setTo(0.5);
+
+    if(ZacEsquilo.config.oneSwitchActive){
       this.speedControl = this.game.add.button(this.game.world.centerX, 150, 'speedControl', this.speedOptions, this, 1, 0);
       this.speedControl.anchor.setTo(0.5);
-      
+
       // instanciando one switch manager para botoes de velocidade
       var oneSwitchOptions = new ZacEsquilo.OneSwitchManager([
         this.speedControl,
         this.soundControl,
+        this.gameModeControl,
         ZacEsquilo.back,
       ], ZacEsquilo.config.oneSwitchSpeed, this.game, true);
       oneSwitchOptions.start();
     }
-    
+
   },
 
   createText: function() {
@@ -48,5 +53,7 @@ ZacEsquilo.ConfigOptions.prototype = {
 
   speedOptions: function(){ this.state.start('SpeedOptions'); },
 
-  soundOptions: function(){ this.state.start('SoundOptions'); }
+  soundOptions: function(){ this.state.start('SoundOptions'); },
+
+  gameModeOptions: function(){ this.state.start('GameModeOptions'); }
 }
