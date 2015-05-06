@@ -103,7 +103,7 @@ ZacEsquilo.Player.prototype.oneSwitchMove = function(){
   this.sprite.animations.play(animation, 15, false);
   if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
 
-  if (location.search == "?t=alt"){ this.move('up'); } 
+  if (location.search == "?t=alt"){ this.move('up'); }
   else this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup) );
   // ok para inimigos
   // if( this.hasEnemyUp(this.sprite, this.enemiesGroup) && Math.floor(this.sprite.entity.tileX) > 1 )
@@ -210,7 +210,7 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
+  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para voltar ao menu principal", this.fontStyle);
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
@@ -238,7 +238,7 @@ ZacEsquilo.Player.prototype.gameOverScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para jogar novamente", this.fontStyle);
+  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para voltar ao menu principal", this.fontStyle);
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
