@@ -14,10 +14,6 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.friendsGroup = friendsGroup;
   this.winnerTilesGroup = winnerTilesGroup;
   this.waterGroup = waterGroup;
-  // this.physics.arcade.enable(player); // Enabling arcade physics on player sprite
-
-  // // Cria cursor para teclas direcionais automaticamente
-  // this.cursors = this.game.input.keyboard.createCursorKeys();
 
   // Camera will follow the player
   this.game.camera.follow(this.sprite);
@@ -34,10 +30,6 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.restartKey = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
   this.movePlayerKey = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
 
-  // this.game.physics.arcade.overlap(this.sprite, this.enemiesGroup, this.playerHit, null, this);
-  // this.game.physics.arcade.overlap(this.sprite, this.friendsGroup, this.playerCarried, null, this);
-  // CollideWorldBounds está fazendo o player travar quando vai pro limite do cenario. Porque?!?!?
-  // this.sprite.body.collideWorldBounds = true;
 };
 
 ZacEsquilo.Player.prototype = Object.create(ZacEsquilo.Entity.prototype);
@@ -73,11 +65,6 @@ ZacEsquilo.Player.prototype.update = function(){
 
     else{
       this.key.onDown.add(this.oneSwitchMove, this);
-      // if (this.movePlayerKey.isDown){
-      //   for (e in this.enemiesGroup){
-      //     console.log('ex: '+ e);
-      //   }
-      // }
     }
   }
 
@@ -88,31 +75,15 @@ ZacEsquilo.Player.prototype.update = function(){
   this.game.physics.arcade.overlap(this.sprite, this.waterGroup, this.playerDrown, null, this);
 };
 
-
-// ZacEsquilo.Player.prototype.oneSwitchMove = function(player, enemiesGroup){
-//   for (e in enemiesGroup){
-//     console.log('ex: '+e.x);
-//   }
-//   this.move('up');
-// }
-
 ZacEsquilo.Player.prototype.oneSwitchMove = function(){
-  // console.log( 'water up ' + this.hasWaterUp(this.sprite, this.waterGroup) );
-  // console.log( 'winner up ' + this.hasWinnerTileUp(this.sprite, this.winnerTilesGroup) );
-  var animation = 'walk-' + this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup);
-  this.sprite.animations.play(animation, 15, false);
+  var auto_move = this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup)
+  var animation = 'walk-' + auto_move;
+  console.log(animation);
   if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
 
   if (location.search == "?t=alt"){ this.move('up'); }
-  else this.move(this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup) );
-  // ok para inimigos
-  // if( this.hasEnemyUp(this.sprite, this.enemiesGroup) && Math.floor(this.sprite.entity.tileX) > 1 )
-  //   this.move('left');
-  // else if ( Math.floor(this.sprite.entity.tileX) <= 1)
-  //   this.move('right');
-  // else
-  //   this.move('up');
-
+  else this.move( auto_move );
+  this.sprite.animations.play(animation, 15, false);
 };
 
 ZacEsquilo.Player.prototype.playerHit = function(player, enemy){
@@ -245,11 +216,9 @@ ZacEsquilo.Player.prototype.gameOverScreen = function(){
   this.playAgainText.setShadow(3,3, 'rgba(0,0,0,1)', 0);
 
   this.game.add.tween(this.tela_gameover).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
-  // this.game.paused = true;
 };
 
 ZacEsquilo.Player.prototype.restartGame = function(key){
-  // this.game.paused = false;
   this.game.state.start('MainMenu');
 };
 
