@@ -9,12 +9,12 @@ ZacEsquilo.PlayGame.prototype = {
     this.game.load.image('tileset_sprites50', 'assets/tilemaps/tiles/tileset_sprites50.png');
 
     // Carregando tilemap
-    this.game.load.tilemap('map-1', 'assets/tilemaps/maps/json/tilemap1-50-complete.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('map-1', 'assets/tilemaps/maps/json/tilemap1-50-complete2.json', null, Phaser.Tilemap.TILED_JSON);
 
     // Carregando tiles para objects
     this.game.load.image('land', 'assets/tilemaps/tiles/land.png');
-    this.game.load.image('water', 'assets/tilemaps/tiles/water.png');
-    this.game.load.image('grass', 'assets/tilemaps/tiles/grass.png');
+    this.game.load.image('water', 'assets/tilemaps/tiles/water2.png');
+    this.game.load.image('grass', 'assets/tilemaps/tiles/grass2.png');
     this.game.load.image('street_dash', 'assets/tilemaps/tiles/street_dash.png');
     this.game.load.image('street_clear', 'assets/tilemaps/tiles/street_clear.png');
 
@@ -37,9 +37,9 @@ ZacEsquilo.PlayGame.prototype = {
     this.map.addTilesetImage('land');
     ZacEsquilo.map.addTilesetImage('land');
     this.map.addTilesetImage('water');
-    ZacEsquilo.map.addTilesetImage('water');
+    ZacEsquilo.map.addTilesetImage('water2');
     this.map.addTilesetImage('grass');
-    ZacEsquilo.map.addTilesetImage('grass');
+    ZacEsquilo.map.addTilesetImage('grass2');
 
     // Criando layers
     // layer background
