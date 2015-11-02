@@ -31,7 +31,6 @@ ZacEsquilo.PreMenu.prototype = {
     }
 
     if (ZacEsquilo.config.music){
-      ZacEsquilo.soundtrack = this.game.add.audio('main_theme', 0.3, true);
       ZacEsquilo.soundtrack.play();
     }
 

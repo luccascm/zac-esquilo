@@ -19,13 +19,13 @@ ZacEsquilo.Boot.prototype = {
   preload: function() {
     ZacEsquilo.mouse_events = new Phaser.Mouse(this.game);
     ZacEsquilo.mouse_events.disabled = true;
-    
+
     this.game.load.script('webfont', 'http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-    
+
     this.load.image('logo', 'assets/images/credits/logo-lcm-small.png');
     this.load.image('preloadBar', 'assets/images/credits/preloader-bar.png');
     this.load.image('gameName', 'assets/images/credits/Zac-IntroText.png');
-    
+
     this.load.image('zacStart', 'assets/images/sprites/player/zac_pose.png');
 
     this.load.spritesheet('back', 'assets/images/buttons/voltar.png', 256, 58, 2);
@@ -37,7 +37,7 @@ ZacEsquilo.Boot.prototype = {
     this.game.load.audio('frogger_hop', 'assets/audio/frogger_hop.wav', false);
     this.game.load.audio('frogger_drown', 'assets/audio/frogger_drown.wav', false);
     this.game.load.audio('frogger_run_down', 'assets/audio/frogger_run_down.wav', false);
-    
+
     this.game.load.audio('switch_option', 'assets/audio/beat.mp3', false);
   },
 

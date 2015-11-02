@@ -59,6 +59,13 @@ ZacEsquilo.Preload.prototype = {
     this.splash.alpha = 0;
     this.game_name.alpha = 0;
     this.zac_intro.alpha = 0;
+
+    // Buttons para alterar modo de jogo
+    this.load.spritesheet('oneSwitchOn', 'assets/images/buttons/teclaUnica.png', 256, 58, 2);
+    this.load.spritesheet('oneSwitchOff', 'assets/images/buttons/modoTradicional.png', 256, 58, 2);
+
+    // Instancia variavel para soundtrack
+    ZacEsquilo.soundtrack = this.game.add.audio('main_theme', 0.3, true);
   },
 
   create: function() {
