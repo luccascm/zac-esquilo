@@ -22,10 +22,14 @@ ZacEsquilo.PlayGame.prototype = {
 
     ZacEsquilo.soundtrack.stop();
 
+    // Button para jogar caso device = mobile
+    if (!this.game.device.desktop){ this.load.spritesheet('mobile_button', 'assets/images/buttons/button-round-a.png', 64, 64, 2); }
   },
 
   create: function(){
     this.game.stage.backgroundColor = '#808080';
+
+
 
     //Criando tilemap
     this.map = this.game.add.tilemap('map-1');
