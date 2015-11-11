@@ -30,6 +30,12 @@ ZacEsquilo.Player = function(tileX, tileY, speed, scale, spriteKey, game, enemie
   this.restartKey = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
   this.movePlayerKey = this.game.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
 
+  if (!this.game.device.desktop){
+    ZacEsquilo.mobile_button = this.game.add.button(this.game.world.width -10 , this.game.world.height - 10, 'mobile_button', this.oneSwitchMove, this, 2, 1, 0);
+    ZacEsquilo.mobile_button.fixedToCamera = true;
+    ZacEsquilo.mobile_button.anchor.setTo(1);
+  }
+
 };
 
 ZacEsquilo.Player.prototype = Object.create(ZacEsquilo.Entity.prototype);
@@ -41,25 +47,31 @@ ZacEsquilo.Player.prototype.update = function(){
     this.speed = ZacEsquilo.config.playerSpeed;
 
     if (ZacEsquilo.config.oneSwitchActive === false){
-      if (this.cursors.up.isDown){
-        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
-        this.sprite.animations.play('walk-up', 15, false);
-        this.move('up');
+      if (!this.game.device.desktop){
+
+        ZacEsquilo.mobile_button.onInputDown.add(this.oneSwitchMove, this);
       }
-      if (this.cursors.right.isDown){
-        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
-        this.sprite.animations.play('walk-right', 15, false);
-        this.move('right');
-      }
-      if (this.cursors.down.isDown){
-        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
-        this.sprite.animations.play('walk-down', 15, false);
-        this.move('down');
-      }
-      if (this.cursors.left.isDown){
-        if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
-        this.sprite.animations.play('walk-left', 15, false);
-        this.move('left');
+      else{
+        if (this.cursors.up.isDown){
+          if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
+          this.sprite.animations.play('walk-up', 15, false);
+          this.move('up');
+        }
+        if (this.cursors.right.isDown){
+          if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
+          this.sprite.animations.play('walk-right', 15, false);
+          this.move('right');
+        }
+        if (this.cursors.down.isDown){
+          if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
+          this.sprite.animations.play('walk-down', 15, false);
+          this.move('down');
+        }
+        if (this.cursors.left.isDown){
+          if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
+          this.sprite.animations.play('walk-left', 15, false);
+          this.move('left');
+        }
       }
     }
 
@@ -78,7 +90,6 @@ ZacEsquilo.Player.prototype.update = function(){
 ZacEsquilo.Player.prototype.oneSwitchMove = function(){
   var auto_move = this.autoMove(this.sprite, this.enemiesGroup, this.friendsGroup, this.waterGroup, this.winnerTilesGroup)
   var animation = 'walk-' + auto_move;
-  console.log(animation);
   if(ZacEsquilo.config.soundEffects){ this.frogger_hop.play(); }
 
   if (location.search == "?t=alt"){ this.move('up'); }
@@ -168,12 +179,17 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.tela_Vitoria.anchor.setTo(0.5, 0);
 
   this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, '', null, this);
-  // this.game.pause();
   this.sprite.body.moves = true;
   this.sprite.body.immovable = true;
   ZacEsquilo.config.won = true;
 
   this.restartKey.onDown.add(this.restartGame,this);
+
+  if (!this.game.device.desktop){
+    ZacEsquilo.mobile_button = this.game.add.button(this.game.world.centerX , this.game.world.height - 20, 'mobile_button', this.restartGame, this, 2, 1, 0);
+    ZacEsquilo.mobile_button.fixedToCamera = true;
+    ZacEsquilo.mobile_button.anchor.setTo(1);
+  }
 
   this.fontStyle = { font: "40px Bubblegum Sans", fill: "#fff", align: "center"};
   this.scoreText = this.game.add.text(this.game.world.centerX, 100, "Parabéns! Você ajudou Zac a voltar para a floresta e venceu o jogo!", this.fontStyle);
@@ -181,14 +197,18 @@ ZacEsquilo.Player.prototype.winScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para voltar ao menu principal", this.fontStyle);
+  if (!this.game.device.desktop){
+    this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 180, "Pressione o botão A para voltar ao menu principal", this.fontStyle);
+  }
+  else{
+    this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 180, "Pressione espaço para voltar ao menu principal", this.fontStyle);
+  }
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;
   this.playAgainText.setShadow(3,3, 'rgba(0,0,0,1)', 0);
 
   this.game.add.tween(this.tela_Vitoria).to( { y: 0 }, 2000, Phaser.Easing.Linear.None, true);
-  // this.game.paused = true;
 };
 
 ZacEsquilo.Player.prototype.gameOverScreen = function(){
@@ -196,12 +216,17 @@ ZacEsquilo.Player.prototype.gameOverScreen = function(){
   this.tela_gameover.anchor.setTo(0.5, 0);
 
   this.game.physics.arcade.overlap(this.sprite, this.winnerTilesGroup, '', null, this);
-  // this.game.pause();
   this.sprite.body.moves = true;
   this.sprite.body.immovable = true;
   ZacEsquilo.config.won = true;
 
   this.restartKey.onDown.add(this.restartGame,this);
+
+  if (!this.game.device.desktop){
+    ZacEsquilo.mobile_button = this.game.add.button(this.game.world.centerX , this.game.world.height - 20, 'mobile_button', this.restartGame, this, 2, 1, 0);
+    ZacEsquilo.mobile_button.fixedToCamera = true;
+    ZacEsquilo.mobile_button.anchor.setTo(1);
+  }
 
   this.fontStyle = { font: "40px Bubblegum Sans", fill: "#fff", align: "center"};
   this.scoreText = this.game.add.text(this.game.world.centerX, 100, "Game Over!!", this.fontStyle);
@@ -209,7 +234,12 @@ ZacEsquilo.Player.prototype.gameOverScreen = function(){
   this.scoreText.wordWrap = true;
   this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-  this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 80, "Pressione a barra de espaço para voltar ao menu principal", this.fontStyle);
+  if (!this.game.device.desktop){
+    this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 180, "Pressione o botão A para voltar ao menu principal", this.fontStyle);
+  }
+  else{
+    this.playAgainText = this.game.add.text(this.game.world.centerX, this.game.world.height - 180, "Pressione espaço para voltar ao menu principal", this.fontStyle);
+  }
   this.playAgainText.anchor.setTo(0.5);
   this.playAgainText.wordWrap = true;
   this.playAgainText.wordWrapWidth = this.game.world.width - 30;

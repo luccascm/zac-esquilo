@@ -3,6 +3,7 @@ ZacEsquilo.GameOver = function(game) { this.scoreText = null; };
 ZacEsquilo.GameOver.prototype = {
   preload: function(){
     this.restartKey = this.input.keyboard.addKey(Phaser.Keyboard[ZacEsquilo.config.oneSwitchKey]);
+    if (!this.game.device.desktop){ this.load.spritesheet('mobile_button', 'assets/images/buttons/button-round-a.png', 64, 64, 2); }
 
   },
 
@@ -18,6 +19,12 @@ ZacEsquilo.GameOver.prototype = {
 
     this.restartKey.onDown.add(this.restartGame,this);
 
+    if (!this.game.device.desktop){
+      ZacEsquilo.mobile_button = this.game.add.button(this.game.world.centerX , this.game.world.height - 20, 'mobile_button', this.restartGame, this, 2, 1, 0);
+      ZacEsquilo.mobile_button.fixedToCamera = true;
+      ZacEsquilo.mobile_button.anchor.setTo(1);
+    }
+
   },
 
   createText: function(){
@@ -28,7 +35,12 @@ ZacEsquilo.GameOver.prototype = {
     this.scoreText.wordWrap = true;
     this.scoreText.wordWrapWidth = this.game.world.width - 30;
 
-    this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione espaço para voltar ao menu principal", this.fontStyle_small);
+    if (!this.game.device.desktop){
+      this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione o botão A para voltar ao menu principal", this.fontStyle_small);
+    }
+    else{
+      this.playAgainText = this.game.add.text(this.game.world.centerX, 200, "Pressione espaço para voltar ao menu principal", this.fontStyle_small);
+    }
     this.playAgainText.anchor.setTo(0.5);
     this.playAgainText.wordWrap = true;
     this.playAgainText.wordWrapWidth = this.game.world.width - 30;
